@@ -20,13 +20,13 @@ abstract class ReadWrite
 {
     Scanner in;
     PrintWriter out;
-    File file;
+    String filename;
     Connection conn;
     Statement stmt;
 
     public ReadWrite(String filename)
     {
-        this.file = new File(filename);
+        this.filename = filename;
     }
 
     public abstract void read();
