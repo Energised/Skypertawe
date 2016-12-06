@@ -16,20 +16,20 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-abstract class ReadWrite
+abstract class ReadWrite<E>
 {
     Scanner in;
     PrintWriter out;
     String filename;
-    Connection conn;
-    Statement stmt;
+    Connection conn = null;
+    Statement stmt = null;
 
     public ReadWrite(String filename)
     {
         this.filename = filename;
     }
 
-    public abstract void read();
-    public abstract void write();
+    public abstract void read(String query) throws Exception;
+    public abstract void write(E data) throws Exception;
 
 }
