@@ -22,7 +22,7 @@
 *     r.add_new_data(new_account_info_arraylist);
 *     r.write();
 *
-* For running ReadWriteAccount:
+* USAGE:
 *   javac ReadWriteAccount.java
 *   java -cp ".;sqlite-jdbc-3.15.1.jar" ReadWriteAccount
 *     ^^ NB: ; for Windows, : for UNIX based systems
@@ -35,8 +35,9 @@
 // import java.io.PrintWriter;
 // import java.io.File;
 
+// import java.util.Scanner;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -58,6 +59,7 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
     public Connection connect_to_db(Connection conn) throws Exception
     {
         Class.forName("org.sqlite.JDBC");
+        String conn_info = "jdbc:sqlite:" + this.filename;
         conn = DriverManager.getConnection("jdbc:sqlite:data.db");
         return conn;
     }
@@ -66,7 +68,7 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
     {
         stmt = conn.createStatement();
         String acc_sql = "CREATE TABLE IF NOT EXISTS Account(" +
-                         "userID INTEGER PRIMARY KEY," +
+                         "AccountID INTEGER PRIMARY KEY," +
                          "username VARCHAR(40) NOT NULL," +
                          "first_name VARCHAR(25) NOT NULL," +
                          "surname VARCHAR(25) NOT NULL," +
@@ -96,7 +98,7 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
         ResultSet rs = p_sql.executeQuery();
         while(rs.next())
         {
-            System.out.println(rs.getInt("userID"));
+            System.out.println(rs.getInt("AccountID"));
             System.out.println(rs.getString("username"));
             System.out.println(rs.getString("first_name"));
             System.out.println(rs.getString("surname"));
