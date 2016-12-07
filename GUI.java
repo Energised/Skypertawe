@@ -22,7 +22,7 @@ public class GUI extends JFrame {
         setJMenuBar(menuBar);
          
         // Define and add two drop down menu to the menubar
-        JMenu fileMenu = new JMenu("File");
+        JMenu fileMenu = new JMenu("Options");
         menuBar.add(fileMenu);
          
         // Create and add simple menu item to one of the drop down menu
@@ -49,8 +49,8 @@ public class GUI extends JFrame {
         });
     }
     public static void main(String[] args) {
-        GUI me = new GUI();
-        me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        me.setVisible(true);
+       GUI me = new GUI();
+       me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       me.setVisible(true);
     }
 }
