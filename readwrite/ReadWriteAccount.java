@@ -19,8 +19,7 @@
 *
 * To add a new Account to the db:
 *     ReadWriteAccount r = new ReadWriteAccount("data.db");
-*     r.add_new_data(new_account_info_arraylist);
-*     r.write();
+*     r.write(new_account_object);
 *
 * USAGE:
 *   javac ReadWriteAccount.java
@@ -86,8 +85,7 @@ public class ReadWriteAccount extends ReadWrite<Account>
     /**
     * Runs a query by username on the database of accounts
     * @param query ArrayList of one argument, the searched for username
-    *
-    * nb: read will only take an ArrayList so check other classes ask for info using this
+    * @return Account object of the username searched for
     */
 
     public Account read(String query) throws Exception
@@ -105,6 +103,51 @@ public class ReadWriteAccount extends ReadWrite<Account>
             rs.getString("profile_img"));
         }
         return acc;
+    }
+
+    /**
+    * Given a username, will return the specified col for that user
+    * but only if the column type is an int
+    *
+    * You can get the following columns:
+    *   AccountID & new_messages
+    */
+
+    public int read_int_column(String query, String col) throws Exception
+    {
+        String sql = "SELECT * FROM Account WHERE username=?;";
+        PreparedStatement p_sql = this.conn.prepareStatement(sql);
+        p_sql.setString(1,query);
+        ResultSet rs = p_sql.executeQuery();
+        int ans = 0;
+        while(rs.next())
+        {
+            ans = rs.getInt(col);
+        }
+        return ans;
+    }
+
+    /**
+    * Given a username, return the specified column for that user but only
+    * if the type of that column is a string (VARCHAR in SQL)
+    *
+    * You can get the following columns:
+    *   username, first_name, surname, mob_num, dob, city,
+    *   prev_session, profile_img
+    */
+
+    public String read_string_column(String query, String col) throws Exception
+    {
+        String sql = "SELECT * FROM Account WHERE username=?;";
+        PreparedStatement p_sql = this.conn.prepareStatement(sql);
+        p_sql.setString(1,query);
+        ResultSet rs = p_sql.executeQuery();
+        String ans = null;
+        while(rs.next())
+        {
+            ans = rs.getString(col);
+        }
+        return ans;
     }
 
     /**
@@ -141,5 +184,9 @@ public class ReadWriteAccount extends ReadWrite<Account>
         //r.write(acc);
         Account test = r.read("energised");
         System.out.println(test.getFirstName());
+        int acc_id = r.read_int_column("energised","AccountID");
+        System.out.println(acc_id);
+        String acc_img = r.read_string_column("energised","profile_img");
+        System.out.println(acc_img);
     }
 }

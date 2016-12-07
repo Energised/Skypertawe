@@ -9,9 +9,8 @@
 *   find_pending_requests() -> return a list of pending friend requests :: ArrayList<(Account1, Account2)>
 *   check_friend_status(Account1, Account2) -> returns the number of columns these two accounts share
 *
-*
 * Writing Friendships:
-*   -> some user adds another user
+*   -> some user adds another user (get AccountID's from db)
 *   -> insert tuple into database
 *   -> check if its a friend request or acceptance
 *   -> if acceptance (count is 2) then update the graph with that
@@ -28,6 +27,10 @@
 *   javac ReadWriteFriends.java
 *   java -cp ".;sqlite-jdbc-3.15.1.jar" ReadWriteFriends
 *       ^^ NB: ; for Windows, : for UNIX based systems
+*
+* TODO:
+*   -> Make "data.db" a constant
+*   -> Finish read/write functionality
 */
 
 // import java.io.PrintWriter;
@@ -43,7 +46,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ReadWriteFriends extends ReadWrite<ArrayList<String>>
+public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
 {
     public ReadWriteFriends(String filename) throws Exception
     {
@@ -73,18 +76,38 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<String>>
         return stmt;
     }
 
-    public void read(String a) throws Exception
+    public ArrayList<Account> read(String a) throws Exception
     {
-        // do stuff here
+        return new ArrayList<Account>();
     }
 
-    public void write(ArrayList<String> b) throws Exception
+    /**
+    * to_add will contain: [Account1, Account2]
+    *   where both are Account objects
+    *
+    * currently just takes a list of 2 accounts and makes them friends
+    */
+
+    public void write(ArrayList<Account> to_add) throws Exception
     {
-        // do stuff here too
+        ReadWriteAccount acc = new ReadWriteAccount("data.db"); // make data.db a constant
+        int user1 = acc.read_int_column(to_add.get(0).getUsername(), "AccountID");
+        int user2 = acc.read_int_column(to_add.get(1).getUsername(), "AccountID");
+        String sql = "INSERT INTO Friends(User1ID, User2ID) VALUES(?,?)";
+        PreparedStatement p_stmt = this.conn.prepareStatement(sql);
+        p_stmt.setString(1,user1); // change user1 and user2 to be string types
+        p_stmt.setString(2,user2);
+        p_stmt.executeUpdate();
     }
 
     public static void main(String[] args) throws Exception
     {
         ReadWriteFriends r = new ReadWriteFriends("data.db");
+        ArrayList<Account> acc = new ArrayList<Account>();
+        acc.add(new Account("energised", "dan", "woolsey", "01234567891",
+                                  "01/01/1990", "swansea", 0, null, "energised.png"));
+        acc.add(new Account("gman", "gary", "tam", "19876543210",
+                                  "12/02/1900", "swansea", 0, null, "gman.png"));
+        r.write(acc);
     }
 }
