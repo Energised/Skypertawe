@@ -28,7 +28,6 @@
 *     ^^ NB: ; for Windows, : for UNIX based systems
 *
 * STILL TO DO:
-*   -> Rewrite write() method to take an Account object instead of an ArrayList
 *   -> Add update() method for editing info on a profile
 */
 
@@ -39,13 +38,15 @@
 
 import java.util.ArrayList;
 
+import java.awt.image.BufferedImage;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
+public class ReadWriteAccount extends ReadWrite<Account>
 {
 
     public ReadWriteAccount(String filename) throws Exception
@@ -53,7 +54,6 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
         super(filename);
         this.conn = connect_to_db(this.conn);
         this.stmt = create_account_table(this.conn, this.stmt);
-        //this.acc_info = new ArrayList<String>();
     }
 
     public Connection connect_to_db(Connection conn) throws Exception
@@ -78,7 +78,7 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
                          "new_messages INTEGER," +
                          "prev_session VARCHAR(15)," +
                          "profile_img VARCHAR(40)," +
-                         "UNIQUE (userID, username));";
+                         "UNIQUE (AccountID, username));";
         stmt.executeUpdate(acc_sql);
         return stmt;
     }
@@ -90,20 +90,21 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
     * nb: read will only take an ArrayList so check other classes ask for info using this
     */
 
-    public void read(String query) throws Exception
+    public Account read(String query) throws Exception
     {
         String sql = "SELECT * FROM Account WHERE username = ?;";
         PreparedStatement p_sql = this.conn.prepareStatement(sql);
         p_sql.setString(1,query); // query by username
         ResultSet rs = p_sql.executeQuery();
+        Account acc = null;
         while(rs.next())
         {
-            System.out.println(rs.getInt("AccountID"));
-            System.out.println(rs.getString("username"));
-            System.out.println(rs.getString("first_name"));
-            System.out.println(rs.getString("surname"));
-            System.out.println();
+            acc = new Account(rs.getString("username"), rs.getString("first_name"),
+            rs.getString("surname"), rs.getString("mob_num"), rs.getString("dob"),
+            rs.getString("city"), rs.getInt("new_messages"), rs.getString("prev_session"),
+            rs.getString("profile_img"));
         }
+        return acc;
     }
 
     /**
@@ -112,18 +113,19 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
     * in that EXACT order.
     */
 
-    public void write(ArrayList<String> acc_info) throws Exception
+    public void write(Account acc_info) throws Exception
     {
         String add_record = "INSERT INTO Account(username, first_name, " +
                              "surname, mob_num, dob, city, profile_img) " +
                              "VALUES(?,?,?,?,?,?,?)";
         PreparedStatement p_stmt = this.conn.prepareStatement(add_record);
-        int counter = 1;
-        for(String info : acc_info)
-        {
-            p_stmt.setString(counter, info);
-            counter += 1;
-        }
+        p_stmt.setString(1, acc_info.getUsername());
+        p_stmt.setString(2, acc_info.getFirstName());
+        p_stmt.setString(3, acc_info.getSurname());
+        p_stmt.setString(4, acc_info.getMobnumber());
+        p_stmt.setString(5, acc_info.getBirthDate());
+        p_stmt.setString(6, acc_info.getCity());
+        p_stmt.setString(7, acc_info.getImgPath());
         p_stmt.executeUpdate();
     }
 
@@ -134,16 +136,10 @@ public class ReadWriteAccount extends ReadWrite<ArrayList<String>>
     public static void main(String[] args) throws Exception
     {
         ReadWriteAccount r = new ReadWriteAccount("data.db");
-        ArrayList<String> acc = new ArrayList<String>(); // can be replaced with an account object once that class is done
-        acc.add("energised");
-        acc.add("dan");
-        acc.add("woolsey");
-        acc.add("07772638833");
-        acc.add("17/04/1997");
-        acc.add("swansea");
-        acc.add("img/dan.png");
-        //r.add_new_data(acc);
+        Account acc = new Account("energised", "dan", "woolsey", "01234567891",
+                                  "01/01/1990", "swansea", 0, null, "energised.png");
         //r.write(acc);
-        r.read("energised");
+        Account test = r.read("energised");
+        System.out.println(test.getFirstName());
     }
 }

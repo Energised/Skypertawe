@@ -29,7 +29,7 @@ abstract class ReadWrite<E>
         this.filename = filename;
     }
 
-    public abstract void read(String query) throws Exception;
+    public abstract E read(String query) throws Exception;
     public abstract void write(E data) throws Exception;
 
 }
