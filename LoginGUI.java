@@ -9,6 +9,9 @@ public class LoginGUI extends GUI {
 
 		super();
 
+		// make the window smaller, looks a bit nicer
+		//setSize(500,180);
+
 		// Creating JLabel
 		JLabel userLabel = new JLabel("User");
 		userLabel.setBounds(20,20,80,25);
@@ -24,6 +27,10 @@ public class LoginGUI extends GUI {
 		loginButton.setBounds(20, 80, 80, 25);
 		add(loginButton);
 
+		JPanel panel = new JPanel();
+		add(panel);
+
+		//setVisible(true);
 	}
 
 	public static void main(String[] args)
