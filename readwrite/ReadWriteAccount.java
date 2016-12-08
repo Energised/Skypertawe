@@ -60,7 +60,7 @@ public class ReadWriteAccount extends ReadWrite<Account>
     {
         Class.forName("org.sqlite.JDBC");
         String conn_info = "jdbc:sqlite:" + this.filename;
-        conn = DriverManager.getConnection("jdbc:sqlite:data.db");
+        conn = DriverManager.getConnection(conn_info);
         return conn;
     }
 
@@ -180,14 +180,19 @@ public class ReadWriteAccount extends ReadWrite<Account>
     public static void main(String[] args) throws Exception
     {
         ReadWriteAccount r = new ReadWriteAccount("data.db");
-        Account acc = new Account("energised", "dan", "woolsey", "01234567891",
+        Account acc1 = new Account("energised", "dan", "woolsey", "01234567891",
                                   "01/01/1990", "swansea", 0, null, "energised.png");
-        //r.write(acc);
+        r.write(acc1); // could mess with db
         Account test = r.read("energised");
         System.out.println(test.getFirstName());
         int acc_id = r.read_int_column("energised","AccountID");
         System.out.println(acc_id);
         String acc_img = r.read_string_column("energised","profile_img");
         System.out.println(acc_img);
+
+        // for use in testing ReadWriteFriends
+        Account acc2 = new Account("gman", "gary", "tam", "19876543210",
+                                "12/02/1900", "swansea", 0, null, "gman.png");
+        r.write(acc2); // could mess with db
     }
 }
