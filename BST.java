@@ -267,7 +267,7 @@ public class BST {
 		}
 		
 		this.root = newTree.getRoot();
-		 
+		this.numberOfNodes = newTree.getNumberNodes();
 	}
 	
 	
