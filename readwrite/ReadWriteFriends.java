@@ -51,16 +51,8 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
     public ReadWriteFriends(String filename) throws Exception
     {
         super(filename);
-        this.conn = connect_to_db(this.conn);
+        //this.conn = connect_to_db(this.conn);
         this.stmt = create_friends_table(this.conn, this.stmt);
-    }
-
-    public Connection connect_to_db(Connection conn) throws Exception
-    {
-        Class.forName("org.sqlite.JDBC");
-        String conn_info = "jdbc:sqlite:" + this.filename;
-        conn = DriverManager.getConnection(conn_info);
-        return conn;
     }
 
     public Statement create_friends_table(Connection conn, Statement stmt) throws Exception
