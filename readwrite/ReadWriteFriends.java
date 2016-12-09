@@ -20,8 +20,7 @@
 *   -> get a table of all the friendships (where count is 2):
 *        write sql statement
 *   -> return a list of pairs of Account objects that are friends we can compare in Graph.java
-*   -> run this everytime a new friendship is made
-*
+*   -> List will be of type ArrayList<Account> so each 2 accounts stored in order will be friends
 *
 * USAGE:
 *   javac ReadWriteFriends.java
@@ -77,16 +76,70 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
         return stmt;
     }
 
-    public ArrayList<Account> read(String a) throws Exception
+    /**
+    * - given a username, get all the accounts they're friends with
+    * - TODO: implement this
+    */
+
+    public ArrayList<Account> read(String query) throws Exception
     {
         return new ArrayList<Account>();
+    }
+
+    /**
+    * - get a table of all friendships stored in the database
+    * - return list of account objects where:
+    *       [acc1, acc2, acc1, acc5, acc3, acc6] means
+    *           : acc1 and acc2 are FRIENDS
+    *           : acc1 and acc5 are FRIENDS
+    *           : acc3 and acc6 are FRIENDS
+    */
+
+    public ArrayList<Account> get_all_friends() throws Exception
+    {
+        ArrayList<Account> friends = new ArrayList<Account>();
+        String sql = "SELECT a.User1ID as 'u1', a.User2ID as 'u2' " +
+                     "FROM Friends as 'a', Friends as 'b' " +
+                     "WHERE a.User1ID = b.User2ID " +
+                     "AND a.User2ID = b.User1ID;";
+        //PreparedStatement p_stmt = this.conn.prepareStatement(sql);
+        ResultSet rs = this.stmt.executeQuery(sql);
+        while(rs.next())
+        {
+            friends.add(get_account_from_id(rs.getInt("u1")));
+            friends.add(get_account_from_id(rs.getInt("u2")));
+            //System.out.println(rs.getInt("u1"));
+            //System.out.println(rs.getInt("u2"));
+            rs.next(); // remove the second record we know will be there so we can just get account id's
+        }
+        return friends;
+    }
+
+    public Account get_account_from_id(int acc_id) throws Exception
+    {
+        Account acc = null;
+        String sql = "SELECT * from Account " +
+                     "WHERE AccountID = ?;";
+        PreparedStatement p_stmt = this.conn.prepareStatement(sql);
+        p_stmt.setInt(1,acc_id);
+        ResultSet rs = p_stmt.executeQuery();
+        while(rs.next())
+        {
+            acc = new Account(rs.getString("username"), rs.getString("first_name"),
+            rs.getString("surname"), rs.getString("mob_num"), rs.getString("dob"),
+            rs.getString("city"), rs.getInt("new_messages"), rs.getString("prev_session"),
+            rs.getString("profile_img"));
+        }
+        return acc;
     }
 
     /**
     * to_add will contain: [Account1, Account2]
     *   where both are Account objects
     *
-    * inserts 2 profiles into the
+    * inserts a record for two accounts into the database
+    * checks if it's a request or an acceptance
+    * notifys/updates accordingally
     */
 
     public void write(ArrayList<Account> to_add) throws Exception
@@ -128,7 +181,7 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
     public int check_friends_status(Account a1, Account a2) throws Exception
     {
         String sql = "SELECT count(FriendshipID) FROM Friends " +
-                     "WHERE User1ID = ? AND User2ID = ?";
+                     "WHERE User1ID = ? OR User2ID = ?";
         PreparedStatement p_stmt = this.conn.prepareStatement(sql);
         p_stmt.setInt(1,get_acc_id(a1));
         p_stmt.setInt(2,get_acc_id(a2));
@@ -174,14 +227,43 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
                             "01/01/1990", "swansea", 0, null, "energised.png");
         Account a2 = new Account("gman", "gary", "tam", "19876543210",
                                   "12/02/1900", "swansea", 0, null, "gman.png");
-        acc.add(a1);
+        Account a3 = new Account("face", "ben", "ten", "07543211964",
+                                 "11/12/1700", "aesnaws", 0, null, "face.png");
+        acc.add(a1); // energised sends request to gman
         acc.add(a2);
         ArrayList<Account> acc2 = new ArrayList<Account>();
+        acc2.add(a2); // gman accepts energiseds request
         acc2.add(a1);
-        acc2.add(a2);
+        ArrayList<Account> acc3 = new ArrayList<Account>();
+        acc3.add(a3); // face adds energised
+        acc3.add(a1);
+        ArrayList<Account> acc4 = new ArrayList<Account>();
+        acc4.add(a1); // energised accepts
+        acc4.add(a3);
 
-        //r.write(acc);
-        //r.write(acc2);
+        //r.write(acc); // add a record to the db
+        //r.write(acc2); // add another
+        //r.write(acc3);
+        //r.write(acc4);
+
+        // if correct should return 2 friendships:
+        //  (energised and gman) AND (face and energised)
+
+        ArrayList<Account> f = r.get_all_friends(); // return all users who are friends
+
+        int count = 0;
+        Account fa1 = null;
+        Account fa2 = null;
+
+        // loop example for BST when we need to retrieve friendships between accounts
+        while(count < f.size())
+        {
+            fa1 = f.get(count);
+            fa2 = f.get(count+1);
+            System.out.println(fa1.getUsername());
+            System.out.println(fa2.getUsername());
+            count += 2;
+        }
 
         //System.out.println(r.get_acc_id(acc.get(0)));
         //System.out.println(r.get_acc_col("AccountID", acc.get(1)));

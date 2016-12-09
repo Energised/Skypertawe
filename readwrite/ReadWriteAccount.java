@@ -182,7 +182,7 @@ public class ReadWriteAccount extends ReadWrite<Account>
         ReadWriteAccount r = new ReadWriteAccount("data.db");
         Account acc1 = new Account("energised", "dan", "woolsey", "01234567891",
                                   "01/01/1990", "swansea", 0, null, "energised.png");
-        r.write(acc1); // could mess with db
+        //r.write(acc1); // if record already exists dont rewrite
         Account test = r.read("energised");
         System.out.println(test.getFirstName());
         int acc_id = r.read_int_column("energised","AccountID");
@@ -193,6 +193,9 @@ public class ReadWriteAccount extends ReadWrite<Account>
         // for use in testing ReadWriteFriends
         Account acc2 = new Account("gman", "gary", "tam", "19876543210",
                                 "12/02/1900", "swansea", 0, null, "gman.png");
-        r.write(acc2); // could mess with db
+        //r.write(acc2); // if record already exists dont rewrite it
+        Account acc3 = new Account("face", "ben", "ten", "07543211964",
+                                 "11/12/1700", "aesnaws", 0, null, "face.png");
+        //r.write(acc3); // if record already exists dont rewrite it
     }
 }
