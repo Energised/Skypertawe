@@ -1,15 +1,17 @@
 
-//to add account:
-//treeName.addAccount(Account);
 
-// search results returned as an array of Accounts
-// some arrays contain null values at the end, use:   if (arrayName[i] != null){String username = arrayName[i].getUsername} etc
+//to add account:
+//treeName.addAccount(account);
+//or:
+//treeName.addAccountsFromArrayList(accounts);
+
 
 //search options:
-//Account[] arrayName = treeName.searchBeginningWith("name");
-//Account[] arrayName = treeName.searchExact("name");
-//Account[] arrayName = treeName.searchContains("name");
-//Account[] arrayName = treeName.getAllUsers("name");
+// arrayName = treeName.searchBeginningWith("name");
+// arrayName = treeName.searchExact("name");
+// arrayName = treeName.searchContains("name");
+// arrayName = treeName.getAllUsers("name");
+import java.util.ArrayList;
 
 public class BST {
 	private BSTNode root;
@@ -17,7 +19,7 @@ public class BST {
 	
 	//attributes used to store data gathered in recursive methods
 	private int numberResults = 0;
-	private Account[] searchResult = new Account[0];
+	private ArrayList<Account> searchResult;
 	private int arrayIndex;
 	private int numberOfNodes = 0;
 	
@@ -67,16 +69,13 @@ public class BST {
 	
 	//begin searching for users who's username begins with the string being searched for
 	//sorts so that names beginning with same string are together in the tree
-	public Account[] searchBeginningWith(String searchString){
-		sortBST();
-		//reset index and searchResult
-		setIndex(0);
-		Account[] searchResult = new Account[0];		
-		setSearchResult(searchResult);
+	public ArrayList<Account> searchBeginningWith(String searchString){
+
+		searchResult = new ArrayList<Account>();		
 		//begin search
 		searchBeginningWith(searchString, this.root);
 		//return result
-		return getSearchResult();
+		return this.searchResult;
 	}
 	
 	
@@ -85,10 +84,7 @@ public class BST {
 		//reset 
 		String usernameSubstring = temp.getAccount().getUsername().toLowerCase().substring(0, searchString.length());
 		if (usernameSubstring.equals(searchString.toLowerCase())){
-			findNumberOfResults(searchString, temp);
-			searchResult = new Account[getResultCount()];
-			setSearchResult(searchResult);
-			addResultsToArray(searchString, temp, searchResult);
+			beginningWithToArraylist(searchString, temp);
 		}
 		else{
 			String accountToCompare = temp.getAccount().getUsername().toLowerCase();
@@ -112,41 +108,20 @@ public class BST {
 	
 	
 	
-	//calculates the number of search results so that an array of correct size can be made
-	private void findNumberOfResults(String searchString, BSTNode temp){
-		
-		if (temp.getLeft() != null){
-			if (temp.getLeft().getAccount().getUsername().toLowerCase().substring(0, searchString.length()).equals(searchString.toLowerCase())){
-			findNumberOfResults(searchString, temp.getLeft());
-			}
-		}
-		
-		resultCount();
-		
-		if (temp.getRight() != null){
-			if (temp.getRight().getAccount().getUsername().toLowerCase().substring(0, searchString.length()).equals(searchString.toLowerCase())){
-			findNumberOfResults(searchString, temp.getRight());
-			}
-		}
-	}
-	
 	//adds the search results to an array so they can be returned
-	private void addResultsToArray(String searchString, BSTNode temp, Account[] searchResult){
-			if (temp.getLeft() != null){
-			if (temp.getLeft().getAccount().getUsername().toLowerCase().substring(0, searchString.length()).equals(searchString.toLowerCase())){
-				addResultsToArray(searchString, temp.getLeft(), getSearchResult());
+	private void beginningWithToArraylist(String searchString, BSTNode temp){
+		if (temp.getLeft() != null){
+			beginningWithToArraylist(searchString, temp.getLeft());
+		}
+		
+		if (temp.getAccount() != null){
+			if (temp.getAccount().getUsername().toLowerCase().substring(0, searchString.length()).equals(searchString.toLowerCase())){
+				this.searchResult.add(temp.getAccount());
 			}
 		}
 		
-		int index = getIndex();
-		searchResult[index] = temp.getAccount();
-		setIndex(index+1);
-		setSearchResult(searchResult);
-		
 		if (temp.getRight() != null){
-			if (temp.getRight().getAccount().getUsername().toLowerCase().substring(0, searchString.length()).equals(searchString.toLowerCase())){
-				addResultsToArray(searchString, temp.getRight(), getSearchResult());
-			}
+			beginningWithToArraylist(searchString, temp.getRight());
 		}
 		
 	}
@@ -163,12 +138,10 @@ public class BST {
 
 	
 	//returns all Accounts in an array
-	public Account[] getAllUsers(){
-		setSearchResult(new Account[getNumberNodes()]);
-		setIndex(0);
+	public ArrayList<Account> getAllUsers(){
+		this.searchResult = new ArrayList<Account>();
 		arrayAllUsers(this.root);
-		searchResult = getSearchResult();
-		return searchResult;
+		return this.searchResult;
 	}
 	
 	
@@ -178,27 +151,21 @@ public class BST {
 		  
 		arrayAllUsers(temp.getLeft() );
 		
-		Account[] result = getSearchResult();
-		result[getIndex()] = temp.getAccount();
-		setIndex(getIndex()+1);
-		setSearchResult(result);
-		
+		this.searchResult.add(temp.getAccount());
+	
 		arrayAllUsers(temp.getRight() ); 
-		  
 		}
 	
 	//returns an array containing one Account that matches the search string
-	public Account[] searchExact(String searchString){
-		setSearchResult(new Account[1]);
+	public ArrayList<Account> searchExact(String searchString){
+		this.searchResult = new ArrayList<Account>();
 		performExactSearch(searchString, this.root);
-		return getSearchResult();
+		return this.searchResult;
 	}
 	//performs the search for an exact match
 	public void performExactSearch(String searchString, BSTNode temp){
 		if (temp.getAccount().getUsername().toLowerCase().equals(searchString.toLowerCase())){
-			Account[] result = getSearchResult();
-			result[0] = temp.getAccount();
-			setSearchResult(result);
+			this.searchResult.add(temp.getAccount());
 		}
 				
 		String accountToCompare = temp.getAccount().getUsername().toLowerCase();;
@@ -221,12 +188,10 @@ public class BST {
 	}
 	
 	//search entire tree for all Accounts who's username contains the search string
-	public Account[] searchContains(String searchString){
-		setSearchResult(new Account[getNumberNodes()]);
-		setIndex(0);
+	public ArrayList<Account> searchContains(String searchString){
+		this.searchResult = new ArrayList<Account>();
 		arrayContains(this.root, searchString);
-		searchResult = getSearchResult();
-		return searchResult;
+		return this.searchResult;
 	}
 	
 	//find all Accounts with usernames that contain the search string, and add them to array
@@ -234,13 +199,8 @@ public class BST {
 		if(temp == null) return;
 		  
 		arrayContains(temp.getLeft(), searchString);
-		
-		String username = temp.getAccount().getUsername().toLowerCase();
-		if (username.contains(searchString)){
-			Account[] result = getSearchResult();
-			result[getIndex()] = temp.getAccount();
-			setIndex(getIndex()+1);
-			setSearchResult(result);
+		if (temp.getAccount().getUsername().toLowerCase().contains(searchString)){
+			this.searchResult.add(temp.getAccount());
 		}
 		
 		arrayContains(temp.getRight(), searchString); 
@@ -248,28 +208,15 @@ public class BST {
 	}
 	
 	
-	//sorts the BST so that user names beginning with same substring are next to each other alphabetically
-	public void sortBST(){
-		setIndex(0);
-		setSearchResult(new Account[getNumberNodes()]);
-		arrayAllUsers(this.root);		
-		Account[] arrayOfUsers = getSearchResult();
-		int midPoint = (arrayOfUsers.length / 2);
-		BST newTree = new BST();
-		
-		for(int j = midPoint; j<arrayOfUsers.length; j++){
-			newTree.addAccount(arrayOfUsers[j]);
-		}
-		 
-		
-		for(int i = midPoint-1; i>=0; i--){
-			newTree.addAccount(arrayOfUsers[i]);
-		}
-		
-		this.root = newTree.getRoot();
-		this.numberOfNodes = newTree.getNumberNodes();
-	}
+
 	
+	
+	//add accounts from an ArrayList<Account> to the BST
+	private void addAccountsFromArrayList(ArrayList<Account> accounts){
+		for (int i = 0; i < accounts.size(); i++){
+			addAccount(accounts.get(i));
+		}
+	}
 	
 	
 	
@@ -284,16 +231,7 @@ public class BST {
 	
 	private int getResultCount(){
 		return this.numberResults;
-	}
-	
-	
-	private void setSearchResult(Account[] result){
-		this.searchResult = result;
-	}
-	
-	private Account[] getSearchResult(){
-		return this.searchResult;
-	}
+	}	
 	
 	
 	private void setIndex(int i){
@@ -316,5 +254,8 @@ public class BST {
 }
 	
 	
+
+
+
 
 
