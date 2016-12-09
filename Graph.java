@@ -6,7 +6,7 @@ import java.util.*;
 //Vertex v1 = new Vertex("Ricky3038");
 //Vertex v2 = new Vertex("Juice");
 
-//	this means allow overwrite if vertex already exists			
+//    this means do not overwrite if vertex already exists, true would allow overwrite		
 //                      |
 //                      V
 //if (g.addVertex(v1, false) == true){
@@ -33,7 +33,7 @@ import java.util.*;
 //    System.out.println(e.toString());
 
 		//result: ({Juice, Ricky3038}, 1)
-		//		  ({Ricky3038, energised}, 1)
+		//	  ({Ricky3038, energised}, 1)
 
 //v1.getNumberEdges() = 2
 //v2.getNumberEdges() = 1
