@@ -20,12 +20,17 @@ public class URLMessage extends TextMessage{
 		return this.url;
 	}
 
+	/**
+	* opens the url embedded in the message in the users default browser
+	*/
+
 	public void openURL(){
-		if(Desktop.isDesktopSupported()){
-			Desktop.getDesktop().browse(new URI(this.getURL()));
-		}
-		else{
-			// display the url and message content on screen
+		try{
+			if(Desktop.isDesktopSupported()){
+				Desktop.getDesktop().browse(new URI(this.getURL()));
+			}
+		}catch(Exception e){
+			System.out.println(e.getStackTrace());
 		}
 	}
 
@@ -36,7 +41,7 @@ public class URLMessage extends TextMessage{
 
 	public static void main(String[] args){
 		URLMessage u = new URLMessage("u1","u2","look","www.google.com");
-		u.openURL()
+		u.openURL();
 
 	}
 }
