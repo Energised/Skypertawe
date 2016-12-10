@@ -165,6 +165,20 @@ public class Graph {
 	public Set<Edge> getEdges(){
 		return new HashSet<Edge>(this.edges.values());
 	}
+	
+	public ArrayList<String> getFreinds(String username){
+		ArrayList<Edge> friendships = vertices.get(username).getEdges();
+		ArrayList<String> friends = new ArrayList<String>();
+		for (Edge friendship : friendships) {
+			String friend = (friendship.getOne() == vertices.get(username)) ? friendship.getTwo().getUsername() : friendship.getOne().getUsername();
+			if (friend != null){
+				friends.add(friend);
+			}
+		}
+		return friends;
+		
+	}	
+	
 
 
 }
