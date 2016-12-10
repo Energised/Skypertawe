@@ -106,8 +106,8 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
 
     public void write_text_message(TextMessage m) throws Exception
     {
-        String info =m.getRecipient() + DELIMITER +  "t" + DELIMITER +
-                     m.getSender() + DELIMITER + m.getMessageContent() + "\n";
+        String info = m.getRecipient() + DELIMITER +  "t" + DELIMITER +
+                      m.getSender() + DELIMITER + m.getMessageContent() + "\n";
         //System.out.println(info);
         this.out.write(info);
         this.out.flush();

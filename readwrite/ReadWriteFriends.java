@@ -41,7 +41,7 @@
 *
 * TODO:
 *   -> Make "data.db" a constant
-*   -> Get graph and RWA working together
+*   -> Get graph and RWF working together
 *   -> Finish read functionality
 *
 */
