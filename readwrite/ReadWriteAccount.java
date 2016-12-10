@@ -40,7 +40,7 @@
 *           public void write_string_column(String username, String col, String new_val)
 *
 * STILL TO DO:
-*   -> Add read_all_accounts() method
+* 
 */
 
 // import java.io.FileWriter;

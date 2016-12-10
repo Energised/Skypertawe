@@ -83,7 +83,17 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
 
     /**
     * - given a username, get all the accounts they're friends with
-    * - TODO: implement this
+    *    - select User1ID
+    *  SELECT a.User1ID, a.User2ID
+    *  FROM Friends as 'a', Friends as 'b'
+    *  WHERE a.User1ID = b.User2ID
+    *  AND a.User2ID = b.User1ID
+    *  AND a.User1ID = value;
+    *
+    *  - create instance of ReadWriteAccount
+    *  - value = r.get_int_col(query, "AccountID");
+    *
+    * - TODO: implement this, dont know since graph might handle this instead
     */
 
     public ArrayList<Account> read(String query) throws Exception
