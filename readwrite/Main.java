@@ -24,53 +24,74 @@ public class Main
 
     public Main() throws Exception
     {
-        this.tree = new BST();
         this.rwa = new ReadWriteAccount(DATABASE);
+        this.rwf = new ReadWriteFriends(DATABASE);
         ArrayList<Account> accounts = this.rwa.read_all_accounts();
-        this.tree.addAccountsFromArrayList(accounts);
-        //this.tree.printAlphabetical(this.tree.getRoot());
-        this.graph = new Graph();
+        this.tree = populate_tree(new BST(), accounts);
+        this.graph = populate_graph(new Graph(), accounts);
+    }
+
+    /**
+    * populates a BST with accounts from the database
+    */
+
+    public BST populate_tree(BST tree, ArrayList<Account> acc) throws Exception
+    {
+        tree.addAccountsFromArrayList(acc);
+        //tree.printAlphabetical(this.tree.getRoot()); // display tree
+        return tree;
+    }
+
+    public Graph populate_graph(Graph graph, ArrayList<Account> acc) throws Exception
+    {
         Vertex v1;
         boolean test;
-        for(Account acc : accounts)
+        for(Account a : acc)
         {
-            test = this.graph.addVertex(new Vertex(acc.getUsername()),false);
+            test = graph.addVertex(new Vertex(a.getUsername()),false);
             //System.out.println(test);
         }
         //boolean ans = this.graph.containsVertex(new Vertex(accounts.get(0).getUsername()));
         //System.out.println(ans);
-
-        this.rwf = new ReadWriteFriends(DATABASE);
+        // get a list of all friendships between accounts
         ArrayList<Account> friends = this.rwf.get_all_friends();
-
         int count = 0;
         Account a1;
         Account a2;
-
         while(count < friends.size())
         {
             a1 = friends.get(count);
             a2 = friends.get(count+1);
-            this.graph.addEdge(this.graph.getVertex(a1.getUsername()),
-                                this.graph.getVertex(a2.getUsername()));
+            graph.addEdge(graph.getVertex(a1.getUsername()),
+                          graph.getVertex(a2.getUsername()));
             count += 2;
         }
+        return graph;
+    }
 
-        Set<Edge> edges = this.graph.getEdges();
-        for(Edge x : edges)
-        {
-            System.out.println(x);
-        }
+    public Graph get_graph()
+    {
+        return this.graph;
+    }
 
-        ArrayList<Account> search = this.tree.searchBeginningWith("e");
-        for(Account x : search)
-        {
-            System.out.println(x.getUsername());
-        }
+    public BST get_tree()
+    {
+        return this.tree;
     }
 
     public static void main(String[] args) throws Exception
     {
         Main m = new Main();
+        Set<Edge> edges = m.get_graph().getEdges();
+        for(Edge x : edges)
+        {
+            System.out.println(x);
+        }
+
+        ArrayList<Account> search = m.get_tree().searchBeginningWith("g");
+        for(Account x : search)
+        {
+            System.out.println(x.getUsername());
+        }
     }
 }

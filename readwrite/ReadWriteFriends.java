@@ -176,6 +176,8 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
         else if(status == 2)
         {
             // add relationship to the graph
+            // cant do until we get a reference to Graph.java
+            // from Main.java
             System.out.println("friend request accepted");
         }
         else

@@ -143,6 +143,43 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         this.update_nm_value(f.getRecipient());
     }
 
+
+    /**
+    * iterate over list of recipients
+    * send individual text message to each of them
+    */
+
+    public void write_multi_text_msg(ArrayList<String> recipients, TextMessage msg) throws Exception
+    {
+        for(String recipient : recipients)
+        {
+            msg.setRecipient(recipient);
+            this.write_text_message(msg);
+        }
+    }
+
+    /**
+    * iterate over list of recipients
+    */
+
+    public void write_multi_url_message(ArrayList<String> recipients, URLMessage msg) throws Exception
+    {
+        for(String recipient : recipients)
+        {
+            msg.setRecipient(recipient);
+            this.write_url_message(msg);
+        }
+    }
+
+    public void write_multi_file_message(ArrayList<String> recipients, FileMessage msg) throws Exception
+    {
+        for(String recipient : recipients)
+        {
+            msg.setRecipient(recipient);
+            this.write_file_message(msg);
+        }
+    }
+
     /**
     * edits the new_messages value of the recipient, adding 1 to it
     */
@@ -166,9 +203,13 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         //m.write_file_message(msg4);
         ArrayList<Message> msgs = m.read("energised");
         //System.out.println(msgs);
-        for(Message x : msgs)
-        {
-            System.out.println(x.getRecipient());
-        }
+        //for(Message x : msgs)
+        //{
+        //    System.out.println(x.getRecipient());
+        //}
+        ArrayList<String> rec = new ArrayList<String>();
+        rec.add("face");
+        rec.add("gman");
+        m.write_multi_text_msg(rec,msg1);
     }
 }
