@@ -20,6 +20,10 @@
 *       (so the delimiter character needs to be something that we're sure no
 *        user would ever type in, hence the triple comma)
 *
+* USAGE:
+*   java -cp ".;sqlite-jdbc-3.15.1.jar" ReadWriteMessage
+*     ^^ NB: ; for Windows, : for UNIX based systems
+*
 * STRUCTURE:
 *
 *   ReadWriteMessage
@@ -28,7 +32,8 @@
 *       public void write_text_message(TextMessage m)
 *       public void write_url_message(URLMessage u)
 *       public void write_file_message(FileMessage f)
-*       public void update_nm_value(String username)
+*       public void inc_nm_value(String username)
+*       public void dec_nm_value(String username)
 *
 */
 
@@ -111,11 +116,12 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         //System.out.println(info);
         this.out.write(info);
         this.out.flush();
-        this.update_nm_value(m.getRecipient());
+        this.inc_nm_value(m.getRecipient());
     }
 
     /**
-    * save a url message in messages.txt
+    * Stores a URLMessage object as a string in 'messages.txt'
+    *
     */
 
     public void write_url_message(URLMessage u) throws Exception
@@ -125,12 +131,13 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
                 u.getURL() + "\n";
         this.out.write(info);
         this.out.flush();
-        this.update_nm_value(u.getRecipient());
+        this.inc_nm_value(u.getRecipient());
     }
 
     /**
-    * save a file message in messages.txt
+    * Stores a FileMessage object as a string in 'messages.txt'
     * (file messages work as long as the file is in the files folder)
+    * @param f The FileMessage object
     */
 
     public void write_file_message(FileMessage f) throws Exception
@@ -140,13 +147,14 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
                f.getFname() + "\n";
         this.out.write(info);
         this.out.flush();
-        this.update_nm_value(f.getRecipient());
+        this.inc_nm_value(f.getRecipient());
     }
 
 
     /**
-    * iterate over list of recipients
-    * send individual text message to each of them
+    * Sends a TextMessage object to a list of recipients
+    * @param recipients ArrayList of usernames
+    * @param msg The TextMessage object
     */
 
     public void write_multi_text_msg(ArrayList<String> recipients, TextMessage msg) throws Exception
@@ -159,7 +167,9 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
     }
 
     /**
-    * iterate over list of recipients
+    * Sends a URLMessage object to a list of recipients
+    * @param recipients ArrayList of usernames
+    * @param msg The URLMessage object
     */
 
     public void write_multi_url_message(ArrayList<String> recipients, URLMessage msg) throws Exception
@@ -171,6 +181,12 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         }
     }
 
+    /**
+    * Sends a FileMessage object to a list of recipients
+    * @param recipients ArrayList of usernames
+    * @param msg The FileMessage object
+    */
+
     public void write_multi_file_message(ArrayList<String> recipients, FileMessage msg) throws Exception
     {
         for(String recipient : recipients)
@@ -181,14 +197,30 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
     }
 
     /**
-    * edits the new_messages value of the recipient, adding 1 to it
+    * Increments the new_messages value of a user by 1
+    * @param username The account we're editing
     */
 
-    public void update_nm_value(String username) throws Exception
+    public void inc_nm_value(String username) throws Exception
     {
         ReadWriteAccount acc = new ReadWriteAccount("data.db");
         acc.write_new_messages_column(username, 1);
     }
+
+    /**
+    * Decrements the new_messages value of a user by 1
+    * @param username The account we're editing
+    */
+
+    public void dec_nm_value(String username) throws Exception
+    {
+        ReadWriteAccount acc = new ReadWriteAccount("data.db");
+        acc.write_new_messages_column(username, -1);
+    }
+
+    /**
+    * Implemented for testing purposes
+    */
 
     public static void main(String[] args) throws Exception
     {
@@ -207,9 +239,16 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         //{
         //    System.out.println(x.getRecipient());
         //}
+        // testing multi user message functionality
         ArrayList<String> rec = new ArrayList<String>();
         rec.add("face");
         rec.add("gman");
-        m.write_multi_text_msg(rec,msg1);
+        //rec.add("energised");
+        //m.write_multi_text_msg(rec,msg1);
+        //for(String x : rec)
+        //{
+        //    m.dec_nm_value(x);
+        //    m.dec_nm_value(x);
+        //}
     }
 }
