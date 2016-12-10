@@ -20,6 +20,8 @@ public class Main
     ReadWriteAccount rwa;
     ReadWriteFriends rwf;
 
+    public static LoginGUI login;
+
     final String DATABASE = "data.db";
 
     public Main() throws Exception
@@ -82,16 +84,17 @@ public class Main
     public static void main(String[] args) throws Exception
     {
         Main m = new Main();
-        Set<Edge> edges = m.get_graph().getEdges();
-        for(Edge x : edges)
-        {
-            System.out.println(x);
-        }
-
-        ArrayList<Account> search = m.get_tree().searchBeginningWith("g");
-        for(Account x : search)
-        {
-            System.out.println(x.getUsername());
-        }
+        login = new LoginGUI();
+        //Set<Edge> edges = m.get_graph().getEdges();
+        //for(Edge x : edges)
+        //{
+        //    System.out.println(x);
+        //}
+        //
+        //ArrayList<Account> search = m.get_tree().searchBeginningWith("g");
+        //for(Account x : search)
+        //{
+        //    System.out.println(x.getUsername());
+        //}
     }
 }

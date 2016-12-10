@@ -1,16 +1,21 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import java.util.ArrayList;
+
 public class LoginGUI extends GUI {
 
-	private LoginGUI() {
+	public LoginGUI() throws Exception {
 
 		super();
 
 		// make the window smaller, looks a bit nicer
-		//setSize(500,180);
+		setSize(400,190);
 
 		// Creating JLabel
 		JLabel userLabel = new JLabel("User");
@@ -25,15 +30,40 @@ public class LoginGUI extends GUI {
 		// Creating login button
 		JButton loginButton = new JButton("Login");
 		loginButton.setBounds(20, 80, 80, 25);
+		loginButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				BST tree = null;
+				String username = userText.getText();
+				try
+				{
+					tree = get_main().get_tree();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+					System.exit(0);
+				}
+				//System.out.println(username);
+				ArrayList<Account> qry = tree.searchExact(username);
+				if(qry.get(0).getUsername().equals(username))
+				{
+					Account current_user = qry.get(0);
+					// run Home for that user
+					System.out.println("logging " + username + " in...");
+				}
+			}
+		});
 		add(loginButton);
 
 		JPanel panel = new JPanel();
 		add(panel);
 
-		//setVisible(true);
+		setVisible(true);
 	}
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
 		LoginGUI l = new LoginGUI();
 		l.setVisible(true);

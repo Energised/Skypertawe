@@ -10,10 +10,15 @@ import javax.swing.JRadioButtonMenuItem;
 
 public class GUI extends JFrame {
 
-    public GUI() {
+    private Main m;
+
+    public GUI() throws Exception{
 
         setTitle("Skypertawe");
         setSize(1280, 720);
+
+        // reference to the main class to use BST and Graph
+        this.m = new Main();
 
         // Creates a menubar for a JFrame
         JMenuBar menuBar = new JMenuBar();
@@ -52,7 +57,13 @@ public class GUI extends JFrame {
             }
         });
     }
-    public static void main(String[] args) {
+
+    public Main get_main() throws Exception
+    {
+        return this.m;
+    }
+
+    public static void main(String[] args) throws Exception {
        GUI me = new GUI();
        //me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        me.setVisible(true);
