@@ -27,13 +27,26 @@
 *   java -cp ".;sqlite-jdbc-3.15.1.jar" ReadWriteFriends
 *       ^^ NB: ; for Windows, : for UNIX based systems
 *
+* STRUCTURE:
+*
+*   ReadWriteFriends
+*       public ReadWriteFriends(String filename)
+*       public Statement create_friends_table(Connection conn, Statement stmt)
+*       public ArrayList<Account> read(String query)
+*           public ArrayList<Account> get_all_friends() (TO USE WITH GRAPH)
+*           public Account get_account_from_id(int acc_id)
+*       public void write(ArrayList<Account> to_add)
+*           public int check_friends_status(Account a1, Account a2)
+*           public int get_acc_id(Account acc)
+*
 * TODO:
 *   -> Make "data.db" a constant
 *   -> Get graph and RWA working together
 *   -> Finish read functionality
+*
 */
 
-// import java.io.PrintWriter;
+// import java.io.FileWriter;
 // import java.io.File;
 
 // import java.util.Scanner;

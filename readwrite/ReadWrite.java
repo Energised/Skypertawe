@@ -5,9 +5,10 @@
 * Base class for all ReadWrite functionality within Skypertawe
 *
 * TODO: close scanner at some point
+*       delimiter string for scanner
 */
 
-import java.io.PrintWriter;
+import java.io.FileWriter;
 import java.io.File;
 
 import java.util.Scanner;
@@ -20,11 +21,13 @@ import java.sql.ResultSet;
 abstract class ReadWrite<E>
 {
     Scanner in;
-    PrintWriter out;
+    FileWriter out;
     String dbname;
     String filename;
     Connection conn = null;
     Statement stmt = null;
+
+    final String DELIMITER = ",;`";
 
     /**
     * when only the database is needed by a ReadWrite subclass
@@ -45,8 +48,13 @@ abstract class ReadWrite<E>
         this.dbname = "data/" + dbname;
         this.filename = "data/" + filename;
         this.conn = connect_to_db(this.conn);
-        this.in = connect_to_file(this.in);
+        this.in = connect_scanner_to_file(this.in);
+        this.out = connect_filewriter_to_file(this.out);
     }
+
+    /**
+    * make a connection to the database file
+    */
 
     public Connection connect_to_db(Connection conn) throws Exception
     {
@@ -56,18 +64,40 @@ abstract class ReadWrite<E>
         return conn;
     }
 
-    public Scanner connect_to_file(Scanner in)
+    /**
+    * connect the Scanner object to a file we'll be reading from
+    */
+
+    public Scanner connect_scanner_to_file(Scanner in)
     {
         File file = new File(this.filename);
         try
         {
-            in = new Scanner(file);
+            in = new Scanner(file).useDelimiter(DELIMITER); // can be edited, must be something that noone will type in
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            System.out.println(e); // change this
         }
         return in;
+    }
+
+    /**
+    * connect the FileWriter object to the file we're appending to
+    */
+
+    public FileWriter connect_filewriter_to_file(FileWriter out)
+    {
+        File file = new File(this.filename);
+        try
+        {
+            out = new FileWriter(file, true); // set it to append to a file
+        }
+        catch(Exception e)
+        {
+            System.out.println(e); // change this too
+        }
+        return out;
     }
 
     public abstract E read(String query) throws Exception;

@@ -26,12 +26,24 @@
 *   java -cp ".;sqlite-jdbc-3.15.1.jar" ReadWriteAccount
 *     ^^ NB: ; for Windows, : for UNIX based systems
 *
+* STRUCTURE:
+*
+*   ReadWriteAccount
+*       public ReadWriteAccount(String filename)
+*       public Statement create_account_table(Connection conn, Statement stmt)
+*       public Account read(String query)
+*           public ArrayList<Account> read_all_accounts()
+*           public int read_int_column(String query, String col)
+*           public String read_string_column(String query, String col)
+*       public void write(Account acc_info)
+*           public void write_new_messages_column(String username, int val)
+*           public void write_string_column(String username, String col, String new_val)
+*
 * STILL TO DO:
-*   -> Add update() method for editing info on a profile
 *   -> Add read_all_accounts() method
 */
 
-// import java.io.PrintWriter;
+// import java.io.FileWriter;
 // import java.io.File;
 
 // import java.util.Scanner;
@@ -94,6 +106,21 @@ public class ReadWriteAccount extends ReadWrite<Account>
             rs.getString("surname"), rs.getString("mob_num"), rs.getString("dob"),
             rs.getString("city"), rs.getInt("new_messages"), rs.getString("prev_session"),
             rs.getString("profile_img"));
+        }
+        return acc;
+    }
+
+    public ArrayList<Account> read_all_accounts() throws Exception
+    {
+        ArrayList<Account> acc = new ArrayList<Account>();
+        String sql = "SELECT * FROM Account";
+        ResultSet rs = this.stmt.executeQuery(sql);
+        while(rs.next())
+        {
+            acc.add(new Account(rs.getString("username"), rs.getString("first_name"),
+            rs.getString("surname"), rs.getString("mob_num"), rs.getString("dob"),
+            rs.getString("city"), rs.getInt("new_messages"), rs.getString("prev_session"),
+            rs.getString("profile_img")));
         }
         return acc;
     }
@@ -166,6 +193,39 @@ public class ReadWriteAccount extends ReadWrite<Account>
     }
 
     /**
+    * increment the new_messages column by val for some username
+    * (could have made this a general int column updater but the only other
+    *  int column is AccountID which will never be changed)
+    * (negative values work in order to reset a column)
+    */
+
+    public void write_new_messages_column(String username, int val) throws Exception
+    {
+        int current_value = this.read_int_column(username, "new_messages");
+        //System.out.println(current_value);
+        String sql = "UPDATE Account " +
+                     "SET new_messages = ? " +
+                     "WHERE username = ?;";
+        PreparedStatement p_stmt = this.conn.prepareStatement(sql);
+        p_stmt.setInt(1,current_value+val);
+        p_stmt.setString(2,username);
+        p_stmt.executeUpdate();
+    }
+
+    /**
+    * updates a given column with a given value for a given username
+    * (PreparedStatements dont allow column names to be passed so had to do it this way)
+    */
+
+    public void write_string_column(String username, String col, String new_val) throws Exception
+    {
+        String sql = "UPDATE Account " +
+                     "SET '" + col + "' = '" + new_val + "' " +
+                     "WHERE username = '" + username + "';";
+        this.stmt.executeUpdate(sql);
+    }
+
+    /**
     * Only used for testing purposes
     */
 
@@ -189,5 +249,19 @@ public class ReadWriteAccount extends ReadWrite<Account>
         Account acc3 = new Account("face", "ben", "ten", "07543211964",
                                  "11/12/1700", "aesnaws", 0, null, "face.png");
         //r.write(acc3); // if record already exists dont rewrite it
+
+        // testing update methods
+        //r.write_new_messages_column("energised",-2); // -2 to reset column to 0
+        //System.out.println(r.read_int_column("energised","new_messages"));
+
+        //System.out.println(r.read_string_column("energised","surname"));
+        //r.write_string_column("energised","surname","person");
+        //System.out.println(r.read_string_column("energised","surname"));
+
+        ArrayList<Account> a = r.read_all_accounts();
+        for(Account x : a)
+        {
+            System.out.println(x.getUsername());
+        }
     }
 }

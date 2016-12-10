@@ -7,20 +7,34 @@ import java.io.File;
 
 public class FileMessage extends TextMessage{
 
+	private String fname;
 	private File file;
 
 	public FileMessage(String recipient,String sender,String msg,String fname){
 		super(recipient, sender, msg);
-		fname = "files/" + fname; // build the path to the files folder
-		this.file = new File(fname);
+		this.fname = fname; // used in rw for regenerating FileMessage objects
+		String pathname = "files/" + fname; // build the path to the files folder
+		this.file = new File(pathname);
 	}
 
-	public void set_file(String filename){
+	public void setFile(String filename){
 		this.file = new File(filename);
 	}
 
-	public File get_file(){
+	public void setFname(String fname)
+	{
+		this.fname = fname;
+		String pathname = "files/" + fname;
+		this.setFile(pathname);
+	}
+
+	public File getFile(){
 		return this.file;
+	}
+
+	public String getFname()
+	{
+		return this.fname;
 	}
 
 	public void sendMessage(){
@@ -30,8 +44,8 @@ public class FileMessage extends TextMessage{
 
 	public static void main(String[] args)
 	{
-		FileMessage f = new FileMessage("u1","u2","files","Thunder_Gun.exe");
-		boolean b = f.get_file().canExecute();
+		FileMessage fm = new FileMessage("u1","u2","files","Thunder_Gun.exe");
+		boolean b = fm.getFile().canExecute();
 		System.out.println(b);
 	}
 }
