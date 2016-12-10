@@ -10,11 +10,11 @@ that Main.java gives.
 
     `$ javac *.java`
 
-    ###On Windows:  
+    On Windows:  
 
         `$ java ".;sqlite-jdbc-3.15.1.jar" Main`
 
-    ###On OSX/Linux:
+    On OSX/Linux:
 
         `$ java ".:sqlite-jdbc-3.15.1.jar" Main`
     
