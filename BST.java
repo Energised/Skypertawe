@@ -212,7 +212,7 @@ public class BST {
 	
 	
 	//add accounts from an ArrayList<Account> to the BST
-	private void addAccountsFromArrayList(ArrayList<Account> accounts){
+	public void addAccountsFromArrayList(ArrayList<Account> accounts){
 		for (int i = 0; i < accounts.size(); i++){
 			addAccount(accounts.get(i));
 		}
