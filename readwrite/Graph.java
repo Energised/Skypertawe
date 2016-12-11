@@ -104,10 +104,6 @@ public class Graph {
 	}
 	
 	
-	
-	//
-	//
-	//
 	/**
 	 * add a vertex to the graph, returns true if add successful
 	 * boolean parameter value should be true if you want
