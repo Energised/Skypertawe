@@ -23,6 +23,10 @@ public class Main
     public static LoginGUI login;
     public static MessageGUI2 msg;
     public static CreateAccountGUI create;
+    public static HomeGUI home;
+    public static ProfileGUI profile;
+
+    Account a;
 
     final String DATABASE = "data.db";
 
@@ -33,6 +37,7 @@ public class Main
         ArrayList<Account> accounts = this.rwa.read_all_accounts();
         this.tree = populate_tree(new BST(), accounts);
         this.graph = populate_graph(new Graph(), accounts);
+        this.a = new Account("","","","","","",0,"","");
         //set_login();
     }
 
@@ -51,19 +56,39 @@ public class Main
         return create;
     }
 
+    public static HomeGUI get_home() throws Exception
+    {
+        return home;
+    }
+
+    public static ProfileGUI get_profile() throws Exception
+    {
+        return profile;
+    }
+
     public static void set_login() throws Exception
     {
         login = new LoginGUI();
     }
 
-    public static void set_message() throws Exception
+    public static void set_message(Account acc) throws Exception
     {
-        msg = new MessageGUI2();
+        msg = new MessageGUI2(acc);
     }
 
     public static void set_create() throws Exception
     {
         create = new CreateAccountGUI();
+    }
+
+    public static void set_home(Account acc) throws Exception
+    {
+        home = new HomeGUI(acc);
+    }
+
+    public static void set_profile(Account acc) throws Exception
+    {
+        profile = new ProfileGUI(acc);
     }
 
     /**

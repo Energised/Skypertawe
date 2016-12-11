@@ -12,6 +12,12 @@ public class GUI extends JFrame {
 
     private Main m;
 
+    JMenuItem homeAction;
+    JMenuItem profileAction;
+    JMenuItem messageAction;
+    JMenuItem drawAction;
+    JMenuItem exitAction;
+
     public GUI() throws Exception{
 
         setTitle("Skypertawe");
@@ -31,47 +37,55 @@ public class GUI extends JFrame {
         menuBar.add(fileMenu);
 
         // Create and add simple menu item to one of the drop down menu
-        JMenuItem homeAction = new JMenuItem("Home");
-        JMenuItem profileAction = new JMenuItem("Profile");
-        //JMenuItem friendAction = new JMenuItem("Friends");
-        JMenuItem messageAction = new JMenuItem("Messages");
-        JMenuItem drawAction = new JMenuItem("Draw");
-        JMenuItem exitAction = new JMenuItem("Log Out");
+        this.homeAction = new JMenuItem("Home");
+        this.profileAction = new JMenuItem("Profile");
+        this.messageAction = new JMenuItem("Messages");
+        this.drawAction = new JMenuItem("Draw");
+        this.exitAction = new JMenuItem("Log Out");
 
-        fileMenu.add(homeAction);
-        fileMenu.add(profileAction);
-        //fileMenu.add(friendAction);
-        fileMenu.add(messageAction);
-        fileMenu.add(drawAction);
+        fileMenu.add(this.homeAction);
+        fileMenu.add(this.profileAction);
+        fileMenu.add(this.messageAction);
+        fileMenu.add(this.drawAction);
         fileMenu.addSeparator();
-        fileMenu.add(exitAction);
+        fileMenu.add(this.exitAction);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //setVisible(true);
 
         // Add a listener to the New menu item. actionPerformed() method will
         // invoked, if user triggered this menu item
-        homeAction.addActionListener(new ActionListener() {
+        this.homeAction.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 System.out.println("opening home screen");
+                try
+                {
+                    //get_main().set_home();
+                    //dispose();
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
             }
         });
 
-        profileAction.addActionListener(new ActionListener() {
+        this.profileAction.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("opening profile screen");
+                // wont since no user is logged in
             }
         });
 
-        messageAction.addActionListener(new ActionListener(){
+        this.messageAction.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
                 try
                 {
                     System.out.println("opening messages screen");
-                    get_main().set_message();
-                    dispose(); // closes the current screen when new one opens
+                    //get_main().set_message();
+                    //dispose(); // closes the current screen when new one opens
                 }
                 catch(Exception f)
                 {
@@ -80,14 +94,14 @@ public class GUI extends JFrame {
             }
         });
 
-        drawAction.addActionListener(new ActionListener(){
+        this.drawAction.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("opening collab draw screen");
             }
         });
 
-        exitAction.addActionListener(new ActionListener(){
+        this.exitAction.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
                 try

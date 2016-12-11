@@ -61,7 +61,8 @@ public class CreateAccountGUI extends GUI{
                                           mobnum, dob, city, 0, null, imgpath);
                     ReadWriteAccount rwa = new ReadWriteAccount("data.db");
                     rwa.write(acc);
-                    // call homeGUI and dispose this screen
+                    get_main().set_home(acc);
+                    dispose();
                 }
                 catch(Exception e)
                 {

@@ -39,21 +39,21 @@ public class MessageGUI2 extends GUI {
 	// reference to ReadWriteMessage
 	ReadWriteMessage rwm = null;
 
-	public MessageGUI2() throws Exception{
+	public MessageGUI2(Account current_user) throws Exception{
 
 		//Uses GUI Superclass
 		super();
 
 		setTitle("Messages");
-		setSize(1280, 720);
+		setSize(600,400);
 		setResizable(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 
 		// getting all messages for the given user
 		// test user until I can get an Account object passed between GUIs
-		Account current_user = new Account("energised", "dan", "woolsey", "01234567891",
-                                  "01/01/1990", "swansea", 0, null, "energised.png");
+		//Account current_user = new Account("energised", "dan", "woolsey", "01234567891",
+        //                          "01/01/1990", "swansea", 0, null, "energised.png");
 		ArrayList<TextMessage> txt_msgs = new ArrayList<TextMessage>();
 		listModel = new DefaultListModel();
 		try
@@ -73,7 +73,7 @@ public class MessageGUI2 extends GUI {
 			listModel.addElement(x.getSender());
 		}
 
-		//This code represents the window displaying a list of friends
+		// this code represents the window displaying a list of friends
 		users = new JList(listModel);
 		users.setBackground(Color.YELLOW);
 		JScrollPane userScroll = new JScrollPane(users);
@@ -92,6 +92,9 @@ public class MessageGUI2 extends GUI {
 		chatScroll.setBorder(BorderFactory.createTitledBorder("Messages"));
 		chatPanel.add(chatScroll, BorderLayout.CENTER);
 
+		//Object current_sender = users.getSelectedValue();
+		//System.out.println(current_sender);
+
 		//This code represents the text input box and send button
 		JPanel sendPanel = new JPanel(new BorderLayout());
 		super.add(sendPanel, BorderLayout.SOUTH);
@@ -105,6 +108,7 @@ public class MessageGUI2 extends GUI {
 					String msg_content = input.getText();
 					System.out.println(msg_content);
 					// create instance of text message where we can get the current user
+					// once they've sent it, stay on MessageGUI2
 				}
 				catch(Exception e)
 				{
@@ -118,8 +122,8 @@ public class MessageGUI2 extends GUI {
 
 	}
 	public static void main(String[] args) throws Exception{
-		MessageGUI2 menu = new MessageGUI2();
-		menu.setVisible(true);
+		//MessageGUI2 menu = new MessageGUI2();
+		//menu.setVisible(true);
 	}
 
 

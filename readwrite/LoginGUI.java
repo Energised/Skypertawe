@@ -54,8 +54,16 @@ public class LoginGUI extends GUI {
 				if(qry.get(0).getUsername().equals(username))
 				{
 					Account current_user = qry.get(0);
-					// run Home for that user
-					System.out.println("logging " + username + " in...");
+					try
+					{
+						get_main().set_home(current_user);
+						System.out.println("logging " + username + " in...");
+						dispose();
+					}
+					catch(Exception g)
+					{
+						System.out.println(g);
+					}
 				}
 			}
 		});
