@@ -1,8 +1,7 @@
 // wenju mu
-
+// URL message extend text message 
 import java.awt.Desktop;
-import java.net.URI;
-
+import java.net.URI;// open link 
 public class URLMessage extends TextMessage{
 
 	private String url;
@@ -40,7 +39,7 @@ public class URLMessage extends TextMessage{
 	}
 
 	public static void main(String[] args){
-		URLMessage u = new URLMessage("u1","u2","look","www.google.com");
+		URLMessage u = new URLMessage("u1","u2","look","www.google.com");// example to open google link
 		u.openURL();
 
 	}
