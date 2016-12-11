@@ -13,10 +13,11 @@ import javax.swing.Spring;
 import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
 
+import java.util.ArrayList;
 
 public class CreateAccountGUI extends GUI{
 
-	public CreateAccountGUI(){
+	public CreateAccountGUI() throws Exception{
 
 		super();
 
@@ -28,14 +29,18 @@ public class CreateAccountGUI extends GUI{
 		setLocationRelativeTo(null);
 
 		String[] labels = {"Username: ", "First Name: ", "Surname: ",
-				"Mobile Number: ", "Date Of Birth: ", "City: "};
+                            "Mobile Number: ", "Date Of Birth: ", "City: ",
+                            "Profile Pic (e.g. pic.png): "};
 		int input = labels.length;
+
+        ArrayList<JTextField> fields = new ArrayList<JTextField>();
 
 		JPanel create = new JPanel(new SpringLayout());
 		for (int i = 0; i < input; i++) {
 			JLabel para = new JLabel(labels[i], JLabel.TRAILING);
 			create.add(para);
 			JTextField form = new JTextField(10);
+            fields.add(form);
 			para.setLabelFor(form);
 			create.add(form);
 			super.add(create);
@@ -43,7 +48,25 @@ public class CreateAccountGUI extends GUI{
 		JButton fin = new JButton("Create");
 		fin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent sendMessage){
-				// TODO send message to server
+                try
+                {
+                    String username = fields.get(0).getText();
+                    String firstname = fields.get(1).getText();
+                    String surname = fields.get(2).getText();
+                    String mobnum = fields.get(3).getText();
+                    String dob = fields.get(4).getText();
+                    String city = fields.get(5).getText();
+                    String imgpath = fields.get(6).getText();
+                    Account acc = new Account(username, firstname, surname,
+                                          mobnum, dob, city, 0, null, imgpath);
+                    ReadWriteAccount rwa = new ReadWriteAccount("data.db");
+                    rwa.write(acc);
+                    // call homeGUI and dispose this screen
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
 			}
 		});
 		super.add(fin, BorderLayout.SOUTH);
@@ -52,11 +75,14 @@ public class CreateAccountGUI extends GUI{
 				6, 6,
 				20, 20);
 
+        setVisible(true);
+
 	}
+
 	private static SpringLayout.Constraints getConstraintsForCell(
 			int row, int col,
 			Container parent,
-			int cols) {
+			int cols) throws Exception{
 		SpringLayout layout = (SpringLayout) parent.getLayout();
 		Component c = parent.getComponent(row * cols + col);
 		return layout.getConstraints(c);
@@ -65,7 +91,7 @@ public class CreateAccountGUI extends GUI{
 	public static void makeForm(Container parent,
 			int rows, int cols,
 			int initialX, int initialY,
-			int xPad, int yPad) {
+			int xPad, int yPad) throws Exception {
 		SpringLayout layout;
 		try {
 			layout = (SpringLayout)parent.getLayout();
@@ -115,7 +141,7 @@ public class CreateAccountGUI extends GUI{
 		pCons.setConstraint(SpringLayout.SOUTH, y);
 		pCons.setConstraint(SpringLayout.EAST, x);
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		CreateAccountGUI b = new CreateAccountGUI();
 		b.setVisible(true);
 	}

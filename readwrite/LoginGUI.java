@@ -61,6 +61,26 @@ public class LoginGUI extends GUI {
 		});
 		panel.add(loginButton);
 
+		// Register an account button
+		JButton registerButton = new JButton("Register");
+		registerButton.setBounds(20, 160, 80, 25);
+		registerButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					get_main().set_create();
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+		panel.add(registerButton);
+
 		setVisible(true);
 	}
 

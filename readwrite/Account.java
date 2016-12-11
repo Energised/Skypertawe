@@ -2,9 +2,8 @@
 //BSTName.addAccount("Ricky3038", "Ricky", "Stephens", "123456", "17/01", "Swansea", 0, null, "pic.png");
 //last 3 parameters may need to be null or zero if (no image set), (no new messages), and (new account so no last session).
 //
-// the profile picture is stored as a string of the path to that picture that can either be:
-//  1) from the current working directory ("pic_name.png")
-//  2) an absolute path ("C:\Users\name\Pictures\pic_name.png")
+// the profile picture is stored as a string of the filename:
+//  1) "pic_name.png"
 
 public class Account {
 	private String username;

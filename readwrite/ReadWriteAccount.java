@@ -40,7 +40,7 @@
 *           public void write_string_column(String username, String col, String new_val)
 *
 * STILL TO DO:
-* 
+*
 */
 
 // import java.io.FileWriter;
@@ -171,8 +171,7 @@ public class ReadWriteAccount extends ReadWrite<Account>
     }
 
     /**
-    * acc_info will contain: [username, first_name, surname, mob_num,
-                              dob, city, prof_img]
+    * acc_info is an Account object to store in the table Account
     * in that EXACT order.
     */
 

@@ -22,6 +22,7 @@ public class Main
 
     public static LoginGUI login;
     public static MessageGUI2 msg;
+    public static CreateAccountGUI create;
 
     final String DATABASE = "data.db";
 
@@ -45,6 +46,11 @@ public class Main
         return msg;
     }
 
+    public static CreateAccountGUI get_create() throws Exception
+    {
+        return create;
+    }
+
     public static void set_login() throws Exception
     {
         login = new LoginGUI();
@@ -53,6 +59,11 @@ public class Main
     public static void set_message() throws Exception
     {
         msg = new MessageGUI2();
+    }
+
+    public static void set_create() throws Exception
+    {
+        create = new CreateAccountGUI();
     }
 
     /**
