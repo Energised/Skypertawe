@@ -1,42 +1,11 @@
 import java.util.*;
 
-//Example:
-
-//Graph g = new Graph();
-//Vertex v1 = new Vertex("Ricky3038");
-//Vertex v2 = new Vertex("Juice");
-
-//    this means do not overwrite if vertex already exists, true would allow overwrite
-//                      |
-//                      V
-//if (g.addVertex(v1, false) == true){
-//	System.out.println("Vertex " + v1.getUsername() + " add successful");
-//}
-        //result: "Vertex Ricky3038 add successful"
-
-//if (g.addVertex(v2, false) == true){
-//	System.out.println("Vertex " + v2.getUsername() + " add successful");
-//}
-		//result: Vertex Juice add successful
-
-//if (g.addVertex(v3, true) == true){
-//	System.out.println("Vertex " + v3.getUsername() + " add successful");
-//}
-		//result: Vertex energised add successful
-
-//g.addEdge(v1, v2);
-//g.addEdge(v1, v3);
-
-//Set<Edge> setOfEdges = g.getEdges();
-
-//for (Edge e : setOfEdges) {
-//    System.out.println(e.toString());
-
-		//result: ({Juice, Ricky3038}, 1)
-		//	  ({Ricky3038, energised}, 1)
-
-//v1.getNumberEdges() = 2
-//v2.getNumberEdges() = 1
+/**
+* The Graph class creates a graph using objects from the Vertex class and objects from the Edge class
+*
+* @author 830169
+* @version 1.0
+*/
 
 
 public class Graph {
@@ -44,17 +13,23 @@ public class Graph {
 	private HashMap<String, Vertex> vertices;
 	private HashMap<Integer, Edge> edges;
 
-	//create empty graph
+	
+	/**
+	 * create empty graph
+	 */
 	public Graph(){
 		this.vertices = new HashMap<String, Vertex>();
 		this.edges = new HashMap<Integer, Edge>();
 	}
-
-	//create graph with vertices from an arraylist
+	
+	/**
+	 * create graph with vertices from an arraylist
+	 * @param vertices an arraylist of vertices at be added to the graph
+	 */
 	public Graph(ArrayList<Vertex> vertices){
 		this.vertices = new HashMap<String, Vertex>();
 		this.edges = new HashMap<Integer, Edge>();
-
+		
 		//adds vertices to hashmap based on username
 		//if vertices have same username:
 		//each successive vertex overwrites the previous
@@ -62,16 +37,26 @@ public class Graph {
 			this.vertices.put(v.getUsername(), v);
 		}
 	}
-
-
-
-	//attempt to add an edge
+	
+	
+	
+	/**
+	 * attempt to add an edge
+	 * @param one a first vertex to create edge between
+	 * @param two a second vertex to create edge between
+	 * @return a boolean that is true if the add was successful
+	 */
 	public boolean addEdge(Vertex one, Vertex two){
 		return addEdge(one, two, 1);
 
 	}
-
-	//returns true if add was successful, false if not successful
+	
+	/**
+	 * returns true if add was successful, false if not successful
+	 * @param one a first vertex to create edge between
+	 * @param two a second vertex to create edge between
+	 * @param weight the weight of the edge
+	 */
 	public boolean addEdge(Vertex one, Vertex two, int weight){
 		//if one and two are the same vertex then false
 		if(one.equals(two)){
@@ -93,9 +78,12 @@ public class Graph {
 		two.addEdge(e);
 		return true;
 	}
-
-
-	//does the graph contain this edge?
+	
+	/**
+	 * check if an edge has two vertices, if not it is likely to be deleted as it isn't a complete edge
+	 * @param e edge being searched for
+	 * @return true if the edge has two vertices, false otherwise
+	 */
 	public boolean containsEdge(Edge e){
 		if(e.getOne() == null || e.getTwo() == null){
 			 return false;
@@ -104,26 +92,37 @@ public class Graph {
 		return this.edges.containsKey(e.hashCode());
 	}
 
-
-	//remove edge from graph
+	/**
+	 * remove edge from graph
+	 * @param e edge to be removed
+	 * @return the edge that has been removed
+	 */
 	public Edge removeEdge(Edge e){
 		e.getOne().removeEdge(e);
 		e.getTwo().removeEdge(e);
 		return this.edges.remove(e.hashCode());
 	}
-
-
-
-	//add a vertex to the graph, returns true if add successful
-	//boolean parameter value should be true if you want
-	//to allow the vertex to be overwritten if it already exists
+	
+	
+	
+	//
+	//
+	//
+	/**
+	 * add a vertex to the graph, returns true if add successful
+	 * boolean parameter value should be true if you want
+	 * to allow the vertex to be overwritten if it already exists
+	 * @param vertex the vertex to be added to graph
+	 * @param overWriteExisting true = allow overwriting if vertex already exists
+	 * @return returns true if the vertex was added successfully, false otherwise
+	 */
 	public boolean addVertex(Vertex vertex, boolean overwriteExisting){
 		Vertex current = this.vertices.get(vertex.getUsername());
 		if(current != null){
 			if(!overwriteExisting){
 				 return false;
 			}
-
+			
 			while(current.getNumberEdges() > 0){
 				this.removeEdge(current.getEdge(0));
 			}
@@ -131,25 +130,35 @@ public class Graph {
 		vertices.put(vertex.getUsername(), vertex);
 		return true;
 	}
-
-
-
-
-
-
-	//is this vertex in the graph?
+	
+	
+	
+	
+	
+	/**
+	 * check if the vertex is in the graphs vertices hashmap
+	 * @param vertex the vertex being searched for
+	 * @return returns true if the vertex is in the graph
+	 */
 	public boolean containsVertex(Vertex vertex){
 		return this.vertices.get(vertex.getUsername()) != null;
 	}
 
-	//returns the vertex that has the specified username
+	
+	/**
+	 * returns the vertex from vertices hashmap that has the specified username
+	 * @param username the username of the vertex being searched for
+	 * @return the vertex that was searched for by its username
+	 */
 	public Vertex getVertex(String username){
 		return vertices.get(username);
 	}
 
-
-	//remove a vertex from the graph based on its username
-	//returns the vertex that was removed
+	/**
+	 * remove a vertex from the graph based on its username
+	 * @param username the username of the vertex to be removed
+	 * @return the vertex that was removed from the graph
+	 */
 	public Vertex removeVertex(String username){
 		//remove vertex from hashmap vertices
 		Vertex v = vertices.remove(username);
@@ -159,13 +168,21 @@ public class Graph {
 		}
 		return v;
 	}
-
-
-	//return set containing all edges of the graph
+	
+	/**
+	 * return set containing all edges of the graph
+	 * @return a set containing all edges of the graph
+	 */
 	public Set<Edge> getEdges(){
 		return new HashSet<Edge>(this.edges.values());
 	}
 	
+	
+	/**
+	 * returns an arraylist containing the usernames, as strings, of all friends of the specified user
+	 * @param username the username of the person whose friends are being searched for
+	 * @return an arraylist containing usernames as strings
+	 */
 	public ArrayList<String> getFreinds(String username){
 		ArrayList<Edge> friendships = vertices.get(username).getEdges();
 		ArrayList<String> friends = new ArrayList<String>();
@@ -177,8 +194,8 @@ public class Graph {
 		}
 		return friends;
 		
-	}	
+	}
+
+
 	
-
-
 }
