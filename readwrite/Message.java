@@ -1,5 +1,8 @@
 // wenju mu
 
+// in this part can show the mesage form between two users
+// get every message sending time 
+
 import java.util.Date;
 
 public class Message {
@@ -35,7 +38,7 @@ public class Message {
 	}
 
 	public static void main(String [] args){
-		Message m = new Message("user1", "user2");
+		Message m = new Message("user1", "user2");// show the two user messsage detail & time 
 		System.out.println(m.getRecipient());
 		System.out.println(m.getSender());
 	}
