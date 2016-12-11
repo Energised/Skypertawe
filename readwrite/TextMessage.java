@@ -1,14 +1,14 @@
 // wenju mu
-
+// in this part only show the text way to send message
 public class TextMessage extends Message{
 
 	private String messageContent;
 
 	public TextMessage(String recipient, String sender, String messageContent){
-		super(recipient,sender);
+		super(recipient,sender); 
 		this.messageContent = messageContent;
 	}
-
+	
 	public void setMessageContent(String messageContent){
 		this.messageContent = messageContent;
 	}
