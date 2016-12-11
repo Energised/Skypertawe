@@ -64,6 +64,8 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
 
     /**
     * given a username returns their entire message history
+    *
+    * more useful as 3 individual methods, written below
     */
 
     public ArrayList<Message> read(String username) throws Exception
@@ -71,6 +73,9 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         String info;
         String[] full_info;
         ArrayList<Message> msgs = new ArrayList<Message>();
+        ArrayList<TextMessage> text = new ArrayList<TextMessage>();
+        ArrayList<URLMessage> url = new ArrayList<URLMessage>();
+        ArrayList<FileMessage> file = new ArrayList<FileMessage>();
         while(this.in.hasNext())
         {
             info = this.in.nextLine();
@@ -80,25 +85,85 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
             //System.out.println(username + "\n\n");
             if((full_info[0].equals(username)) && (full_info[1].equals("t")))
             {
-                msgs.add(new TextMessage(full_info[0], full_info[2],
+                text.add(new TextMessage(full_info[0], full_info[2],
                                          full_info[3]));
             }
             else if((full_info[0].equals(username)) && (full_info[1].equals("u")))
             {
-                msgs.add(new URLMessage(full_info[0], full_info[2],
+                url.add(new URLMessage(full_info[0], full_info[2],
                                         full_info[3], full_info[4]));
             }
             else if((full_info[0].equals(username)) && (full_info[1].equals("f")))
             {
-                msgs.add(new FileMessage(full_info[0], full_info[2],
+                file.add(new FileMessage(full_info[0], full_info[2],
                                          full_info[3], full_info[4]));
             }
         }
-        // get every message where the recipient is 'username'
         return msgs;
     }
 
+    public ArrayList<TextMessage> read_text_messages(String username)
+    {
+        String info;
+        String[] full_info;
+        ArrayList<TextMessage> text = new ArrayList<TextMessage>();
+        while(this.in.hasNext())
+        {
+            info = this.in.nextLine();
+            full_info = info.split(",;`");
+            //System.out.println(full_info.length);
+            //System.out.println(full_info[0]);
+            //System.out.println(username + "\n\n");
+            if((full_info[0].equals(username)) && (full_info[1].equals("t")))
+            {
+                text.add(new TextMessage(full_info[0], full_info[2],
+                                         full_info[3]));
+            }
+        }
+        return text;
+    }
 
+    public ArrayList<URLMessage> read_url_messages(String username)
+    {
+        String info;
+        String[] full_info;
+        ArrayList<URLMessage> url = new ArrayList<URLMessage>();
+        while(this.in.hasNext())
+        {
+            info = this.in.nextLine();
+            full_info = info.split(",;`");
+            //System.out.println(full_info.length);
+            //System.out.println(full_info[0]);
+            //System.out.println(username + "\n\n");
+            if((full_info[0].equals(username)) && (full_info[1].equals("u")))
+            {
+                url.add(new URLMessage(full_info[0], full_info[2],
+                                         full_info[3], full_info[4]));
+            }
+        }
+        return url;
+    }
+
+    public ArrayList<FileMessage> read_file_messages(String username)
+    {
+        String info;
+        String[] full_info;
+        ArrayList<FileMessage> file = new ArrayList<FileMessage>();
+        while(this.in.hasNext())
+        {
+            info = this.in.nextLine();
+            full_info = info.split(",;`");
+            //System.out.println(full_info.length);
+            //System.out.println(full_info[0]);
+            //System.out.println(username + "\n\n");
+            if((full_info[0].equals(username)) && (full_info[1].equals("f")))
+            {
+                file.add(new FileMessage(full_info[0], full_info[2],
+                                         full_info[3], full_info[4]));
+            }
+        }
+        return file;
+    }
 
     public void write(ArrayList<Message> msgs) throws Exception
     {
@@ -225,10 +290,10 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
     public static void main(String[] args) throws Exception
     {
         ReadWriteMessage m = new ReadWriteMessage("data.db","messages.txt");
-        TextMessage msg1 = new TextMessage("face","energised","hello face");
-        TextMessage msg2 = new TextMessage("gman","energised","wellwellwell");
-        //m.write_text_message(msg1);
-        //m.write_text_message(msg2);
+        TextMessage msg1 = new TextMessage("energised","face","hello world!");
+        TextMessage msg2 = new TextMessage("energised","gman","wellwellwell");
+        m.write_text_message(msg1);
+        m.write_text_message(msg2);
         URLMessage msg3 = new URLMessage("energised","gman","look","www.google.com");
         //m.write_url_message(msg3);
         FileMessage msg4 = new FileMessage("energised","face","hey listen","music.mp4");
