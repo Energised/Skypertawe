@@ -17,11 +17,11 @@ public class FileMessage extends TextMessage{
 		this.file = new File(pathname);
 	}
 
-	public void setFile(String filename){
+	public void setFile(String filename){	// set a new file		
 		this.file = new File(filename);
 	}
 
-	public void setFname(String fname)
+	public void setFname(String fname) // set a file name 
 	{
 		this.fname = fname;
 		String pathname = "files/" + fname;
@@ -44,7 +44,7 @@ public class FileMessage extends TextMessage{
 
 	public static void main(String[] args)
 	{
-		FileMessage fm = new FileMessage("u1","u2","files","Thunder_Gun.exe");
+		FileMessage fm = new FileMessage("u1","u2","files","Thunder_Gun.exe");//build a file example 
 		boolean b = fm.getFile().canExecute();
 		System.out.println(b);
 	}
