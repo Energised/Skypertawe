@@ -20,28 +20,28 @@ import javax.swing.WindowConstants;
 
 
 public class MessageGUI2 extends GUI {
-	
+
 	//List of users to be linked with database
 	private JList users;
-	
+
 	//Output screen to show previous messages
 	private JTextPane chat;
-	
+
 	//User Input
 	private JTextField input;
 	private JButton send;
-	
-	public MessageGUI2(){
-		
+
+	public MessageGUI2() throws Exception{
+
 		//Uses GUI Superclass
 		super();
-		
+
 		setTitle("Messages");
 		setSize(1280, 720);
 		setResizable(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		
+
 		//This code represents the window displaying a list of friends
 		users = new JList();
 		users.setBackground(Color.YELLOW);
@@ -49,10 +49,10 @@ public class MessageGUI2 extends GUI {
 		userScroll.setPreferredSize(new Dimension(300, 0));
 		userScroll.setBorder(BorderFactory.createTitledBorder("Friends"));
 		super.add(userScroll, BorderLayout.WEST);
-		
+
 		JPanel chatPanel = new JPanel(new BorderLayout());
 		super.add(chatPanel, BorderLayout.CENTER);
-		
+
 		//This code represents the output window for previous messages
 		chat = new JTextPane();
 		chat.setEditable(false);
@@ -60,7 +60,7 @@ public class MessageGUI2 extends GUI {
 		JScrollPane chatScroll = new JScrollPane(chat);
 		chatScroll.setBorder(BorderFactory.createTitledBorder("Messages"));
 		chatPanel.add(chatScroll, BorderLayout.CENTER);
-		
+
 		//This code represents the text input box and send button
 		JPanel sendPanel = new JPanel(new BorderLayout());
 		super.add(sendPanel, BorderLayout.SOUTH);
@@ -73,13 +73,14 @@ public class MessageGUI2 extends GUI {
 			}
 		});
 		sendPanel.add(send, BorderLayout.EAST);
-		
-		
+		setVisible(true);
+
+
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		MessageGUI2 menu = new MessageGUI2();
 		menu.setVisible(true);
 	}
-	
+
 
 }

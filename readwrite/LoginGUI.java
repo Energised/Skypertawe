@@ -15,17 +15,21 @@ public class LoginGUI extends GUI {
 		super();
 
 		// make the window smaller, looks a bit nicer
-		setSize(400,190);
+		setSize(400,150);
+
+		// add a new panel
+		JPanel panel = new JPanel();
+		add(panel);
 
 		// Creating JLabel
 		JLabel userLabel = new JLabel("User");
 		userLabel.setBounds(20,20,80,25);
-		add(userLabel);
+		panel.add(userLabel);
 
 		// Creating text field where user is supposed to enter user name
 		JTextField userText = new JTextField(20);
 		userText.setBounds(100,20,165,25);
-		add(userText);
+		panel.add(userText);
 
 		// Creating login button
 		JButton loginButton = new JButton("Login");
@@ -55,10 +59,7 @@ public class LoginGUI extends GUI {
 				}
 			}
 		});
-		add(loginButton);
-
-		JPanel panel = new JPanel();
-		add(panel);
+		panel.add(loginButton);
 
 		setVisible(true);
 	}

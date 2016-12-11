@@ -21,6 +21,7 @@ public class Main
     ReadWriteFriends rwf;
 
     public static LoginGUI login;
+    public static MessageGUI2 msg;
 
     final String DATABASE = "data.db";
 
@@ -31,6 +32,27 @@ public class Main
         ArrayList<Account> accounts = this.rwa.read_all_accounts();
         this.tree = populate_tree(new BST(), accounts);
         this.graph = populate_graph(new Graph(), accounts);
+        //set_login();
+    }
+
+    public static LoginGUI get_login() throws Exception
+    {
+        return login;
+    }
+
+    public static MessageGUI2 get_message() throws Exception
+    {
+        return msg;
+    }
+
+    public static void set_login() throws Exception
+    {
+        login = new LoginGUI();
+    }
+
+    public static void set_message() throws Exception
+    {
+        msg = new MessageGUI2();
     }
 
     /**
@@ -84,7 +106,7 @@ public class Main
     public static void main(String[] args) throws Exception
     {
         Main m = new Main();
-        login = new LoginGUI();
+        set_login();
         //Set<Edge> edges = m.get_graph().getEdges();
         //for(Edge x : edges)
         //{
