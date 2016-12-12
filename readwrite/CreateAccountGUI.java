@@ -1,3 +1,10 @@
+/**
+* CreateAccountGUI.java
+* @author Carl Thomas, Dan Woolsey
+*
+* Allows the registering of a new Account on the system
+*/
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -16,6 +23,11 @@ import javax.swing.WindowConstants;
 import java.util.ArrayList;
 
 public class CreateAccountGUI extends GUI{
+
+	/**
+	* Builds a form the user can input to and generates an
+	* Account object that is written directly to the db
+	*/
 
 	public CreateAccountGUI() throws Exception{
 
@@ -89,6 +101,10 @@ public class CreateAccountGUI extends GUI{
 		return layout.getConstraints(c);
 	}
 
+	/**
+	* Generates the forms layout
+	*/
+
 	public static void makeForm(Container parent,
 			int rows, int cols,
 			int initialX, int initialY,
@@ -142,6 +158,11 @@ public class CreateAccountGUI extends GUI{
 		pCons.setConstraint(SpringLayout.SOUTH, y);
 		pCons.setConstraint(SpringLayout.EAST, x);
 	}
+
+	/**
+	* Implemented for testing purposes
+	*/
+
 	public static void main(String[] args) throws Exception {
 		CreateAccountGUI b = new CreateAccountGUI();
 		b.setVisible(true);

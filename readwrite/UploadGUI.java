@@ -1,9 +1,10 @@
 /**
 * UploadGUI.java
+* @author Stefan Ficur, Dan Woolsey
 *
-* 
+* Pop up window that takes the filename of a new profile image for an Account
+*
 * NOTE: program must restart for image changes to take place
-*
 */
 
 import javax.swing.JButton;
@@ -17,15 +18,20 @@ import java.awt.event.ActionListener;
 
 public class UploadGUI extends GUI {
 
-
-	private static final long serialVersionUID = 1L;
-
+	/**
+	* @param acc Reference to the Account current logged in
+	*/
 
 	public UploadGUI(Account acc) throws Exception{
 		super();
 		uploadsetup(acc);
-
 	}
+
+	/**
+	* Sets up the window and action listener
+	* @param acc reference to the currently logged in Account
+	*/
+
 	public void uploadsetup(Account acc) throws Exception{
 		JLabel userLabel = new JLabel("Image name:");
 		JTextField userText = new JTextField(20);
@@ -64,8 +70,12 @@ public class UploadGUI extends GUI {
 		add(panel);
 
 		setVisible(true);
-
 	}
+
+	/**
+	* Implemented for testing purposes
+	*/
+
 	 public static void main(String[] args) throws Exception{
 	       //UploadGUI upload = new UploadGUI();
 	       //upload.uploadsetup();

@@ -1,7 +1,9 @@
-// wenju mu
-
-// in this part can show the mesage form between two users
-// get every message sending time 
+/**
+* Message.java
+* @author Wenju Mu, Dan Woolsey
+*
+* Class to create Message objects
+*/
 
 import java.util.Date;
 
@@ -34,11 +36,15 @@ public class Message {
 	}
 
 	public void sendMessage(){
-		// to implement in subclasses
+		// to implement
 	}
 
+	/**
+	* Implemented for testing purposes
+	*/
+
 	public static void main(String [] args){
-		Message m = new Message("user1", "user2");// show the two user messsage detail & time 
+		Message m = new Message("user1", "user2");// show the two user messsage detail & time
 		System.out.println(m.getRecipient());
 		System.out.println(m.getSender());
 	}

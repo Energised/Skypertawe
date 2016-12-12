@@ -1,7 +1,12 @@
-// wenju mu
-
-// nb: when sending a file, put it in the files folder and
-//     set fname as the name of the file (no directory structure needed)
+/**
+* FileMessage.java
+* @author Wenju Mu, Dan Woolsey
+*
+* Class to create FileMessage objects
+*
+* nb: when sending a file, put it in the files folder and
+*     set fname as the name of the file (no directory structure needed)
+*/
 
 import java.io.File;
 
@@ -17,11 +22,11 @@ public class FileMessage extends TextMessage{
 		this.file = new File(pathname);
 	}
 
-	public void setFile(String filename){	// set a new file		
+	public void setFile(String filename){	// set a new file
 		this.file = new File(filename);
 	}
 
-	public void setFname(String fname) // set a file name 
+	public void setFname(String fname) // set a file name
 	{
 		this.fname = fname;
 		String pathname = "files/" + fname;
@@ -38,13 +43,16 @@ public class FileMessage extends TextMessage{
 	}
 
 	public void sendMessage(){
-		// to implement:
-		// -> call write_file_message() in ReadWriteMessage
+		// to implements
 	}
+
+	/**
+	* Implemented for testing purposes
+	*/
 
 	public static void main(String[] args)
 	{
-		FileMessage fm = new FileMessage("u1","u2","files","Thunder_Gun.exe");//build a file example 
+		FileMessage fm = new FileMessage("u1","u2","files","Thunder_Gun.exe");//build a file example
 		boolean b = fm.getFile().canExecute();
 		System.out.println(b);
 	}

@@ -1,3 +1,10 @@
+/**
+* GUI.java
+* @author Carl Thomas, Dan Woolsey
+*
+* Base class for all GUIs
+*/
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
@@ -17,6 +24,10 @@ public class GUI extends JFrame {
     JMenuItem messageAction;
     JMenuItem drawAction;
     JMenuItem exitAction;
+
+    /**
+    * Generates a screen and a toolbar to be used by its subclasses
+    */
 
     public GUI() throws Exception{
 
@@ -72,16 +83,28 @@ public class GUI extends JFrame {
         });
     }
 
+    /**
+    * @return reference to the main file
+    */
+
     public Main get_main() throws Exception
     {
         return this.m;
     }
+
+    /**
+    * Resets the Main class to refresh BST and Graph
+    */
 
     public Main reset_main() throws Exception
     {
         this.m = new Main();
         return this.m;
     }
+
+    /**
+    * Implemented for testing purposes
+    */
 
     public static void main(String[] args) throws Exception {
        GUI me = new GUI();

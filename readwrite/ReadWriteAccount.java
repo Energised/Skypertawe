@@ -39,14 +39,8 @@
 *           public void write_new_messages_column(String username, int val)
 *           public void write_string_column(String username, String col, String new_val)
 *
-* STILL TO DO:
 *
 */
-
-// import java.io.FileWriter;
-// import java.io.File;
-
-// import java.util.Scanner;
 
 import java.util.ArrayList;
 
@@ -61,12 +55,24 @@ import java.sql.ResultSet;
 public class ReadWriteAccount extends ReadWrite<Account>
 {
 
+    /**
+    * Setup a connection to the database and a way of querying it
+    * @param filename The database we want to use
+    */
+
     public ReadWriteAccount(String filename) throws Exception
     {
         super(filename);
         //this.conn = connect_to_db(this.conn);
         this.stmt = create_account_table(this.conn, this.stmt);
     }
+
+    /**
+    * Runs an SQL statement to generate a new table in the db
+    * @param conn The connection object
+    * @param stmt A null pointing statement object
+    * @return The statement object connected to the db
+    */
 
     public Statement create_account_table(Connection conn, Statement stmt) throws Exception
     {
@@ -109,6 +115,11 @@ public class ReadWriteAccount extends ReadWrite<Account>
         }
         return acc;
     }
+
+    /**
+    * Get an ArrayList of every account in the table
+    * @return ArrayList of Accounts in the db
+    */
 
     public ArrayList<Account> read_all_accounts() throws Exception
     {

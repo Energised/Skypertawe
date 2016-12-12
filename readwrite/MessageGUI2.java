@@ -1,8 +1,8 @@
-/* Author: Carl Thomas
+/* MessageGUI2.java
+ * Author: Carl Thomas
  * This class creates a GUI interface for the client to select a User
  * in their friends list and send them a message
  *
- * TODO: needs to take an argument for the current user
  */
 
 import java.awt.BorderLayout;
@@ -43,6 +43,13 @@ public class MessageGUI2 extends GUI {
 	// reference to ReadWriteMessage
 	ReadWriteMessage rwm = null;
 
+	/**
+	* Generates a list of friends that have started a conversation with
+	* the current user and displays the whole convo history as well as
+	* allows the user to send a text message back
+	* @param current_user Reference to the logged in Account
+	*/
+
 	public MessageGUI2(Account current_user) throws Exception{
 
 		//Uses GUI Superclass
@@ -55,9 +62,6 @@ public class MessageGUI2 extends GUI {
 		setLocationRelativeTo(null);
 
 		// getting all messages for the given user
-		// test user until I can get an Account object passed between GUIs
-		//Account current_user = new Account("energised", "dan", "woolsey", "01234567891",
-        //                          "01/01/1990", "swansea", 0, null, "energised.png");
 		ArrayList<TextMessage> txt_msgs = new ArrayList<TextMessage>();
 		listModel = new DefaultListModel();
 		try
@@ -108,7 +112,6 @@ public class MessageGUI2 extends GUI {
 		sendPanel.add(input, BorderLayout.CENTER);
 		send = new JButton("Send");
 
-		// doesn't display messages on the GUI but they are stored and there
 		users.addListSelectionListener(new ListSelectionListener()
 		{
 			public void valueChanged(ListSelectionEvent e)
@@ -204,6 +207,12 @@ public class MessageGUI2 extends GUI {
 
 	}
 
+	/**
+	* @param sender username of the sender
+	* @param txt ArrayList of messages to pull content from
+	* @return conversation history between current user and some sender
+	*/
+
 	public String get_content(String sender, ArrayList<TextMessage> txt)
 	{
 		String content = "";
@@ -216,6 +225,10 @@ public class MessageGUI2 extends GUI {
 		}
 		return content;
 	}
+
+	/**
+	* Implemented for testing purposes
+	*/
 
 	public static void main(String[] args) throws Exception{
 		//MessageGUI2 menu = new MessageGUI2();

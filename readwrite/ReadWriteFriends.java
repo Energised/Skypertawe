@@ -5,10 +5,6 @@
 * Allows the storage of friendships between accounts in a database to be used
 * by Graph to display friends instead of a contact list for each user
 *
-* Needed functions:
-*   find_pending_requests() -> return a list of pending friend requests :: ArrayList<(Account1, Account2)>
-*   check_friend_status(Account1, Account2) -> returns the number of columns these two accounts share
-*
 * Writing Friendships:
 *   -> some user adds another user (get AccountID's from db)
 *   -> insert tuple into database
@@ -38,18 +34,7 @@
 *       public void write(ArrayList<Account> to_add)
 *           public int check_friends_status(Account a1, Account a2)
 *           public int get_acc_id(Account acc)
-*
-* TODO:
-*   -> Make "data.db" a constant
-*   -> Get graph and RWF working together
-*   -> Finish read functionality
-*
 */
-
-// import java.io.FileWriter;
-// import java.io.File;
-
-// import java.util.Scanner;
 
 import java.util.ArrayList;
 
@@ -61,12 +46,25 @@ import java.sql.ResultSet;
 
 public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
 {
+
+    /**
+    * Sets up a connection to the db
+    * @param filename The db we want to use
+    */
+
     public ReadWriteFriends(String filename) throws Exception
     {
         super(filename);
         //this.conn = connect_to_db(this.conn);
         this.stmt = create_friends_table(this.conn, this.stmt);
     }
+
+    /**
+    * Runs an SQL statement to create the Friends table
+    * @param conn The connection object to the db
+    * @param stmt Null pointing statement to be set up
+    * @return the setup statement object
+    */
 
     public Statement create_friends_table(Connection conn, Statement stmt) throws Exception
     {
@@ -82,18 +80,7 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
     }
 
     /**
-    * - given a username, get all the accounts they're friends with
-    *    - select User1ID
-    *  SELECT a.User1ID, a.User2ID
-    *  FROM Friends as 'a', Friends as 'b'
-    *  WHERE a.User1ID = b.User2ID
-    *  AND a.User2ID = b.User1ID
-    *  AND a.User1ID = value;
-    *
-    *  - create instance of ReadWriteAccount
-    *  - value = r.get_int_col(query, "AccountID");
-    *
-    * - TODO: implement this, dont know since graph might handle this instead
+    * unused method
     */
 
     public ArrayList<Account> read(String query) throws Exception
@@ -130,6 +117,12 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
         return friends;
     }
 
+    /**
+    * Given some account, computes all friend requests they'll have recieved
+    * @param acc The account we're checking
+    * @return ArrayList of all pending friend requests for some Account
+    */
+
     public ArrayList<Account> get_all_requests(Account acc) throws Exception
     {
         ArrayList<Account> requests = new ArrayList<Account>();
@@ -153,6 +146,13 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
         }
         return requests;
     }
+
+    /**
+    * Given an AccountID, pull information from the database and generate an
+    * account object
+    * @param acc_id The AccountID we're using
+    * @return The account we want
+    */
 
     public Account get_account_from_id(int acc_id) throws Exception
     {
@@ -207,6 +207,7 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
         else
         {
             // some error has occurred
+            System.out.println("error");
         }
 
     }
@@ -286,9 +287,6 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
         //r.write(acc2); // add another
         //r.write(acc3);
         //r.write(acc4);
-
-        // if correct should return 2 friendships:
-        //  (energised and gman) AND (face and energised)
 
         ArrayList<Account> f = r.get_all_friends(); // return all users who are friends
 

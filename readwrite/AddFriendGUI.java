@@ -1,3 +1,10 @@
+/**
+* AddFriendGUI.java
+* @author Stefan Ficur, Dan Woolsey
+*
+* Pop up window for a user to add a new friend
+*/
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,10 +18,20 @@ import java.util.ArrayList;
 
 public class AddFriendGUI extends GUI {
 
+	/**
+	* @param acc the Account currently logged in
+	*/
+
 	public AddFriendGUI(Account acc) throws Exception {
 		super();
 		addfriendsetup(acc);
 	}
+
+	/**
+	* Builds the screen and sets up the friendship when
+	* the add button is pressed
+	* @param acc the Account currently logged in
+	*/
 
 	public void addfriendsetup(Account acc) throws Exception{
 		JLabel userLabel = new JLabel("Username");
@@ -38,6 +55,7 @@ public class AddFriendGUI extends GUI {
 				try
 				{
 					username = userText.getText();
+					// references to db are required
 					ReadWriteAccount rwa = new ReadWriteAccount("data.db");
 					ReadWriteFriends rwf = new ReadWriteFriends("data.db");
 					acc2 = rwa.read(username);
@@ -60,6 +78,10 @@ public class AddFriendGUI extends GUI {
 
 		setVisible(true);
 	}
+
+	/**
+	* Implemented for testing purposes
+	*/
 
 	 public static void main(String[] args) throws Exception {
 	       //AddFriendGUI addfriend = new AddFriendGUI();

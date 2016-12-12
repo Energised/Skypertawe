@@ -51,6 +51,13 @@ import java.sql.ResultSet;
 
 public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
 {
+
+    /**
+    * Sets a connection up to the db and messages.txt
+    * @param dbname the db
+    * @param filename the message file
+    */
+
     public ReadWriteMessage(String dbname, String filename) throws Exception
     {
         super(dbname, filename);
@@ -63,9 +70,9 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
     }
 
     /**
-    * given a username returns their entire message history
-    *
-    * more useful as 3 individual methods, written below
+    * given a username, it returns their entire message history
+    * @param username The user
+    * @return an ArrayList of Messages
     */
 
     public ArrayList<Message> read(String username) throws Exception
@@ -102,6 +109,10 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         return msgs;
     }
 
+    /**
+    * Gets all TextMessages recieved by a user
+    */
+
     public ArrayList<TextMessage> read_text_messages(String username)
     {
         String info;
@@ -123,6 +134,10 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         return text;
     }
 
+    /**
+    * Gets all URLMessages recieved by a user
+    */
+
     public ArrayList<URLMessage> read_url_messages(String username)
     {
         String info;
@@ -143,6 +158,10 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
         }
         return url;
     }
+
+    /**
+    * Gets all FileMessages recieved by a user
+    */
 
     public ArrayList<FileMessage> read_file_messages(String username)
     {
@@ -167,7 +186,7 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
 
     public void write(ArrayList<Message> msgs) throws Exception
     {
-        // do stuff here
+        // unused
     }
 
     /**
@@ -186,7 +205,6 @@ public class ReadWriteMessage extends ReadWrite<ArrayList<Message>>
 
     /**
     * Stores a URLMessage object as a string in 'messages.txt'
-    *
     */
 
     public void write_url_message(URLMessage u) throws Exception

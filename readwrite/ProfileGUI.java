@@ -49,7 +49,7 @@ public class ProfileGUI extends GUI {
 		setLayout(null);
 
 		skpertawelLabel.setFont(new Font("PMingLiU",3,50));
-		skpertawelLabel.setBounds(50, 80, 400, 40);
+		skpertawelLabel.setBounds(50, 80, 400, 100);
 		profileLabel.setBounds(420,150,100,25);
 		upload.setBounds(400,180,100,25);
 		usernameLabel.setBounds(70, 300, 250, 30);

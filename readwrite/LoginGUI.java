@@ -1,3 +1,10 @@
+/**
+* LoginGUI.java
+* @author Carl Thomas, Dan Woolsey, Stefan Ficur
+*
+* Allows a user to log in to the system
+*/
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -9,6 +16,11 @@ import javax.swing.JTextField;
 import java.util.ArrayList;
 
 public class LoginGUI extends GUI {
+
+	/**
+	* Builds the window and handles if a user exists in the system using
+    * the BST
+	*/
 
 	public LoginGUI() throws Exception {
 
@@ -91,6 +103,10 @@ public class LoginGUI extends GUI {
 
 		setVisible(true);
 	}
+
+	/**
+	* Implemented for testing purposes
+	*/
 
 	public static void main(String[] args) throws Exception
 	{

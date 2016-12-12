@@ -15,6 +15,9 @@ import java.util.Set;
 
 public class Main
 {
+
+    // class variables required
+
     BST tree;
     Graph graph;
     ReadWriteAccount rwa;
@@ -31,6 +34,11 @@ public class Main
 
     final String DATABASE = "data.db";
 
+    /**
+    * Generates the BST and Graph, populating them with information
+    * from the ReadWriteAccount and ReadWriteFriends classes
+    */
+
     public Main() throws Exception
     {
         this.rwa = new ReadWriteAccount(DATABASE);
@@ -42,60 +50,108 @@ public class Main
         //set_login();
     }
 
+    /**
+    * @return Class variable for LoginGUI
+    */
+
     public static LoginGUI get_login() throws Exception
     {
         return login;
     }
+
+    /**
+    * @return Class variable for MessageGUI2
+    */
 
     public static MessageGUI2 get_message() throws Exception
     {
         return msg;
     }
 
+    /**
+    * @return Class variable for CreateAccountGUI
+    */
+
     public static CreateAccountGUI get_create() throws Exception
     {
         return create;
     }
+
+    /**
+    * @return Class variable for HomeGUI
+    */
 
     public static HomeGUI get_home() throws Exception
     {
         return home;
     }
 
+    /**
+    * @return Class variable for ProfileGUI
+    */
+
     public static ProfileGUI get_profile() throws Exception
     {
         return profile;
     }
+
+    /**
+    * @return Class variable for CollabDrawGUI
+    */
 
     public static CollabDrawGUI get_draw() throws Exception
     {
         return draw;
     }
 
+    /**
+    * Sets up the LoginGUI variable
+    */
+
     public static void set_login() throws Exception
     {
         login = new LoginGUI();
     }
+
+    /**
+    * Sets up the MessageGUI2 variable
+    */
 
     public static void set_message(Account acc) throws Exception
     {
         msg = new MessageGUI2(acc);
     }
 
+    /**
+    * Sets up the CreateAccountGUI variable
+    */
+
     public static void set_create() throws Exception
     {
         create = new CreateAccountGUI();
     }
+
+    /**
+    * Sets up the HomeGUI variable
+    */
 
     public static void set_home(Account acc) throws Exception
     {
         home = new HomeGUI(acc);
     }
 
+    /**
+    * Sets up the ProfileGUI variable
+    */
+
     public static void set_profile(Account acc) throws Exception
     {
         profile = new ProfileGUI(acc);
     }
+
+    /**
+    * Sets up the CollabDrawGUI variable
+    */
 
     public static void set_draw(Account acc1, Account acc2) throws Exception
     {
@@ -103,7 +159,7 @@ public class Main
     }
 
     /**
-    * populates a BST with accounts from the database
+    * Populates a BST with Accounts from the database
     */
 
     public BST populate_tree(BST tree, ArrayList<Account> acc) throws Exception
@@ -112,6 +168,12 @@ public class Main
         //tree.printAlphabetical(this.tree.getRoot()); // display tree
         return tree;
     }
+
+    /**
+    * Populates the graph with friendship information
+    * @param graph The graph object we're adding to
+    * @param acc ArrayList of every account in the database
+    */
 
     public Graph populate_graph(Graph graph, ArrayList<Account> acc) throws Exception
     {
@@ -149,6 +211,10 @@ public class Main
     {
         return this.tree;
     }
+
+    /**
+    * Here for testing purposes
+    */
 
     public static void main(String[] args) throws Exception
     {

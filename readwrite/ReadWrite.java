@@ -4,8 +4,6 @@
 *
 * Base class for all ReadWrite functionality within Skypertawe
 *
-* TODO: close scanner at some point
-*       delimiter string for scanner
 */
 
 import java.io.FileWriter;

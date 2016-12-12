@@ -1,3 +1,10 @@
+/**
+* SelectDrawGUI.java
+* @author Dan Woolsey, Stefan Ficur
+*
+* Pop up window that takes a username and creates a CollabDrawGUI for them
+*/
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -9,6 +16,11 @@ import javax.swing.JTextField;
 import java.util.ArrayList;
 
 public class SelectDrawGUI extends GUI {
+
+	/**
+	* Builds the screen and implements action listeners
+	* @param acc Reference to the currently logged in Account
+	*/
 
 	public SelectDrawGUI(Account acc) throws Exception {
 
@@ -58,6 +70,10 @@ public class SelectDrawGUI extends GUI {
 		panel.add(startButton);
 		setVisible(true);
 	}
+
+	/**
+	* Implemented for testing purposes
+	*/
 
 	public static void main(String[] args) throws Exception
 	{

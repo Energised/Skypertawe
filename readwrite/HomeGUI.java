@@ -1,7 +1,8 @@
 /**
+* @file HomeGUI.java
+* @author Stefan Ficur, Dan Woolsey
 *
-*
-*
+* \brief Home screen for the Skypertawe application
 */
 
 import java.awt.Dimension;
@@ -23,9 +24,6 @@ import javax.swing.DefaultListModel;
 import java.util.ArrayList;
 
 public class HomeGUI extends GUI {
-
-
-	private static final long serialVersionUID = 1L;
 
 	public HomeGUI(Account acc) throws Exception {
 		super();
@@ -145,7 +143,7 @@ public class HomeGUI extends GUI {
 		welcomeLabel.setBounds(60,170,100,25);
 		nameText.setBounds(130,170,100,25);
 		skpertawelLabel.setFont(new Font("PMingLiU",3,50));
-		skpertawelLabel.setBounds(50, 80, 400, 30);
+		skpertawelLabel.setBounds(50, 80, 400, 100);
 		profileImage.setBounds(550,15,200,200);
 
 		viewprofileButton.addActionListener(new ActionListener()

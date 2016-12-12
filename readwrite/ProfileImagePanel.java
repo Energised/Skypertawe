@@ -1,3 +1,10 @@
+/**
+* ProfileImagePanel.java
+* @author Dan Woolsey, Stefan Ficur
+*
+* JPanel that stores and displays a 200x200 image from the files/ folder
+*/
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -15,6 +22,10 @@ public class ProfileImagePanel extends JPanel
 
     private BufferedImage image;
 
+    /**
+    * @param filename The image you want displayed
+    */
+
     public ProfileImagePanel(String filename)
     {
        try
@@ -27,6 +38,10 @@ public class ProfileImagePanel extends JPanel
             System.out.println("no image found");
        }
     }
+
+    /**
+    * Overwritten method to paint the image component on the panel
+    */
 
     @Override
     protected void paintComponent(Graphics g) {
