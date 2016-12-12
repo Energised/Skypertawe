@@ -8,13 +8,13 @@ that Main.java gives.
 
 ##USAGE:
 
-    `$ javac *.java`
+    $ javac *.java
 
 ###On Windows:  
 
-    `$ java ".;sqlite-jdbc-3.15.1.jar" Main`
+    $ java -cp ".;sqlite-jdbc-3.15.1.jar" Main
 
 ###On OSX/Linux:
 
-     `$ java ".:sqlite-jdbc-3.15.1.jar" Main`
+     $ java -cp ".:sqlite-jdbc-3.15.1.jar" Main
     
