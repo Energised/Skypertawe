@@ -134,6 +134,22 @@ public class ProfileGUI extends GUI {
 			}
 		});
 
+		drawing.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					SelectDrawGUI d = new SelectDrawGUI(acc);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
 		this.homeAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("opening home screen");

@@ -6,6 +6,7 @@
  *  \brief A simple GUI which allows a user to
  * draw either lines or particle traces onto a JPanel.
  *
+ * nb: Line doesn't save so it will break loading back into the program
  */
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -49,15 +50,15 @@ public class CollabDrawGUI extends GUI {
     */
 	public CollabDrawGUI(Account a1, Account a2) throws Exception {
 		super();
-		loadElements();
+		loadElements(a1,a2);
 	}
 
 	/**
 	 * Method which loads the drawing panel (JPanel), colour buttons
 	 * and other components onto screen.
 	 */
-	private void loadElements() {
-        DrawingPanel drawingPanel = new DrawingPanel(/**m_firstAccount, m_secondAccount*/);
+	private void loadElements(Account a1, Account a2) {
+        DrawingPanel drawingPanel = new DrawingPanel(a1, a2);
         drawingPanel.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		drawingPanel.setBackground(Color.WHITE);
         drawingPanel.setLayout(null);
@@ -146,7 +147,7 @@ public class CollabDrawGUI extends GUI {
 		 */
         greenBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                drawPanel.setDrawColour(Color.GREEN);
+                drawingPanel.setDrawColour(Color.GREEN);
             }
         });
 
@@ -178,6 +179,6 @@ public class CollabDrawGUI extends GUI {
     }
 
 	public static void main(String[] args) throws Exception {
-		CollabDrawGUI me = new CollabDrawGUI();
+		//CollabDrawGUI me = new CollabDrawGUI();
 	}
 }

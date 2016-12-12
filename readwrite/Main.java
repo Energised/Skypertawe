@@ -25,6 +25,7 @@ public class Main
     public static CreateAccountGUI create;
     public static HomeGUI home;
     public static ProfileGUI profile;
+    public static CollabDrawGUI draw;
 
     Account a;
 
@@ -66,6 +67,11 @@ public class Main
         return profile;
     }
 
+    public static CollabDrawGUI get_draw() throws Exception
+    {
+        return draw;
+    }
+
     public static void set_login() throws Exception
     {
         login = new LoginGUI();
@@ -89,6 +95,11 @@ public class Main
     public static void set_profile(Account acc) throws Exception
     {
         profile = new ProfileGUI(acc);
+    }
+
+    public static void set_draw(Account acc1, Account acc2) throws Exception
+    {
+        draw = new CollabDrawGUI(acc1, acc2);
     }
 
     /**

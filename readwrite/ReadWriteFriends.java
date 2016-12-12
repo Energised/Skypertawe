@@ -132,8 +132,26 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
 
     public ArrayList<Account> get_all_requests(Account acc) throws Exception
     {
+        ArrayList<Account> requests = new ArrayList<Account>();
         int id = get_acc_id(acc);
-        return new ArrayList<Account>();
+        String sql = "SELECT User1ID, User2ID from Friends " +
+                     "WHERE User2ID = ? " +
+                     "EXCEPT " +
+                     "SELECT a.User1ID as 'u1', a.User2ID as 'u2' " +
+                     "FROM Friends as 'a', Friends as 'b' " +
+                     "WHERE a.User1ID = b.User2ID " +
+                     "AND a.User2ID = b.User1ID " +
+                     "AND a.User2ID = ?";
+        PreparedStatement p_stmt = this.conn.prepareStatement(sql);
+        p_stmt.setInt(1,id);
+        p_stmt.setInt(2,id);
+        ResultSet rs = p_stmt.executeQuery();
+        while(rs.next())
+        {
+            //System.out.println(rs.getInt("User1ID"));
+            requests.add(get_account_from_id(rs.getInt("User1ID")));
+        }
+        return requests;
     }
 
     public Account get_account_from_id(int acc_id) throws Exception
@@ -290,5 +308,12 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
 
         //System.out.println(r.get_acc_id(acc.get(0)));
         //System.out.println(r.get_acc_col("AccountID", acc.get(1)));
+
+        ArrayList<Account> a = r.get_all_requests(a1);
+
+        for(Account x : a)
+        {
+            System.out.println(x.getUsername());
+        }
     }
 }

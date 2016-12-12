@@ -1,6 +1,4 @@
 /**
-* TODO: add Account as an argument for the current user
-*       do this with all GUIs except GUI.java, LoginGUI.java and CreateAccountGUI.java
 *
 *
 *
@@ -35,7 +33,7 @@ public class HomeGUI extends GUI {
 	}
 
 	public void homesetup(Account acc) throws Exception{
-		JLabel friendsearchLabel = new JLabel("Friend Search:");
+		JLabel friendsearchLabel = new JLabel("Friends List:");
 		JLabel contactsearchLabel = new JLabel("Contact Search:");
 		JLabel meLabel = new JLabel("Me:");
 		JLabel messageLabel = new JLabel("Create Message:");
@@ -55,10 +53,27 @@ public class HomeGUI extends GUI {
 		setLayout(null);
 		setSize(800,800);
 
-		String[] names = {"a","b"};
-		JList requests = new JList(names);
+		ReadWriteFriends rwf = null;
+		ArrayList<Account> req = null;
+		try
+		{
+			rwf = new ReadWriteFriends("data.db");
+			req = rwf.get_all_requests(acc);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		DefaultListModel listM = new DefaultListModel();
+
+		for(Account x : req)
+		{
+			listM.addElement(x.getUsername());
+		}
+
+		JList requests = new JList(listM);
 		requests.setSelectedIndex(0);
-		JLabel requestLabel = new JLabel("Freind Requests");
+		JLabel requestLabel = new JLabel("Friend Requests");
 		JButton requestButton = new JButton ("Add Friend");
 		requests.setBounds(270,400,165,50);
 		requestLabel.setBounds(150,400,100,25);
@@ -66,6 +81,35 @@ public class HomeGUI extends GUI {
 		add(requests);
 		add(requestLabel);
 		add(requestButton);
+
+		requestButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				String username;
+				ReadWriteAccount rwa = null;
+				ReadWriteFriends rwf = null;
+				Account acc2;
+				ArrayList<Account> to_add = new ArrayList<Account>();
+				try
+				{
+					rwa = new ReadWriteAccount("data.db");
+					rwf = new ReadWriteFriends("data.db");
+					username = requests.getSelectedValue().toString();
+					//System.out.println(username);
+					acc2 = rwa.read(username);
+					to_add.add(acc);
+					to_add.add(acc2);
+					rwf.write(to_add);
+					get_main().set_home(acc);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
 
 		Graph g = null;
 		try
