@@ -118,6 +118,22 @@ public class ProfileGUI extends GUI {
 			}
 		});
 
+		upload.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					UploadGUI u = new UploadGUI(acc);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
 		this.homeAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("opening home screen");

@@ -77,6 +77,12 @@ public class GUI extends JFrame {
         return this.m;
     }
 
+    public Main reset_main() throws Exception
+    {
+        this.m = new Main();
+        return this.m;
+    }
+
     public static void main(String[] args) throws Exception {
        GUI me = new GUI();
        //me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
