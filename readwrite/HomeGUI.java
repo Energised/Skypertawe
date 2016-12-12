@@ -61,7 +61,7 @@ public class HomeGUI extends GUI {
 		JButton requestButton = new JButton ("Add Friend");
 		requests.setBounds(270,400,165,50);
 		requestLabel.setBounds(150,400,100,25);
-		requestButton.setBounds(435,400,100,25);
+		requestButton.setBounds(445,400,100,25);
 		add(requests);
 		add(requestLabel);
 		add(requestButton);
@@ -77,13 +77,13 @@ public class HomeGUI extends GUI {
 		messageLabel.setBounds(550, 640, 100, 25);
 		createButton.setBounds(650, 630, 100, 45);
 		logoutButton.setBounds(35, 630, 100, 45);
-		meLabel.setBounds(480, 180, 100, 25);
+		meLabel.setBounds(519, 180, 100, 25);
 		viewprofileButton.setBounds(580, 220, 150, 25);
 		welcomeLabel.setFont(new Font("Monotype Corsiva",1,15));
-		welcomeLabel.setBounds(75,170,100,25);
+		welcomeLabel.setBounds(60,170,100,25);
 		nameText.setBounds(130,170,100,25);
-		skpertawelLabel.setFont(new Font("PMingLiU",1,25));
-		skpertawelLabel.setBounds(50, 80, 250, 30);
+		skpertawelLabel.setFont(new Font("PMingLiU",3,50));
+		skpertawelLabel.setBounds(50, 80, 400, 30);
 		profileImage.setBounds(550,15,200,200);
 
 		viewprofileButton.addActionListener(new ActionListener()

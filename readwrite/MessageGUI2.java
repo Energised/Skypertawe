@@ -21,6 +21,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.text.*;
 
 import java.util.ArrayList;
 
@@ -31,7 +34,7 @@ public class MessageGUI2 extends GUI {
 	private DefaultListModel listModel;
 
 	//Output screen to show previous messages
-	private JTextPane chat;
+	JTextPane chat;
 
 	//User Input
 	private JTextField input;
@@ -88,10 +91,12 @@ public class MessageGUI2 extends GUI {
 		//This code represents the output window for previous messages
 		chat = new JTextPane();
 		chat.setEditable(false);
-		chat.setBackground(Color.CYAN);
+		//chat.setBackground(Color.CYAN);
 		JScrollPane chatScroll = new JScrollPane(chat);
 		chatScroll.setBorder(BorderFactory.createTitledBorder("Messages"));
 		chatPanel.add(chatScroll, BorderLayout.CENTER);
+
+		//chat.setText("hello what did you say");
 
 		//Object current_sender = users.getSelectedValue();
 		//System.out.println(current_sender);
@@ -102,12 +107,50 @@ public class MessageGUI2 extends GUI {
 		input = new JTextField();
 		sendPanel.add(input, BorderLayout.CENTER);
 		send = new JButton("Send");
+
+		// doesn't display messages on the GUI but they are stored and there
+		users.addListSelectionListener(new ListSelectionListener()
+		{
+			public void valueChanged(ListSelectionEvent e)
+			{
+				String content = "";
+				if(!e.getValueIsAdjusting())
+				{
+					try
+					{
+						String selected;
+						JList source = (JList) e.getSource();
+						selected = source.getSelectedValue().toString();
+						System.out.println(selected);
+
+						rwm = new ReadWriteMessage("data.db","messages.txt");
+						ArrayList<TextMessage> msgs = rwm.read_text_messages(current_user.getUsername());
+						//System.out.println(msgs.get(0).getMessageContent());
+						content = get_content(selected,msgs);
+						chat.setText(content);
+						System.out.println(content);
+					}
+					catch(Exception f)
+					{
+						System.out.println(f);
+					}
+				}
+				//chat.setText(content);
+			}
+		});
+
 		send.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent sendMessage){
 				try
 				{
 					String msg_content = input.getText();
 					System.out.println(msg_content);
+					String recipient = users.getSelectedValue().toString();
+					//System.out.println(recipient);
+					TextMessage m = new TextMessage(recipient, current_user.getUsername(), msg_content);
+					rwm = new ReadWriteMessage("data.db","messages.txt");
+					rwm.write_text_message(m);
+					System.out.println("message sent");
 					// create instance of text message where we can get the current user
 					// once they've sent it, stay on MessageGUI2
 				}
@@ -159,8 +202,21 @@ public class MessageGUI2 extends GUI {
 
 		setVisible(true);
 
-
 	}
+
+	public String get_content(String sender, ArrayList<TextMessage> txt)
+	{
+		String content = "";
+		for(TextMessage t : txt)
+		{
+			if(sender.equals(t.getSender()))
+			{
+				content += t.getMessageContent() + "\n";
+			}
+		}
+		return content;
+	}
+
 	public static void main(String[] args) throws Exception{
 		//MessageGUI2 menu = new MessageGUI2();
 		//menu.setVisible(true);
