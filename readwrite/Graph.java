@@ -13,7 +13,7 @@ public class Graph {
 	private HashMap<String, Vertex> vertices;
 	private HashMap<Integer, Edge> edges;
 
-	
+
 	/**
 	 * create empty graph
 	 */
@@ -21,7 +21,7 @@ public class Graph {
 		this.vertices = new HashMap<String, Vertex>();
 		this.edges = new HashMap<Integer, Edge>();
 	}
-	
+
 	/**
 	 * create graph with vertices from an arraylist
 	 * @param vertices an arraylist of vertices at be added to the graph
@@ -29,7 +29,7 @@ public class Graph {
 	public Graph(ArrayList<Vertex> vertices){
 		this.vertices = new HashMap<String, Vertex>();
 		this.edges = new HashMap<Integer, Edge>();
-		
+
 		//adds vertices to hashmap based on username
 		//if vertices have same username:
 		//each successive vertex overwrites the previous
@@ -37,9 +37,9 @@ public class Graph {
 			this.vertices.put(v.getUsername(), v);
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * attempt to add an edge
 	 * @param one a first vertex to create edge between
@@ -50,7 +50,7 @@ public class Graph {
 		return addEdge(one, two, 1);
 
 	}
-	
+
 	/**
 	 * returns true if add was successful, false if not successful
 	 * @param one a first vertex to create edge between
@@ -78,7 +78,7 @@ public class Graph {
 		two.addEdge(e);
 		return true;
 	}
-	
+
 	/**
 	 * check if an edge has two vertices, if not it is likely to be deleted as it isn't a complete edge
 	 * @param e edge being searched for
@@ -102,8 +102,8 @@ public class Graph {
 		e.getTwo().removeEdge(e);
 		return this.edges.remove(e.hashCode());
 	}
-	
-	
+
+
 	/**
 	 * add a vertex to the graph, returns true if add successful
 	 * boolean parameter value should be true if you want
@@ -118,7 +118,7 @@ public class Graph {
 			if(!overwriteExisting){
 				 return false;
 			}
-			
+
 			while(current.getNumberEdges() > 0){
 				this.removeEdge(current.getEdge(0));
 			}
@@ -126,11 +126,11 @@ public class Graph {
 		vertices.put(vertex.getUsername(), vertex);
 		return true;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	/**
 	 * check if the vertex is in the graphs vertices hashmap
 	 * @param vertex the vertex being searched for
@@ -140,7 +140,7 @@ public class Graph {
 		return this.vertices.get(vertex.getUsername()) != null;
 	}
 
-	
+
 	/**
 	 * returns the vertex from vertices hashmap that has the specified username
 	 * @param username the username of the vertex being searched for
@@ -164,7 +164,7 @@ public class Graph {
 		}
 		return v;
 	}
-	
+
 	/**
 	 * return set containing all edges of the graph
 	 * @return a set containing all edges of the graph
@@ -172,14 +172,14 @@ public class Graph {
 	public Set<Edge> getEdges(){
 		return new HashSet<Edge>(this.edges.values());
 	}
-	
-	
+
+
 	/**
 	 * returns an arraylist containing the usernames, as strings, of all friends of the specified user
 	 * @param username the username of the person whose friends are being searched for
 	 * @return an arraylist containing usernames as strings
 	 */
-	public ArrayList<String> getFreinds(String username){
+	public ArrayList<String> getFriends(String username){
 		ArrayList<Edge> friendships = vertices.get(username).getEdges();
 		ArrayList<String> friends = new ArrayList<String>();
 		for (Edge friendship : friendships) {
@@ -189,9 +189,9 @@ public class Graph {
 			}
 		}
 		return friends;
-		
+
 	}
 
 
-	
+
 }

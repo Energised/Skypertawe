@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CollabDrawGUI extends GUI {
-	
+
 	/* The width (and height) of the colour buttons */
     private final static int COLOUR_WIDTH = 25;
 	/* The x coordinate of each colour button */
@@ -35,7 +35,7 @@ public class CollabDrawGUI extends GUI {
 	/* The respective y coordinates for each draw button */
 	private final static int LINE_Y_COORD = 10;
 	private final static int PARTICLE_Y_COORD = 70;
-	/* The width and height of the message */ 
+	/* The width and height of the message */
     private final static int MESSAGE_WIDTH = 300;
 	private final static int MESSAGE_HEIGHT = 25;
 	/* The height and width of the draw frame */
@@ -47,11 +47,11 @@ public class CollabDrawGUI extends GUI {
     * inherits methods and attributes from GUI and loads elements
 	* onto window through loadElements().
     */
-	public CollabDrawGUI() throws Exception {
+	public CollabDrawGUI(Account a1, Account a2) throws Exception {
 		super();
 		loadElements();
 	}
-	
+
 	/**
 	 * Method which loads the drawing panel (JPanel), colour buttons
 	 * and other components onto screen.
@@ -87,7 +87,7 @@ public class CollabDrawGUI extends GUI {
         redBtn.setBackground(Color.RED);
         greenBtn.setBackground(Color.GREEN);
 		yellowBtn.setBackground(Color.YELLOW);
-		
+
 		/**
 		 * ActionListener for the line button.
 		 * sets the draw tool on DrawingPanel to a line so that
@@ -98,7 +98,7 @@ public class CollabDrawGUI extends GUI {
                 drawingPanel.setDrawTool("Line");
             }
         });
-		
+
 		/**
 		 * ActionListener for the particle trace button.
 		 * sets the draw tool on DrawingPanel to a particle trace so that
@@ -109,7 +109,7 @@ public class CollabDrawGUI extends GUI {
                 drawingPanel.setDrawTool("Particle Trace");
             }
         });
-		
+
 		/**
 		 * ActionListener for the blue button.
 		 * sets the colour to blue.
@@ -119,7 +119,7 @@ public class CollabDrawGUI extends GUI {
                 drawingPanel.setDrawColour(Color.BLUE);
             }
         });
-		
+
 		/**
 		 * ActionListener for the black button.
 		 * sets the colour to black.
@@ -129,7 +129,7 @@ public class CollabDrawGUI extends GUI {
                 drawingPanel.setDrawColour(Color.BLACK);
             }
         });
-		
+
 		/**
 		 * ActionListener for the red button.
 		 * sets the colour to red.
@@ -139,7 +139,7 @@ public class CollabDrawGUI extends GUI {
                 drawingPanel.setDrawColour(Color.RED);
             }
         });
-		
+
 		/**
 		 * ActionListener for the green button.
 		 * sets the colour to blue.
@@ -149,7 +149,7 @@ public class CollabDrawGUI extends GUI {
                 drawPanel.setDrawColour(Color.GREEN);
             }
         });
-		
+
 		/**
 		 * ActionListener for the yellow button.
 		 * sets the colour to yellow.
@@ -159,8 +159,8 @@ public class CollabDrawGUI extends GUI {
                 drawingPanel.setDrawColour(Color.YELLOW);
             }
         });
-		
-		/** 
+
+		/**
 		 * Adds the label and buttons onto the window and sets the
 		 * window visible.
 		 */
@@ -176,7 +176,7 @@ public class CollabDrawGUI extends GUI {
         this.setVisible(true);
 
     }
-	
+
 	public static void main(String[] args) throws Exception {
 		CollabDrawGUI me = new CollabDrawGUI();
 	}

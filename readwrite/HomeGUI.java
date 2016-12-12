@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JList;
+import javax.swing.DefaultListModel;
 
 import java.util.ArrayList;
 
@@ -66,8 +67,25 @@ public class HomeGUI extends GUI {
 		add(requestLabel);
 		add(requestButton);
 
-		String[] friendslist = {"a","b"};
-		JList friends = new JList(names);
+		Graph g = null;
+		try
+		{
+			g = get_main().get_graph();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		ArrayList<String> friendsList = g.getFriends(acc.getUsername());
+
+		DefaultListModel listModel = new DefaultListModel();
+		for(String x : friendsList)
+		{
+			listModel.addElement(x);
+		}
+
+		//String[] friendslist = {"a","b"};
+		JList friends = new JList(listModel);
 		friends.setSelectedIndex(0);
 		friends.setBounds(270,300,165,50);
 		add(friends);
