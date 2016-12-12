@@ -59,18 +59,21 @@ public class HomeGUI extends GUI {
 		requests.setSelectedIndex(0);
 		JLabel requestLabel = new JLabel("Freind Requests");
 		JButton requestButton = new JButton ("Add Friend");
-		requests.setBounds(250,500,165,50);
-		requestLabel.setBounds(150,500,100,25);
-		requestButton.setBounds(420,500,100,25);
+		requests.setBounds(270,400,165,50);
+		requestLabel.setBounds(150,400,100,25);
+		requestButton.setBounds(435,400,100,25);
 		add(requests);
 		add(requestLabel);
+		add(requestButton);
+
+		String[] friendslist = {"a","b"};
+		JList friends = new JList(names);
+		friends.setSelectedIndex(0);
+		friends.setBounds(270,300,165,50);
+		add(friends);
+
 
 		friendsearchLabel.setBounds(150,300,100,25);
-	    friendsearhText.setBounds(250,300,165,25);
-		friendsearchButton.setBounds(420, 300, 80, 25);
-		contactsearchLabel.setBounds(150,400,100,25);
-		contactsearhText.setBounds(250,400,165,25);
-		contactsearchButton.setBounds(420, 400, 80, 25);
 		messageLabel.setBounds(550, 640, 100, 25);
 		createButton.setBounds(650, 630, 100, 45);
 		logoutButton.setBounds(35, 630, 100, 45);

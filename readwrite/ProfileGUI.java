@@ -103,6 +103,21 @@ public class ProfileGUI extends GUI {
 			}
 		});
 
+		addfriend.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					AddFriendGUI add = new AddFriendGUI(acc);
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
 		this.homeAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("opening home screen");
