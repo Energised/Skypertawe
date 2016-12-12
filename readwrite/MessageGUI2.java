@@ -117,6 +117,45 @@ public class MessageGUI2 extends GUI {
 			}
 		});
 		sendPanel.add(send, BorderLayout.EAST);
+
+		this.homeAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("opening home screen");
+				try
+				{
+					get_main().set_home(current_user);
+					dispose();
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
+			}
+		});
+
+		this.profileAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					System.out.println("opening profile screen");
+					get_main().set_profile(current_user);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		this.drawAction.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("opening collab draw screen");
+			}
+		});
+
 		setVisible(true);
 
 

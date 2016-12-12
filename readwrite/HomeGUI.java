@@ -19,6 +19,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
+import javax.swing.JList;
+
+import java.util.ArrayList;
 
 public class HomeGUI extends GUI {
 
@@ -51,15 +54,26 @@ public class HomeGUI extends GUI {
 		setLayout(null);
 		setSize(800,800);
 
+		String[] names = {"a","b"};
+		JList requests = new JList(names);
+		requests.setSelectedIndex(0);
+		JLabel requestLabel = new JLabel("Freind Requests");
+		JButton requestButton = new JButton ("Add Friend");
+		requests.setBounds(250,500,165,50);
+		requestLabel.setBounds(150,500,100,25);
+		requestButton.setBounds(420,500,100,25);
+		add(requests);
+		add(requestLabel);
+
 		friendsearchLabel.setBounds(150,300,100,25);
 	    friendsearhText.setBounds(250,300,165,25);
 		friendsearchButton.setBounds(420, 300, 80, 25);
 		contactsearchLabel.setBounds(150,400,100,25);
 		contactsearhText.setBounds(250,400,165,25);
 		contactsearchButton.setBounds(420, 400, 80, 25);
-		messageLabel.setBounds(550, 690, 100, 25);
-		createButton.setBounds(650, 680, 100, 45);
-		logoutButton.setBounds(35, 680, 100, 45);
+		messageLabel.setBounds(550, 640, 100, 25);
+		createButton.setBounds(650, 630, 100, 45);
+		logoutButton.setBounds(35, 630, 100, 45);
 		meLabel.setBounds(480, 180, 100, 25);
 		viewprofileButton.setBounds(580, 220, 150, 25);
 		welcomeLabel.setFont(new Font("Monotype Corsiva",1,15));
@@ -76,6 +90,38 @@ public class HomeGUI extends GUI {
 				try
 				{
 					get_main().set_profile(acc);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		logoutButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					get_main().get_login();
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		createButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					get_main().set_message(acc);
 					dispose();
 				}
 				catch(Exception f)
@@ -102,6 +148,44 @@ public class HomeGUI extends GUI {
 		add(profileImage);
 		add(nameText);
 
+		this.profileAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					System.out.println("opening profile screen");
+					get_main().set_profile(acc);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		this.messageAction.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					System.out.println("opening messages screen");
+					get_main().set_message(acc);
+					dispose(); // closes the current screen when new one opens
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		this.drawAction.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("opening collab draw screen");
+			}
+		});
 		setVisible(true);
 
 	}

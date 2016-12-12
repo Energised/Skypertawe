@@ -130,6 +130,12 @@ public class ReadWriteFriends extends ReadWrite<ArrayList<Account>>
         return friends;
     }
 
+    public ArrayList<Account> get_all_requests(Account acc)
+    {
+        int id = get_acc_id(acc);
+        return new ArrayList<Account>();
+    }
+
     public Account get_account_from_id(int acc_id) throws Exception
     {
         Account acc = null;

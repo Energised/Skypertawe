@@ -71,6 +71,76 @@ public class ProfileGUI extends GUI {
 		edit.setBounds(50, 650, 250, 50);
 		profileImage.setBounds(530,50,200,200);
 
+		message.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					get_main().set_message(acc);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		history.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					get_main().set_message(acc);
+					dispose();
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		this.homeAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("opening home screen");
+				try
+				{
+					get_main().set_home(acc);
+					dispose();
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
+			}
+		});
+
+		this.messageAction.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					System.out.println("opening messages screen");
+					get_main().set_message(acc);
+					dispose(); // closes the current screen when new one opens
+				}
+				catch(Exception f)
+				{
+					System.out.println(f);
+				}
+			}
+		});
+
+		this.drawAction.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("opening collab draw screen");
+			}
+		});
+
 		add(skpertawelLabel);
 		add(usernameLabel);
 		add(firstnameLabel);

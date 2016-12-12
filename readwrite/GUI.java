@@ -55,51 +55,6 @@ public class GUI extends JFrame {
 
         // Add a listener to the New menu item. actionPerformed() method will
         // invoked, if user triggered this menu item
-        this.homeAction.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                System.out.println("opening home screen");
-                try
-                {
-                    //get_main().set_home();
-                    //dispose();
-                }
-                catch(Exception e)
-                {
-                    System.out.println(e);
-                }
-            }
-        });
-
-        this.profileAction.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                System.out.println("opening profile screen");
-                // wont since no user is logged in
-            }
-        });
-
-        this.messageAction.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e)
-            {
-                try
-                {
-                    System.out.println("opening messages screen");
-                    //get_main().set_message();
-                    //dispose(); // closes the current screen when new one opens
-                }
-                catch(Exception f)
-                {
-                    System.out.println(f);
-                }
-            }
-        });
-
-        this.drawAction.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e)
-            {
-                System.out.println("opening collab draw screen");
-            }
-        });
 
         this.exitAction.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
