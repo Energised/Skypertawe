@@ -2,9 +2,9 @@
 
 All files working together will be stored in the directory readwrite/
 
-Currently CollabDraw2GUI, TraceDraw and LineDraw don't work, waiting
-on them to be finished before they can implement the functionality
-that Main.java gives.
+Unfinished Features:
+    -> MessageGUI2 only displays users who've previoiusly sent you a message
+    -> Saving a Line in CollabDrawGUI will throw an error when you try and reload the file
 
 ##USAGE:
 
