@@ -1,0 +1,191 @@
+\hypertarget{class_read_write_message}{}\section{Read\+Write\+Message Class Reference}
+\label{class_read_write_message}\index{Read\+Write\+Message@{Read\+Write\+Message}}
+
+
+Inherits Read\+Write$<$ E $>$.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_read_write_message_a91757d43631c332753ef62b61e48413e}{Read\+Write\+Message} (String dbname, String filename)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Sets a connection up to the db and messages.\+txt. \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_message}{Message} $>$ \hyperlink{class_read_write_message_a134117f3846976650506f858cd049059}{read} (String username)  throws Exception     
+\begin{DoxyCompactList}\small\item\em given a username, it returns their entire message history \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_message_a28d03d35c19dfd67eb2b7ad7fd5ca414}\label{class_read_write_message_a28d03d35c19dfd67eb2b7ad7fd5ca414}} 
+Array\+List$<$ \hyperlink{class_text_message}{Text\+Message} $>$ \hyperlink{class_read_write_message_a28d03d35c19dfd67eb2b7ad7fd5ca414}{read\+\_\+text\+\_\+messages} (String username)
+\begin{DoxyCompactList}\small\item\em Gets all Text\+Messages recieved by a user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_message_a851db30870febb26793696aea0be156b}\label{class_read_write_message_a851db30870febb26793696aea0be156b}} 
+Array\+List$<$ \hyperlink{class_u_r_l_message}{U\+R\+L\+Message} $>$ \hyperlink{class_read_write_message_a851db30870febb26793696aea0be156b}{read\+\_\+url\+\_\+messages} (String username)
+\begin{DoxyCompactList}\small\item\em Gets all U\+R\+L\+Messages recieved by a user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_message_ae9e2f4265707803c35efce4defefbb07}\label{class_read_write_message_ae9e2f4265707803c35efce4defefbb07}} 
+Array\+List$<$ \hyperlink{class_file_message}{File\+Message} $>$ \hyperlink{class_read_write_message_ae9e2f4265707803c35efce4defefbb07}{read\+\_\+file\+\_\+messages} (String username)
+\begin{DoxyCompactList}\small\item\em Gets all File\+Messages recieved by a user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_message_ad9460192c9102b15579d7920ae5607bd}\label{class_read_write_message_ad9460192c9102b15579d7920ae5607bd}} 
+void {\bfseries write} (Array\+List$<$ \hyperlink{class_message}{Message} $>$ msgs)  throws Exception     
+\item 
+\mbox{\Hypertarget{class_read_write_message_a754e9e7cd1cc2bc011147798fbf79d89}\label{class_read_write_message_a754e9e7cd1cc2bc011147798fbf79d89}} 
+void \hyperlink{class_read_write_message_a754e9e7cd1cc2bc011147798fbf79d89}{write\+\_\+text\+\_\+message} (\hyperlink{class_text_message}{Text\+Message} m)  throws Exception     
+\begin{DoxyCompactList}\small\item\em save a text message in messages.\+txt \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_message_ac705a1a4c26df2286f312d44363d2cc6}\label{class_read_write_message_ac705a1a4c26df2286f312d44363d2cc6}} 
+void \hyperlink{class_read_write_message_ac705a1a4c26df2286f312d44363d2cc6}{write\+\_\+url\+\_\+message} (\hyperlink{class_u_r_l_message}{U\+R\+L\+Message} u)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Stores a \hyperlink{class_u_r_l_message}{U\+R\+L\+Message} object as a string in \textquotesingle{}messages.\+txt\textquotesingle{}. \end{DoxyCompactList}\item 
+void \hyperlink{class_read_write_message_abea280f7f2a29c1edac9a4b9998972ed}{write\+\_\+file\+\_\+message} (\hyperlink{class_file_message}{File\+Message} f)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Stores a \hyperlink{class_file_message}{File\+Message} object as a string in \textquotesingle{}messages.\+txt\textquotesingle{} (file messages work as long as the file is in the files folder) \end{DoxyCompactList}\item 
+void \hyperlink{class_read_write_message_a2a509bda22a84d2b46949c71984d205c}{write\+\_\+multi\+\_\+text\+\_\+msg} (Array\+List$<$ String $>$ recipients, \hyperlink{class_text_message}{Text\+Message} msg)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Sends a \hyperlink{class_text_message}{Text\+Message} object to a list of recipients. \end{DoxyCompactList}\item 
+void \hyperlink{class_read_write_message_a9a005ffe1f6fd45a7490890e199731d5}{write\+\_\+multi\+\_\+url\+\_\+message} (Array\+List$<$ String $>$ recipients, \hyperlink{class_u_r_l_message}{U\+R\+L\+Message} msg)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Sends a \hyperlink{class_u_r_l_message}{U\+R\+L\+Message} object to a list of recipients. \end{DoxyCompactList}\item 
+void \hyperlink{class_read_write_message_a8d406199a35776861428f76038aa5dc4}{write\+\_\+multi\+\_\+file\+\_\+message} (Array\+List$<$ String $>$ recipients, \hyperlink{class_file_message}{File\+Message} msg)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Sends a \hyperlink{class_file_message}{File\+Message} object to a list of recipients. \end{DoxyCompactList}\item 
+void \hyperlink{class_read_write_message_ab95207fb27ef92136d39b454e7826fc5}{inc\+\_\+nm\+\_\+value} (String username)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Increments the new\+\_\+messages value of a user by 1. \end{DoxyCompactList}\item 
+void \hyperlink{class_read_write_message_a92a8e0f94a1b67491af6a7fbfdb52501}{dec\+\_\+nm\+\_\+value} (String username)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Decrements the new\+\_\+messages value of a user by 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_read_write_message_acbdb2486cf01f98e0288cedcf4747de9}\label{class_read_write_message_acbdb2486cf01f98e0288cedcf4747de9}} 
+static void \hyperlink{class_read_write_message_acbdb2486cf01f98e0288cedcf4747de9}{main} (String\mbox{[}$\,$\mbox{]} args)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Implemented for testing purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_read_write_message_a91757d43631c332753ef62b61e48413e}\label{class_read_write_message_a91757d43631c332753ef62b61e48413e}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!Read\+Write\+Message@{Read\+Write\+Message}}
+\index{Read\+Write\+Message@{Read\+Write\+Message}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{Read\+Write\+Message()}{ReadWriteMessage()}}
+{\footnotesize\ttfamily Read\+Write\+Message.\+Read\+Write\+Message (\begin{DoxyParamCaption}\item[{String}]{dbname,  }\item[{String}]{filename }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Sets a connection up to the db and messages.\+txt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dbname} & the db \\
+\hline
+{\em filename} & the message file \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_read_write_message_a92a8e0f94a1b67491af6a7fbfdb52501}\label{class_read_write_message_a92a8e0f94a1b67491af6a7fbfdb52501}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!dec\+\_\+nm\+\_\+value@{dec\+\_\+nm\+\_\+value}}
+\index{dec\+\_\+nm\+\_\+value@{dec\+\_\+nm\+\_\+value}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{dec\+\_\+nm\+\_\+value()}{dec\_nm\_value()}}
+{\footnotesize\ttfamily void Read\+Write\+Message.\+dec\+\_\+nm\+\_\+value (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Decrements the new\+\_\+messages value of a user by 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The account we\textquotesingle{}re editing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_read_write_message_ab95207fb27ef92136d39b454e7826fc5}\label{class_read_write_message_ab95207fb27ef92136d39b454e7826fc5}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!inc\+\_\+nm\+\_\+value@{inc\+\_\+nm\+\_\+value}}
+\index{inc\+\_\+nm\+\_\+value@{inc\+\_\+nm\+\_\+value}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{inc\+\_\+nm\+\_\+value()}{inc\_nm\_value()}}
+{\footnotesize\ttfamily void Read\+Write\+Message.\+inc\+\_\+nm\+\_\+value (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Increments the new\+\_\+messages value of a user by 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The account we\textquotesingle{}re editing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_read_write_message_a134117f3846976650506f858cd049059}\label{class_read_write_message_a134117f3846976650506f858cd049059}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!read@{read}}
+\index{read@{read}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_message}{Message}$>$ Read\+Write\+Message.\+read (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption}) throws Exception}
+
+
+
+given a username, it returns their entire message history 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an Array\+List of Messages 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_read_write_message_abea280f7f2a29c1edac9a4b9998972ed}\label{class_read_write_message_abea280f7f2a29c1edac9a4b9998972ed}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!write\+\_\+file\+\_\+message@{write\+\_\+file\+\_\+message}}
+\index{write\+\_\+file\+\_\+message@{write\+\_\+file\+\_\+message}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{write\+\_\+file\+\_\+message()}{write\_file\_message()}}
+{\footnotesize\ttfamily void Read\+Write\+Message.\+write\+\_\+file\+\_\+message (\begin{DoxyParamCaption}\item[{\hyperlink{class_file_message}{File\+Message}}]{f }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Stores a \hyperlink{class_file_message}{File\+Message} object as a string in \textquotesingle{}messages.\+txt\textquotesingle{} (file messages work as long as the file is in the files folder) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & The \hyperlink{class_file_message}{File\+Message} object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_read_write_message_a8d406199a35776861428f76038aa5dc4}\label{class_read_write_message_a8d406199a35776861428f76038aa5dc4}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!write\+\_\+multi\+\_\+file\+\_\+message@{write\+\_\+multi\+\_\+file\+\_\+message}}
+\index{write\+\_\+multi\+\_\+file\+\_\+message@{write\+\_\+multi\+\_\+file\+\_\+message}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{write\+\_\+multi\+\_\+file\+\_\+message()}{write\_multi\_file\_message()}}
+{\footnotesize\ttfamily void Read\+Write\+Message.\+write\+\_\+multi\+\_\+file\+\_\+message (\begin{DoxyParamCaption}\item[{Array\+List$<$ String $>$}]{recipients,  }\item[{\hyperlink{class_file_message}{File\+Message}}]{msg }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Sends a \hyperlink{class_file_message}{File\+Message} object to a list of recipients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em recipients} & Array\+List of usernames \\
+\hline
+{\em msg} & The \hyperlink{class_file_message}{File\+Message} object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_read_write_message_a2a509bda22a84d2b46949c71984d205c}\label{class_read_write_message_a2a509bda22a84d2b46949c71984d205c}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!write\+\_\+multi\+\_\+text\+\_\+msg@{write\+\_\+multi\+\_\+text\+\_\+msg}}
+\index{write\+\_\+multi\+\_\+text\+\_\+msg@{write\+\_\+multi\+\_\+text\+\_\+msg}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{write\+\_\+multi\+\_\+text\+\_\+msg()}{write\_multi\_text\_msg()}}
+{\footnotesize\ttfamily void Read\+Write\+Message.\+write\+\_\+multi\+\_\+text\+\_\+msg (\begin{DoxyParamCaption}\item[{Array\+List$<$ String $>$}]{recipients,  }\item[{\hyperlink{class_text_message}{Text\+Message}}]{msg }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Sends a \hyperlink{class_text_message}{Text\+Message} object to a list of recipients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em recipients} & Array\+List of usernames \\
+\hline
+{\em msg} & The \hyperlink{class_text_message}{Text\+Message} object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_read_write_message_a9a005ffe1f6fd45a7490890e199731d5}\label{class_read_write_message_a9a005ffe1f6fd45a7490890e199731d5}} 
+\index{Read\+Write\+Message@{Read\+Write\+Message}!write\+\_\+multi\+\_\+url\+\_\+message@{write\+\_\+multi\+\_\+url\+\_\+message}}
+\index{write\+\_\+multi\+\_\+url\+\_\+message@{write\+\_\+multi\+\_\+url\+\_\+message}!Read\+Write\+Message@{Read\+Write\+Message}}
+\subsubsection{\texorpdfstring{write\+\_\+multi\+\_\+url\+\_\+message()}{write\_multi\_url\_message()}}
+{\footnotesize\ttfamily void Read\+Write\+Message.\+write\+\_\+multi\+\_\+url\+\_\+message (\begin{DoxyParamCaption}\item[{Array\+List$<$ String $>$}]{recipients,  }\item[{\hyperlink{class_u_r_l_message}{U\+R\+L\+Message}}]{msg }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Sends a \hyperlink{class_u_r_l_message}{U\+R\+L\+Message} object to a list of recipients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em recipients} & Array\+List of usernames \\
+\hline
+{\em msg} & The \hyperlink{class_u_r_l_message}{U\+R\+L\+Message} object \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/Read\+Write\+Message.\+java\end{DoxyCompactItemize}

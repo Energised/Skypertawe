@@ -1,0 +1,38 @@
+﻿Minutes of Meeting: Thomas Booth, Daniel Woolsey, Carl Thomas, Richard Stevens, Wenju Mu, Stefan Ficur.
+——————————————————————————————————
+
+Date: 10/12/2016
+
+Start Time: 13:00
+End Time: 16:00
+
+Date and time of next meeting: N/A
+
+Topics discussed:
+	
+	- Again, we looked over each-others own code and offered any help where needed. 
+Progress since last meeting:
+	
+	- A simple working version of the system has not been completed as of yet, meaning some people are still working on their
+	  respective classes. But some progress has been made with regards to some people's classes. For example, the finished classes are:
+		- Account
+		- BST
+		- BSTNode
+		- Vertex
+		- GUI and a couple of its subclasses.
+		- ReadWrite and a couple of its subclasses.
+		- Line and ParticleTrace
+		- Message and its subclasses.
+	  But, more work is still to be done before Monday's deadline.
+TODO (for next meeting/deadline):
+	
+	- TOM: Write out the minutes report of this meeting and compile the group report before Monday's 
+	       deadline. Also, think about and implement how the CollabDrawGUI can be made better.	
+	- RICHARD: Compile your contribution to this assignment and post on GitHub for Tom to collect.
+	- DAN: Finish off the implementation of the ReadWrite classes and also post your contribution to the assignment
+	       on GitHub for Tom to collect.	
+	- WENJU: Post your contribution to this assignment on GitHub for Tom to collect.
+	- CARL: Finish off the MessageGUI class and post your contribution to the assignment on GitHub for Tom to collect. 
+	- STEFAN: Finish off the implementation of ProfileGUI and post your contribution to the assignment on GitHub for
+		  Tom to collect.
+		

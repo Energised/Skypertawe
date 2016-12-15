@@ -1,0 +1,252 @@
+\hypertarget{class_graph}{}\section{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+
+
+The \hyperlink{class_graph}{Graph} class creates a graph using objects from the \hyperlink{class_vertex}{Vertex} class and objects from the \hyperlink{class_edge}{Edge} class.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_ab8ccb82fd216cc5a36c3887c6820428f}\label{class_graph_ab8ccb82fd216cc5a36c3887c6820428f}} 
+\hyperlink{class_graph_ab8ccb82fd216cc5a36c3887c6820428f}{Graph} ()
+\begin{DoxyCompactList}\small\item\em create empty graph \end{DoxyCompactList}\item 
+\hyperlink{class_graph_ac1c989504f624086332f46af57861d3a}{Graph} (Array\+List$<$ \hyperlink{class_vertex}{Vertex} $>$ vertices)
+\begin{DoxyCompactList}\small\item\em create graph with vertices from an arraylist \end{DoxyCompactList}\item 
+boolean \hyperlink{class_graph_a50d13043a91c83bfd9d89a4ba24de12b}{add\+Edge} (\hyperlink{class_vertex}{Vertex} one, \hyperlink{class_vertex}{Vertex} two)
+\begin{DoxyCompactList}\small\item\em attempt to add an edge \end{DoxyCompactList}\item 
+boolean \hyperlink{class_graph_a7f18a8cf5f6fcf5c391fd02e15c7f46c}{add\+Edge} (\hyperlink{class_vertex}{Vertex} one, \hyperlink{class_vertex}{Vertex} two, int weight)
+\begin{DoxyCompactList}\small\item\em returns true if add was successful, false if not successful \end{DoxyCompactList}\item 
+boolean \hyperlink{class_graph_a64c719dec9e96b255fcd1a72d7f7b636}{contains\+Edge} (\hyperlink{class_edge}{Edge} e)
+\begin{DoxyCompactList}\small\item\em check if an edge has two vertices, if not it is likely to be deleted as it isn\textquotesingle{}t a complete edge \end{DoxyCompactList}\item 
+\hyperlink{class_edge}{Edge} \hyperlink{class_graph_a5dc8b9103d5d3fb7647b71df8fd35dbb}{remove\+Edge} (\hyperlink{class_edge}{Edge} e)
+\begin{DoxyCompactList}\small\item\em remove edge from graph \end{DoxyCompactList}\item 
+boolean \hyperlink{class_graph_aff10c71da13d18adef73c4d20c25c895}{add\+Vertex} (\hyperlink{class_vertex}{Vertex} vertex, boolean overwrite\+Existing)
+\begin{DoxyCompactList}\small\item\em add a vertex to the graph, returns true if add successful boolean parameter value should be true if you want to allow the vertex to be overwritten if it already exists \end{DoxyCompactList}\item 
+boolean \hyperlink{class_graph_a0380eb64afa8f2264eb2472bf62490a2}{contains\+Vertex} (\hyperlink{class_vertex}{Vertex} vertex)
+\begin{DoxyCompactList}\small\item\em check if the vertex is in the graphs vertices hashmap \end{DoxyCompactList}\item 
+\hyperlink{class_vertex}{Vertex} \hyperlink{class_graph_a9ec421fd3402f637af8a9e99be3bb72c}{get\+Vertex} (String username)
+\begin{DoxyCompactList}\small\item\em returns the vertex from vertices hashmap that has the specified username \end{DoxyCompactList}\item 
+\hyperlink{class_vertex}{Vertex} \hyperlink{class_graph_a1253c513b85d91e2c6f60e36863c2fc9}{remove\+Vertex} (String username)
+\begin{DoxyCompactList}\small\item\em remove a vertex from the graph based on its username \end{DoxyCompactList}\item 
+Set$<$ \hyperlink{class_edge}{Edge} $>$ \hyperlink{class_graph_a292e75a764615c537377c66a1deece30}{get\+Edges} ()
+\begin{DoxyCompactList}\small\item\em return set containing all edges of the graph \end{DoxyCompactList}\item 
+Array\+List$<$ String $>$ \hyperlink{class_graph_a71fd5502d7ef1fb08f9ef49a3b507cb1}{get\+Friends} (String username)
+\begin{DoxyCompactList}\small\item\em returns an arraylist containing the usernames, as strings, of all friends of the specified user \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_graph}{Graph} class creates a graph using objects from the \hyperlink{class_vertex}{Vertex} class and objects from the \hyperlink{class_edge}{Edge} class. 
+
+\begin{DoxyAuthor}{Author}
+830169 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_graph_ac1c989504f624086332f46af57861d3a}\label{class_graph_ac1c989504f624086332f46af57861d3a}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph.\+Graph (\begin{DoxyParamCaption}\item[{Array\+List$<$ \hyperlink{class_vertex}{Vertex} $>$}]{vertices }\end{DoxyParamCaption})}
+
+
+
+create graph with vertices from an arraylist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertices} & an arraylist of vertices at be added to the graph \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a50d13043a91c83bfd9d89a4ba24de12b}\label{class_graph_a50d13043a91c83bfd9d89a4ba24de12b}} 
+\index{Graph@{Graph}!add\+Edge@{add\+Edge}}
+\index{add\+Edge@{add\+Edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{add\+Edge()}{addEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily boolean Graph.\+add\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}}]{one,  }\item[{\hyperlink{class_vertex}{Vertex}}]{two }\end{DoxyParamCaption})}
+
+
+
+attempt to add an edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em one} & a first vertex to create edge between \\
+\hline
+{\em two} & a second vertex to create edge between \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean that is true if the add was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a7f18a8cf5f6fcf5c391fd02e15c7f46c}\label{class_graph_a7f18a8cf5f6fcf5c391fd02e15c7f46c}} 
+\index{Graph@{Graph}!add\+Edge@{add\+Edge}}
+\index{add\+Edge@{add\+Edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{add\+Edge()}{addEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily boolean Graph.\+add\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}}]{one,  }\item[{\hyperlink{class_vertex}{Vertex}}]{two,  }\item[{int}]{weight }\end{DoxyParamCaption})}
+
+
+
+returns true if add was successful, false if not successful 
+
+
+\begin{DoxyParams}{Parameters}
+{\em one} & a first vertex to create edge between \\
+\hline
+{\em two} & a second vertex to create edge between \\
+\hline
+{\em weight} & the weight of the edge \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_aff10c71da13d18adef73c4d20c25c895}\label{class_graph_aff10c71da13d18adef73c4d20c25c895}} 
+\index{Graph@{Graph}!add\+Vertex@{add\+Vertex}}
+\index{add\+Vertex@{add\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{add\+Vertex()}{addVertex()}}
+{\footnotesize\ttfamily boolean Graph.\+add\+Vertex (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}}]{vertex,  }\item[{boolean}]{overwrite\+Existing }\end{DoxyParamCaption})}
+
+
+
+add a vertex to the graph, returns true if add successful boolean parameter value should be true if you want to allow the vertex to be overwritten if it already exists 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & the vertex to be added to graph \\
+\hline
+{\em over\+Write\+Existing} & true = allow overwriting if vertex already exists \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true if the vertex was added successfully, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a64c719dec9e96b255fcd1a72d7f7b636}\label{class_graph_a64c719dec9e96b255fcd1a72d7f7b636}} 
+\index{Graph@{Graph}!contains\+Edge@{contains\+Edge}}
+\index{contains\+Edge@{contains\+Edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{contains\+Edge()}{containsEdge()}}
+{\footnotesize\ttfamily boolean Graph.\+contains\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_edge}{Edge}}]{e }\end{DoxyParamCaption})}
+
+
+
+check if an edge has two vertices, if not it is likely to be deleted as it isn\textquotesingle{}t a complete edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & edge being searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge has two vertices, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a0380eb64afa8f2264eb2472bf62490a2}\label{class_graph_a0380eb64afa8f2264eb2472bf62490a2}} 
+\index{Graph@{Graph}!contains\+Vertex@{contains\+Vertex}}
+\index{contains\+Vertex@{contains\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{contains\+Vertex()}{containsVertex()}}
+{\footnotesize\ttfamily boolean Graph.\+contains\+Vertex (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}}]{vertex }\end{DoxyParamCaption})}
+
+
+
+check if the vertex is in the graphs vertices hashmap 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & the vertex being searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true if the vertex is in the graph 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a292e75a764615c537377c66a1deece30}\label{class_graph_a292e75a764615c537377c66a1deece30}} 
+\index{Graph@{Graph}!get\+Edges@{get\+Edges}}
+\index{get\+Edges@{get\+Edges}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Edges()}{getEdges()}}
+{\footnotesize\ttfamily Set$<$\hyperlink{class_edge}{Edge}$>$ Graph.\+get\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+return set containing all edges of the graph 
+
+\begin{DoxyReturn}{Returns}
+a set containing all edges of the graph 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a71fd5502d7ef1fb08f9ef49a3b507cb1}\label{class_graph_a71fd5502d7ef1fb08f9ef49a3b507cb1}} 
+\index{Graph@{Graph}!get\+Friends@{get\+Friends}}
+\index{get\+Friends@{get\+Friends}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Friends()}{getFriends()}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ Graph.\+get\+Friends (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption})}
+
+
+
+returns an arraylist containing the usernames, as strings, of all friends of the specified user 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username of the person whose friends are being searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an arraylist containing usernames as strings 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a9ec421fd3402f637af8a9e99be3bb72c}\label{class_graph_a9ec421fd3402f637af8a9e99be3bb72c}} 
+\index{Graph@{Graph}!get\+Vertex@{get\+Vertex}}
+\index{get\+Vertex@{get\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Vertex()}{getVertex()}}
+{\footnotesize\ttfamily \hyperlink{class_vertex}{Vertex} Graph.\+get\+Vertex (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption})}
+
+
+
+returns the vertex from vertices hashmap that has the specified username 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username of the vertex being searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the vertex that was searched for by its username 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a5dc8b9103d5d3fb7647b71df8fd35dbb}\label{class_graph_a5dc8b9103d5d3fb7647b71df8fd35dbb}} 
+\index{Graph@{Graph}!remove\+Edge@{remove\+Edge}}
+\index{remove\+Edge@{remove\+Edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{remove\+Edge()}{removeEdge()}}
+{\footnotesize\ttfamily \hyperlink{class_edge}{Edge} Graph.\+remove\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_edge}{Edge}}]{e }\end{DoxyParamCaption})}
+
+
+
+remove edge from graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & edge to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the edge that has been removed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a1253c513b85d91e2c6f60e36863c2fc9}\label{class_graph_a1253c513b85d91e2c6f60e36863c2fc9}} 
+\index{Graph@{Graph}!remove\+Vertex@{remove\+Vertex}}
+\index{remove\+Vertex@{remove\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{remove\+Vertex()}{removeVertex()}}
+{\footnotesize\ttfamily \hyperlink{class_vertex}{Vertex} Graph.\+remove\+Vertex (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption})}
+
+
+
+remove a vertex from the graph based on its username 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username of the vertex to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the vertex that was removed from the graph 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/Graph.\+java\end{DoxyCompactItemize}

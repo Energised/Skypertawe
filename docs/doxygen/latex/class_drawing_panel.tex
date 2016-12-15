@@ -1,0 +1,398 @@
+\hypertarget{class_drawing_panel}{}\section{Drawing\+Panel Class Reference}
+\label{class_drawing_panel}\index{Drawing\+Panel@{Drawing\+Panel}}
+Inheritance diagram for Drawing\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_drawing_panel}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \hyperlink{class_line}{Line} $>$ \hyperlink{class_drawing_panel_a3f8dc5d1f652dd58859ca98dce3e325b}{get\+Lines} ()
+\begin{DoxyCompactList}\small\item\em Method to return the Array\+List of lines drawn to screen. \end{DoxyCompactList}\item 
+int \hyperlink{class_drawing_panel_a77c3fd72e4c60f65d043ff01e7a8802d}{get\+Point\+Count} ()
+\begin{DoxyCompactList}\small\item\em Method to retrieve number of points drawn on screen. \end{DoxyCompactList}\item 
+boolean \hyperlink{class_drawing_panel_a4b121aedcf7c0c4a333519db1e340a9b}{increment\+Point\+Count} ()
+\begin{DoxyCompactList}\small\item\em Increments the point count. \end{DoxyCompactList}\item 
+Point \mbox{[}$\,$\mbox{]} \hyperlink{class_drawing_panel_a7622f1394438b6ec633ac2cde884bb99}{get\+Points} ()
+\begin{DoxyCompactList}\small\item\em Returns the array of points drawn on screen. \end{DoxyCompactList}\item 
+Color \hyperlink{class_drawing_panel_ae0c2b7deb6ba8eae624e58c850a3a559}{get\+Drawn\+Colour} ()
+\begin{DoxyCompactList}\small\item\em Method to retrieve the colour of a drawing. \end{DoxyCompactList}\item 
+Color \mbox{[}$\,$\mbox{]} \hyperlink{class_drawing_panel_a90f962e27cca561096b4d5a68fd69ac3}{get\+Colours} ()
+\begin{DoxyCompactList}\small\item\em Method to retrieve the array of colours in a trace. \end{DoxyCompactList}\item 
+boolean \hyperlink{class_drawing_panel_a7eae2c9bc64af0b4bcb177370598b3ad}{set\+Trace\+Point} (Point point)
+\begin{DoxyCompactList}\small\item\em Method to set the point of trace at current point count in array. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a7fdcb0fc4a40945930517bdf664d6179}{set\+Draw\+Tool} (String draw\+Tool)
+\begin{DoxyCompactList}\small\item\em Method to allow user to switch between line and particle trace. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a9e295a2f6aec0c5e85240324dff07d90}{set\+Point\+Color} (Color colour)
+\begin{DoxyCompactList}\small\item\em Method to set the colour of a point in a particle trace. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a7b1a3aaefb7f62604525ebb494f6faa6}{set\+Draw\+Colour} (Color colour)
+\begin{DoxyCompactList}\small\item\em Method to set the colour of a drawing. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a4efd38d997c0ddf31cc49ca18898484d}{set\+Line\+Begin} (Point point)
+\begin{DoxyCompactList}\small\item\em Method to set the point at the start of a drawn line. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_abf64c73a6dced3ea8183a2354a06cae7}{set\+Line\+Finish} (Point point)
+\begin{DoxyCompactList}\small\item\em Method to set the point at the end of a drawn line. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_abf082fafa7877579ae1bf1583e74cdd8}{add\+Lines} (\hyperlink{class_line}{Line} line)
+\begin{DoxyCompactList}\small\item\em Method to add drawn lines to the line Array\+List. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a7fd34e1524b98d70607998bafbc71d8b}{set\+Array\+List\+Lines} (Array\+List$<$ \hyperlink{class_line}{Line} $>$ line)
+\begin{DoxyCompactList}\small\item\em Method to set the Array\+List of lines. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a47cd7b7965dd2cb7e63f56a2737ffe39}{set\+All\+Trace\+Points} (Point\mbox{[}$\,$\mbox{]} point)
+\begin{DoxyCompactList}\small\item\em Method to set the array of drawn points in a particle trace. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a3c4886846e221ed78b1859d0d022cf8f}{set\+Point\+Count} (int count)
+\begin{DoxyCompactList}\small\item\em Method to set the count of points drawn. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a9816f7a7b7aeefeb6f0e5d9321eb94a2}{set\+All\+Point\+Color} (Color\mbox{[}$\,$\mbox{]} array\+Of\+Colours)
+\begin{DoxyCompactList}\small\item\em Method to set the colours of all points draw in a trace draw. \end{DoxyCompactList}\item 
+\hyperlink{class_drawing_panel_a63d04db10fba53e2b46d536525d278ac}{Drawing\+Panel} (\hyperlink{class_account}{Account} sender, \hyperlink{class_account}{Account} recipient)
+\begin{DoxyCompactList}\small\item\em T\+O\+DO \+: C\+O\+M\+P\+A\+R\+I\+NG T\+HE A\+C\+C\+O\+U\+N\+TS U\+S\+E\+R\+N\+A\+M\+ES TO M\+A\+KE A T\+E\+XT F\+I\+LE W\+I\+TH T\+HE T\+WO U\+S\+E\+R\+N\+A\+M\+ES AS T\+HE T\+E\+XT F\+I\+LE\textquotesingle{}S N\+A\+ME. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a9fe458b4cbb53b245a7d7edc0a2d1e83}{save\+Line} (Array\+List$<$ \hyperlink{class_line}{Line} $>$ drawn\+Line)  throws I\+O\+Exception 
+\begin{DoxyCompactList}\small\item\em Method to save the drawn line to the line file. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a3c4bdf70ae72b099b258040244f9d428}{save\+Partical} (Point\mbox{[}$\,$\mbox{]} trace, Color\mbox{[}$\,$\mbox{]} trace\+Colour)  throws I\+O\+Exception 
+\begin{DoxyCompactList}\small\item\em Method to save all particle trace drawings. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a94f31c4cf6856ae742da17f00d8b33e4}{paint\+Component} (Graphics g)
+\begin{DoxyCompactList}\small\item\em Draw an oval in a O\+V\+A\+L\+\_\+\+W\+I\+D\+T\+H-\/by-\/\+O\+V\+A\+L\+\_\+\+H\+E\+I\+G\+HT bounding box at specified x and y in a specified colour on window. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a72ba678075cd06d0455dddfe2509da83}{load\+Line\+File} (String line\+File)
+\begin{DoxyCompactList}\small\item\em Method to load a line file, parse through its contents and repaint on screen. \end{DoxyCompactList}\item 
+void \hyperlink{class_drawing_panel_a2c3c19d065415dfffacfb2ded1fb114a}{load\+Particle\+File} (String particle\+Trace\+File)
+\begin{DoxyCompactList}\small\item\em Method to load a particle trace file, parse through its contents and repaint on screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_drawing_panel_a63d04db10fba53e2b46d536525d278ac}\label{class_drawing_panel_a63d04db10fba53e2b46d536525d278ac}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!Drawing\+Panel@{Drawing\+Panel}}
+\index{Drawing\+Panel@{Drawing\+Panel}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{Drawing\+Panel()}{DrawingPanel()}}
+{\footnotesize\ttfamily Drawing\+Panel.\+Drawing\+Panel (\begin{DoxyParamCaption}\item[{\hyperlink{class_account}{Account}}]{sender,  }\item[{\hyperlink{class_account}{Account}}]{recipient }\end{DoxyParamCaption})}
+
+
+
+T\+O\+DO \+: C\+O\+M\+P\+A\+R\+I\+NG T\+HE A\+C\+C\+O\+U\+N\+TS U\+S\+E\+R\+N\+A\+M\+ES TO M\+A\+KE A T\+E\+XT F\+I\+LE W\+I\+TH T\+HE T\+WO U\+S\+E\+R\+N\+A\+M\+ES AS T\+HE T\+E\+XT F\+I\+LE\textquotesingle{}S N\+A\+ME. 
+
+Constructor\+: set up \hyperlink{class_g_u_i}{G\+UI} by loading the file amd repainting on screen. T\+HE C\+O\+N\+S\+T\+R\+U\+C\+T\+OR A\+L\+W\+A\+YS L\+O\+A\+DS A T\+E\+XT F\+I\+LE W\+H\+EN I\+TS C\+A\+L\+L\+ED, SO M\+A\+Y\+BE WE C\+O\+U\+LD C\+R\+E\+A\+TE AN E\+M\+P\+TY T\+E\+XT F\+I\+LE W\+H\+EN A F\+R\+I\+E\+N\+D\+S\+H\+IP IS C\+R\+E\+A\+T\+ED, SO T\+H\+AT A T\+E\+XT F\+I\+LE W\+I\+LL A\+L\+W\+A\+YS BE F\+O\+U\+ND?
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_drawing_panel_abf082fafa7877579ae1bf1583e74cdd8}\label{class_drawing_panel_abf082fafa7877579ae1bf1583e74cdd8}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!add\+Lines@{add\+Lines}}
+\index{add\+Lines@{add\+Lines}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{add\+Lines()}{addLines()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+add\+Lines (\begin{DoxyParamCaption}\item[{\hyperlink{class_line}{Line}}]{line }\end{DoxyParamCaption})}
+
+
+
+Method to add drawn lines to the line Array\+List. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{class_line}{Line}} & to be added to the Array\+List. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a90f962e27cca561096b4d5a68fd69ac3}\label{class_drawing_panel_a90f962e27cca561096b4d5a68fd69ac3}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!get\+Colours@{get\+Colours}}
+\index{get\+Colours@{get\+Colours}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{get\+Colours()}{getColours()}}
+{\footnotesize\ttfamily Color \mbox{[}$\,$\mbox{]} Drawing\+Panel.\+get\+Colours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to retrieve the array of colours in a trace. 
+
+\begin{DoxyReturn}{Returns}
+the array of colour of the point in trace. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drawing_panel_ae0c2b7deb6ba8eae624e58c850a3a559}\label{class_drawing_panel_ae0c2b7deb6ba8eae624e58c850a3a559}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!get\+Drawn\+Colour@{get\+Drawn\+Colour}}
+\index{get\+Drawn\+Colour@{get\+Drawn\+Colour}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{get\+Drawn\+Colour()}{getDrawnColour()}}
+{\footnotesize\ttfamily Color Drawing\+Panel.\+get\+Drawn\+Colour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to retrieve the colour of a drawing. 
+
+\begin{DoxyReturn}{Returns}
+the current colour of drawing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drawing_panel_a3f8dc5d1f652dd58859ca98dce3e325b}\label{class_drawing_panel_a3f8dc5d1f652dd58859ca98dce3e325b}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!get\+Lines@{get\+Lines}}
+\index{get\+Lines@{get\+Lines}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{get\+Lines()}{getLines()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_line}{Line}$>$ Drawing\+Panel.\+get\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to return the Array\+List of lines drawn to screen. 
+
+\begin{DoxyReturn}{Returns}
+the Array\+List of lines. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drawing_panel_a77c3fd72e4c60f65d043ff01e7a8802d}\label{class_drawing_panel_a77c3fd72e4c60f65d043ff01e7a8802d}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!get\+Point\+Count@{get\+Point\+Count}}
+\index{get\+Point\+Count@{get\+Point\+Count}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{get\+Point\+Count()}{getPointCount()}}
+{\footnotesize\ttfamily int Drawing\+Panel.\+get\+Point\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to retrieve number of points drawn on screen. 
+
+\begin{DoxyReturn}{Returns}
+the number of points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drawing_panel_a7622f1394438b6ec633ac2cde884bb99}\label{class_drawing_panel_a7622f1394438b6ec633ac2cde884bb99}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!get\+Points@{get\+Points}}
+\index{get\+Points@{get\+Points}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{get\+Points()}{getPoints()}}
+{\footnotesize\ttfamily Point \mbox{[}$\,$\mbox{]} Drawing\+Panel.\+get\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the array of points drawn on screen. 
+
+\begin{DoxyReturn}{Returns}
+the current number of points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drawing_panel_a4b121aedcf7c0c4a333519db1e340a9b}\label{class_drawing_panel_a4b121aedcf7c0c4a333519db1e340a9b}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!increment\+Point\+Count@{increment\+Point\+Count}}
+\index{increment\+Point\+Count@{increment\+Point\+Count}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{increment\+Point\+Count()}{incrementPointCount()}}
+{\footnotesize\ttfamily boolean Drawing\+Panel.\+increment\+Point\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increments the point count. 
+
+\begin{DoxyReturn}{Returns}
+T\+R\+UE on success 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drawing_panel_a72ba678075cd06d0455dddfe2509da83}\label{class_drawing_panel_a72ba678075cd06d0455dddfe2509da83}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!load\+Line\+File@{load\+Line\+File}}
+\index{load\+Line\+File@{load\+Line\+File}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{load\+Line\+File()}{loadLineFile()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+load\+Line\+File (\begin{DoxyParamCaption}\item[{String}]{line\+File }\end{DoxyParamCaption})}
+
+
+
+Method to load a line file, parse through its contents and repaint on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & filename of the line file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a2c3c19d065415dfffacfb2ded1fb114a}\label{class_drawing_panel_a2c3c19d065415dfffacfb2ded1fb114a}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!load\+Particle\+File@{load\+Particle\+File}}
+\index{load\+Particle\+File@{load\+Particle\+File}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{load\+Particle\+File()}{loadParticleFile()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+load\+Particle\+File (\begin{DoxyParamCaption}\item[{String}]{particle\+Trace\+File }\end{DoxyParamCaption})}
+
+
+
+Method to load a particle trace file, parse through its contents and repaint on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & filename of the particle trace file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a94f31c4cf6856ae742da17f00d8b33e4}\label{class_drawing_panel_a94f31c4cf6856ae742da17f00d8b33e4}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!paint\+Component@{paint\+Component}}
+\index{paint\+Component@{paint\+Component}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{paint\+Component()}{paintComponent()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+paint\+Component (\begin{DoxyParamCaption}\item[{Graphics}]{g }\end{DoxyParamCaption})}
+
+
+
+Draw an oval in a O\+V\+A\+L\+\_\+\+W\+I\+D\+T\+H-\/by-\/\+O\+V\+A\+L\+\_\+\+H\+E\+I\+G\+HT bounding box at specified x and y in a specified colour on window. 
+
+This method is called from Paint\+Handler\+::mouse\+Dragged().
+
+Draws a line between starting x,y and ending x,y in the specified colour on window. This is called from Paint\+Handler\+::mouse\+Released(). \mbox{\Hypertarget{class_drawing_panel_a9fe458b4cbb53b245a7d7edc0a2d1e83}\label{class_drawing_panel_a9fe458b4cbb53b245a7d7edc0a2d1e83}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!save\+Line@{save\+Line}}
+\index{save\+Line@{save\+Line}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{save\+Line()}{saveLine()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+save\+Line (\begin{DoxyParamCaption}\item[{Array\+List$<$ \hyperlink{class_line}{Line} $>$}]{drawn\+Line }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+
+
+Method to save the drawn line to the line file. 
+
+This throws an I\+O\+Exception. 
+\begin{DoxyParams}{Parameters}
+{\em Array\+List} & of drawn lines from the window. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a3c4bdf70ae72b099b258040244f9d428}\label{class_drawing_panel_a3c4bdf70ae72b099b258040244f9d428}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!save\+Partical@{save\+Partical}}
+\index{save\+Partical@{save\+Partical}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{save\+Partical()}{savePartical()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+save\+Partical (\begin{DoxyParamCaption}\item[{Point \mbox{[}$\,$\mbox{]}}]{trace,  }\item[{Color \mbox{[}$\,$\mbox{]}}]{trace\+Colour }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+
+
+Method to save all particle trace drawings. 
+
+This throws an I\+O\+Exception. 
+\begin{DoxyParams}{Parameters}
+{\em array} & of drawn points on screen. \\
+\hline
+{\em array} & of colours of these drawn points. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a9816f7a7b7aeefeb6f0e5d9321eb94a2}\label{class_drawing_panel_a9816f7a7b7aeefeb6f0e5d9321eb94a2}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+All\+Point\+Color@{set\+All\+Point\+Color}}
+\index{set\+All\+Point\+Color@{set\+All\+Point\+Color}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+All\+Point\+Color()}{setAllPointColor()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+All\+Point\+Color (\begin{DoxyParamCaption}\item[{Color \mbox{[}$\,$\mbox{]}}]{array\+Of\+Colours }\end{DoxyParamCaption})}
+
+
+
+Method to set the colours of all points draw in a trace draw. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & array of colours. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a47cd7b7965dd2cb7e63f56a2737ffe39}\label{class_drawing_panel_a47cd7b7965dd2cb7e63f56a2737ffe39}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+All\+Trace\+Points@{set\+All\+Trace\+Points}}
+\index{set\+All\+Trace\+Points@{set\+All\+Trace\+Points}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+All\+Trace\+Points()}{setAllTracePoints()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+All\+Trace\+Points (\begin{DoxyParamCaption}\item[{Point \mbox{[}$\,$\mbox{]}}]{point }\end{DoxyParamCaption})}
+
+
+
+Method to set the array of drawn points in a particle trace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & array of points. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a7fd34e1524b98d70607998bafbc71d8b}\label{class_drawing_panel_a7fd34e1524b98d70607998bafbc71d8b}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Array\+List\+Lines@{set\+Array\+List\+Lines}}
+\index{set\+Array\+List\+Lines@{set\+Array\+List\+Lines}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Array\+List\+Lines()}{setArrayListLines()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+Array\+List\+Lines (\begin{DoxyParamCaption}\item[{Array\+List$<$ \hyperlink{class_line}{Line} $>$}]{line }\end{DoxyParamCaption})}
+
+
+
+Method to set the Array\+List of lines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & Array\+List of lines. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a7b1a3aaefb7f62604525ebb494f6faa6}\label{class_drawing_panel_a7b1a3aaefb7f62604525ebb494f6faa6}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Draw\+Colour@{set\+Draw\+Colour}}
+\index{set\+Draw\+Colour@{set\+Draw\+Colour}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Draw\+Colour()}{setDrawColour()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+Draw\+Colour (\begin{DoxyParamCaption}\item[{Color}]{colour }\end{DoxyParamCaption})}
+
+
+
+Method to set the colour of a drawing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & colour to be set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a7fdcb0fc4a40945930517bdf664d6179}\label{class_drawing_panel_a7fdcb0fc4a40945930517bdf664d6179}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Draw\+Tool@{set\+Draw\+Tool}}
+\index{set\+Draw\+Tool@{set\+Draw\+Tool}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Draw\+Tool()}{setDrawTool()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+Draw\+Tool (\begin{DoxyParamCaption}\item[{String}]{draw\+Tool }\end{DoxyParamCaption})}
+
+
+
+Method to allow user to switch between line and particle trace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a4efd38d997c0ddf31cc49ca18898484d}\label{class_drawing_panel_a4efd38d997c0ddf31cc49ca18898484d}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Line\+Begin@{set\+Line\+Begin}}
+\index{set\+Line\+Begin@{set\+Line\+Begin}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Line\+Begin()}{setLineBegin()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+Line\+Begin (\begin{DoxyParamCaption}\item[{Point}]{point }\end{DoxyParamCaption})}
+
+
+
+Method to set the point at the start of a drawn line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & point at the start of the line. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_abf64c73a6dced3ea8183a2354a06cae7}\label{class_drawing_panel_abf64c73a6dced3ea8183a2354a06cae7}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Line\+Finish@{set\+Line\+Finish}}
+\index{set\+Line\+Finish@{set\+Line\+Finish}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Line\+Finish()}{setLineFinish()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+Line\+Finish (\begin{DoxyParamCaption}\item[{Point}]{point }\end{DoxyParamCaption})}
+
+
+
+Method to set the point at the end of a drawn line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & point at the start of the line. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a9e295a2f6aec0c5e85240324dff07d90}\label{class_drawing_panel_a9e295a2f6aec0c5e85240324dff07d90}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Point\+Color@{set\+Point\+Color}}
+\index{set\+Point\+Color@{set\+Point\+Color}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Point\+Color()}{setPointColor()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+Point\+Color (\begin{DoxyParamCaption}\item[{Color}]{colour }\end{DoxyParamCaption})}
+
+
+
+Method to set the colour of a point in a particle trace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & colour to be set at a certain point. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a3c4886846e221ed78b1859d0d022cf8f}\label{class_drawing_panel_a3c4886846e221ed78b1859d0d022cf8f}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Point\+Count@{set\+Point\+Count}}
+\index{set\+Point\+Count@{set\+Point\+Count}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Point\+Count()}{setPointCount()}}
+{\footnotesize\ttfamily void Drawing\+Panel.\+set\+Point\+Count (\begin{DoxyParamCaption}\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Method to set the count of points drawn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & count of drawn points. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawing_panel_a7eae2c9bc64af0b4bcb177370598b3ad}\label{class_drawing_panel_a7eae2c9bc64af0b4bcb177370598b3ad}} 
+\index{Drawing\+Panel@{Drawing\+Panel}!set\+Trace\+Point@{set\+Trace\+Point}}
+\index{set\+Trace\+Point@{set\+Trace\+Point}!Drawing\+Panel@{Drawing\+Panel}}
+\subsubsection{\texorpdfstring{set\+Trace\+Point()}{setTracePoint()}}
+{\footnotesize\ttfamily boolean Drawing\+Panel.\+set\+Trace\+Point (\begin{DoxyParamCaption}\item[{Point}]{point }\end{DoxyParamCaption})}
+
+
+
+Method to set the point of trace at current point count in array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+R\+UE on success 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/Drawing\+Panel.\+java\end{DoxyCompactItemize}

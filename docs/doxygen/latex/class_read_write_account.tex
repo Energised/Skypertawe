@@ -1,0 +1,133 @@
+\hypertarget{class_read_write_account}{}\section{Read\+Write\+Account Class Reference}
+\label{class_read_write_account}\index{Read\+Write\+Account@{Read\+Write\+Account}}
+
+
+Inherits Read\+Write$<$ E $>$.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_read_write_account_a3c89be0e9259ae04b7b88de6d791f2ff}{Read\+Write\+Account} (String filename)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Setup a connection to the database and a way of querying it. \end{DoxyCompactList}\item 
+Statement \hyperlink{class_read_write_account_aec86c1bc4029bb3699c85dee12982de8}{create\+\_\+account\+\_\+table} (Connection conn, Statement stmt)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Runs an S\+QL statement to generate a new table in the db. \end{DoxyCompactList}\item 
+\hyperlink{class_account}{Account} \hyperlink{class_read_write_account_adb0ddd0ce6641f10c1b9220c670552e9}{read} (String query)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Runs a query by username on the database of accounts. \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_read_write_account_af566baef11164e567122f337ce3dc2cc}{read\+\_\+all\+\_\+accounts} ()  throws Exception     
+\begin{DoxyCompactList}\small\item\em Get an Array\+List of every account in the table. \end{DoxyCompactList}\item 
+int \hyperlink{class_read_write_account_afdac5d7a98c49a6daa71564116d3c49f}{read\+\_\+int\+\_\+column} (String query, String col)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Given a username, will return the specified col for that user but only if the column type is an int. \end{DoxyCompactList}\item 
+String \hyperlink{class_read_write_account_a088ef942f68e5e969c153b241b534ff5}{read\+\_\+string\+\_\+column} (String query, String col)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Given a username, return the specified column for that user but only if the type of that column is a string (V\+A\+R\+C\+H\+AR in S\+QL) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_account_a4cba2dcd68941a0685d952324e69b63e}\label{class_read_write_account_a4cba2dcd68941a0685d952324e69b63e}} 
+void \hyperlink{class_read_write_account_a4cba2dcd68941a0685d952324e69b63e}{write} (\hyperlink{class_account}{Account} acc\+\_\+info)  throws Exception     
+\begin{DoxyCompactList}\small\item\em acc\+\_\+info is an \hyperlink{class_account}{Account} object to store in the table \hyperlink{class_account}{Account} in that E\+X\+A\+CT order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_account_a3579e4d897bffab4b4406e18414f3835}\label{class_read_write_account_a3579e4d897bffab4b4406e18414f3835}} 
+void \hyperlink{class_read_write_account_a3579e4d897bffab4b4406e18414f3835}{write\+\_\+new\+\_\+messages\+\_\+column} (String username, int val)  throws Exception     
+\begin{DoxyCompactList}\small\item\em increment the new\+\_\+messages column by val for some username (could have made this a general int column updater but the only other int column is Account\+ID which will never be changed) (negative values work in order to reset a column) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_account_a2a0ede48891400ae63ca99f600c6899c}\label{class_read_write_account_a2a0ede48891400ae63ca99f600c6899c}} 
+void \hyperlink{class_read_write_account_a2a0ede48891400ae63ca99f600c6899c}{write\+\_\+string\+\_\+column} (String username, String col, String new\+\_\+val)  throws Exception     
+\begin{DoxyCompactList}\small\item\em updates a given column with a given value for a given username (Prepared\+Statements dont allow column names to be passed so had to do it this way) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_read_write_account_afb480d9aef80c5b153cf14e581a09fb2}\label{class_read_write_account_afb480d9aef80c5b153cf14e581a09fb2}} 
+static void \hyperlink{class_read_write_account_afb480d9aef80c5b153cf14e581a09fb2}{main} (String\mbox{[}$\,$\mbox{]} args)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Only used for testing purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_read_write_account_a3c89be0e9259ae04b7b88de6d791f2ff}\label{class_read_write_account_a3c89be0e9259ae04b7b88de6d791f2ff}} 
+\index{Read\+Write\+Account@{Read\+Write\+Account}!Read\+Write\+Account@{Read\+Write\+Account}}
+\index{Read\+Write\+Account@{Read\+Write\+Account}!Read\+Write\+Account@{Read\+Write\+Account}}
+\subsubsection{\texorpdfstring{Read\+Write\+Account()}{ReadWriteAccount()}}
+{\footnotesize\ttfamily Read\+Write\+Account.\+Read\+Write\+Account (\begin{DoxyParamCaption}\item[{String}]{filename }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Setup a connection to the database and a way of querying it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The database we want to use \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_read_write_account_aec86c1bc4029bb3699c85dee12982de8}\label{class_read_write_account_aec86c1bc4029bb3699c85dee12982de8}} 
+\index{Read\+Write\+Account@{Read\+Write\+Account}!create\+\_\+account\+\_\+table@{create\+\_\+account\+\_\+table}}
+\index{create\+\_\+account\+\_\+table@{create\+\_\+account\+\_\+table}!Read\+Write\+Account@{Read\+Write\+Account}}
+\subsubsection{\texorpdfstring{create\+\_\+account\+\_\+table()}{create\_account\_table()}}
+{\footnotesize\ttfamily Statement Read\+Write\+Account.\+create\+\_\+account\+\_\+table (\begin{DoxyParamCaption}\item[{Connection}]{conn,  }\item[{Statement}]{stmt }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Runs an S\+QL statement to generate a new table in the db. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & The connection object \\
+\hline
+{\em stmt} & A null pointing statement object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The statement object connected to the db 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_read_write_account_adb0ddd0ce6641f10c1b9220c670552e9}\label{class_read_write_account_adb0ddd0ce6641f10c1b9220c670552e9}} 
+\index{Read\+Write\+Account@{Read\+Write\+Account}!read@{read}}
+\index{read@{read}!Read\+Write\+Account@{Read\+Write\+Account}}
+\subsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account} Read\+Write\+Account.\+read (\begin{DoxyParamCaption}\item[{String}]{query }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Runs a query by username on the database of accounts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & Array\+List of one argument, the searched for username \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_account}{Account} object of the username searched for 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_read_write_account_af566baef11164e567122f337ce3dc2cc}\label{class_read_write_account_af566baef11164e567122f337ce3dc2cc}} 
+\index{Read\+Write\+Account@{Read\+Write\+Account}!read\+\_\+all\+\_\+accounts@{read\+\_\+all\+\_\+accounts}}
+\index{read\+\_\+all\+\_\+accounts@{read\+\_\+all\+\_\+accounts}!Read\+Write\+Account@{Read\+Write\+Account}}
+\subsubsection{\texorpdfstring{read\+\_\+all\+\_\+accounts()}{read\_all\_accounts()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_account}{Account}$>$ Read\+Write\+Account.\+read\+\_\+all\+\_\+accounts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Get an Array\+List of every account in the table. 
+
+\begin{DoxyReturn}{Returns}
+Array\+List of Accounts in the db 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_read_write_account_afdac5d7a98c49a6daa71564116d3c49f}\label{class_read_write_account_afdac5d7a98c49a6daa71564116d3c49f}} 
+\index{Read\+Write\+Account@{Read\+Write\+Account}!read\+\_\+int\+\_\+column@{read\+\_\+int\+\_\+column}}
+\index{read\+\_\+int\+\_\+column@{read\+\_\+int\+\_\+column}!Read\+Write\+Account@{Read\+Write\+Account}}
+\subsubsection{\texorpdfstring{read\+\_\+int\+\_\+column()}{read\_int\_column()}}
+{\footnotesize\ttfamily int Read\+Write\+Account.\+read\+\_\+int\+\_\+column (\begin{DoxyParamCaption}\item[{String}]{query,  }\item[{String}]{col }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Given a username, will return the specified col for that user but only if the column type is an int. 
+
+You can get the following columns\+: Account\+ID \& new\+\_\+messages \mbox{\Hypertarget{class_read_write_account_a088ef942f68e5e969c153b241b534ff5}\label{class_read_write_account_a088ef942f68e5e969c153b241b534ff5}} 
+\index{Read\+Write\+Account@{Read\+Write\+Account}!read\+\_\+string\+\_\+column@{read\+\_\+string\+\_\+column}}
+\index{read\+\_\+string\+\_\+column@{read\+\_\+string\+\_\+column}!Read\+Write\+Account@{Read\+Write\+Account}}
+\subsubsection{\texorpdfstring{read\+\_\+string\+\_\+column()}{read\_string\_column()}}
+{\footnotesize\ttfamily String Read\+Write\+Account.\+read\+\_\+string\+\_\+column (\begin{DoxyParamCaption}\item[{String}]{query,  }\item[{String}]{col }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Given a username, return the specified column for that user but only if the type of that column is a string (V\+A\+R\+C\+H\+AR in S\+QL) 
+
+You can get the following columns\+: username, first\+\_\+name, surname, mob\+\_\+num, dob, city, prev\+\_\+session, profile\+\_\+img 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/Read\+Write\+Account.\+java\end{DoxyCompactItemize}

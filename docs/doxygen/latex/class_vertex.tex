@@ -1,0 +1,170 @@
+\hypertarget{class_vertex}{}\section{Vertex Class Reference}
+\label{class_vertex}\index{Vertex@{Vertex}}
+
+
+The \hyperlink{class_vertex}{Vertex} class will be used in the \hyperlink{class_graph}{Graph} and \hyperlink{class_edge}{Edge} classes.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vertex_a55f0a6d7d075b9d1881ebaaea3859970}{Vertex} (String username)
+\begin{DoxyCompactList}\small\item\em constructor for a vertex \end{DoxyCompactList}\item 
+void \hyperlink{class_vertex_a77dbe86276566b77bdb2d631472660cf}{add\+Edge} (\hyperlink{class_edge}{Edge} edge)
+\begin{DoxyCompactList}\small\item\em add an edge to the vertex\textquotesingle{}s arraylist of edges that its involved in \end{DoxyCompactList}\item 
+boolean \hyperlink{class_vertex_a4a77d1c66be46bef636154798bb3b96d}{contains\+Edge} (\hyperlink{class_edge}{Edge} edge)
+\begin{DoxyCompactList}\small\item\em check if the edges arraylist contains a certain edge \end{DoxyCompactList}\item 
+\hyperlink{class_edge}{Edge} \hyperlink{class_vertex_a428fe1ef66c8422b3af1aa4566360f13}{get\+Edge} (int index)
+\begin{DoxyCompactList}\small\item\em return the edge at specified index \end{DoxyCompactList}\item 
+void \hyperlink{class_vertex_a74032add8df85233c3979374471a3141}{remove\+Edge} (\hyperlink{class_edge}{Edge} edge)
+\begin{DoxyCompactList}\small\item\em remove edge from the arraylist \end{DoxyCompactList}\item 
+int \hyperlink{class_vertex_a3da0cb5ceb6e70ffbdfd84941fa69b4a}{get\+Number\+Edges} ()
+\begin{DoxyCompactList}\small\item\em get number of edges \end{DoxyCompactList}\item 
+String \hyperlink{class_vertex_a24b931258451256742b50b09b5a8e13f}{get\+Username} ()
+\begin{DoxyCompactList}\small\item\em returns the username of vertex \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_edge}{Edge} $>$ \hyperlink{class_vertex_a25a9ddc7d963c1f7a762d8f6b68376dc}{get\+Edges} ()
+\begin{DoxyCompactList}\small\item\em return arraylist of edges for this vertex \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_vertex}{Vertex} class will be used in the \hyperlink{class_graph}{Graph} and \hyperlink{class_edge}{Edge} classes. 
+
+It also uses the \hyperlink{class_edge}{Edge} class. A vertex has a username to identify it by, and an arraylist of edges that it is involved in
+
+\begin{DoxyAuthor}{Author}
+830169 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_vertex_a55f0a6d7d075b9d1881ebaaea3859970}\label{class_vertex_a55f0a6d7d075b9d1881ebaaea3859970}} 
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily Vertex.\+Vertex (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption})}
+
+
+
+constructor for a vertex 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username that corresponds to the vertex \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vertex_a77dbe86276566b77bdb2d631472660cf}\label{class_vertex_a77dbe86276566b77bdb2d631472660cf}} 
+\index{Vertex@{Vertex}!add\+Edge@{add\+Edge}}
+\index{add\+Edge@{add\+Edge}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{add\+Edge()}{addEdge()}}
+{\footnotesize\ttfamily void Vertex.\+add\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_edge}{Edge}}]{edge }\end{DoxyParamCaption})}
+
+
+
+add an edge to the vertex\textquotesingle{}s arraylist of edges that its involved in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & the edge to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vertex_a4a77d1c66be46bef636154798bb3b96d}\label{class_vertex_a4a77d1c66be46bef636154798bb3b96d}} 
+\index{Vertex@{Vertex}!contains\+Edge@{contains\+Edge}}
+\index{contains\+Edge@{contains\+Edge}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{contains\+Edge()}{containsEdge()}}
+{\footnotesize\ttfamily boolean Vertex.\+contains\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_edge}{Edge}}]{edge }\end{DoxyParamCaption})}
+
+
+
+check if the edges arraylist contains a certain edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & the edge being searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true if the edge exists 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a428fe1ef66c8422b3af1aa4566360f13}\label{class_vertex_a428fe1ef66c8422b3af1aa4566360f13}} 
+\index{Vertex@{Vertex}!get\+Edge@{get\+Edge}}
+\index{get\+Edge@{get\+Edge}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Edge()}{getEdge()}}
+{\footnotesize\ttfamily \hyperlink{class_edge}{Edge} Vertex.\+get\+Edge (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+return the edge at specified index 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the arraylist that the edge is located at \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns an edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a25a9ddc7d963c1f7a762d8f6b68376dc}\label{class_vertex_a25a9ddc7d963c1f7a762d8f6b68376dc}} 
+\index{Vertex@{Vertex}!get\+Edges@{get\+Edges}}
+\index{get\+Edges@{get\+Edges}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Edges()}{getEdges()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_edge}{Edge}$>$ Vertex.\+get\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+return arraylist of edges for this vertex 
+
+\begin{DoxyReturn}{Returns}
+arraylist containing all edges this vertex is involved in 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a3da0cb5ceb6e70ffbdfd84941fa69b4a}\label{class_vertex_a3da0cb5ceb6e70ffbdfd84941fa69b4a}} 
+\index{Vertex@{Vertex}!get\+Number\+Edges@{get\+Number\+Edges}}
+\index{get\+Number\+Edges@{get\+Number\+Edges}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Number\+Edges()}{getNumberEdges()}}
+{\footnotesize\ttfamily int Vertex.\+get\+Number\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get number of edges 
+
+\begin{DoxyReturn}{Returns}
+the number of edges this vertex is involved in 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a24b931258451256742b50b09b5a8e13f}\label{class_vertex_a24b931258451256742b50b09b5a8e13f}} 
+\index{Vertex@{Vertex}!get\+Username@{get\+Username}}
+\index{get\+Username@{get\+Username}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Username()}{getUsername()}}
+{\footnotesize\ttfamily String Vertex.\+get\+Username (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns the username of vertex 
+
+\begin{DoxyReturn}{Returns}
+username of the vertex 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a74032add8df85233c3979374471a3141}\label{class_vertex_a74032add8df85233c3979374471a3141}} 
+\index{Vertex@{Vertex}!remove\+Edge@{remove\+Edge}}
+\index{remove\+Edge@{remove\+Edge}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{remove\+Edge()}{removeEdge()}}
+{\footnotesize\ttfamily void Vertex.\+remove\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_edge}{Edge}}]{edge }\end{DoxyParamCaption})}
+
+
+
+remove edge from the arraylist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & edge to be removed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/Vertex.\+java\end{DoxyCompactItemize}

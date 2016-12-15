@@ -1,0 +1,8 @@
+Contributions Report – Carl Thomas
+For the group assignment, I took the role of Planning and Quality Manager, this role requires me to ensure the quality of work produced by the group was of a high standard and check if the team is following the correct protocols in terms of meeting and whether or not everyone was at an equal level of understanding with the task in hand. Going from design to implementation, we made some changes to our program in the interest of saving time and simplifying the hierarchies, as a group we omitted the VideoMessage, PhotoMessage and their respective GUI classes as it was not necessary to include them in the implementation.
+For the implementation process, I contributed the following classes:
+* GUI
+* MessageGUI
+* LoginGUI
+* CreateAccountGUI
+Despite initial success with creating the GUI and LoginGUI classes, I later had trouble with figuring out ideal layouts for the remaining classes due to my unfamiliarity in the code required for making GUIs. However, after referencing the Java API, I was able to create and implement these classes using what I believe were ideal layouts. Another problem I faced was trying to figure out how to link the GUI classes together in one hierarchy, however other members of the group were willing to assist me in figuring it out and getting it to work.

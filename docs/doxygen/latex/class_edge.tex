@@ -1,0 +1,229 @@
+\hypertarget{class_edge}{}\section{Edge Class Reference}
+\label{class_edge}\index{Edge@{Edge}}
+
+
+The \hyperlink{class_edge}{Edge} class is used in the \hyperlink{class_graph}{Graph} and \hyperlink{class_vertex}{Vertex} classes.  
+
+
+Inheritance diagram for Edge\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_edge}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_edge_ad763d55acaac9dea971255819e8fde06}{Edge} (\hyperlink{class_vertex}{Vertex} one, \hyperlink{class_vertex}{Vertex} two)
+\begin{DoxyCompactList}\small\item\em constructor for edge \end{DoxyCompactList}\item 
+\hyperlink{class_edge_a5b282bda21b36ca17d9c3614943d5387}{Edge} (\hyperlink{class_vertex}{Vertex} one, \hyperlink{class_vertex}{Vertex} two, int weight)
+\begin{DoxyCompactList}\small\item\em alternative constructor for edge \end{DoxyCompactList}\item 
+\hyperlink{class_vertex}{Vertex} \hyperlink{class_edge_abf42bcb6e0c33e5a66e73170d4591522}{get\+Vertices} (\hyperlink{class_vertex}{Vertex} current)
+\begin{DoxyCompactList}\small\item\em return the neighbour vertex along this edge \end{DoxyCompactList}\item 
+\hyperlink{class_vertex}{Vertex} \hyperlink{class_edge_ab980e6d28be975d55e1ccffaffd173fd}{get\+One} ()
+\begin{DoxyCompactList}\small\item\em getter for the first vertex of this edge \end{DoxyCompactList}\item 
+\hyperlink{class_vertex}{Vertex} \hyperlink{class_edge_a676c0a445a28d7da2b1efd4e612f11eb}{get\+Two} ()
+\begin{DoxyCompactList}\small\item\em getter for the second vertex of this edge \end{DoxyCompactList}\item 
+int \hyperlink{class_edge_a963d963b098f2329738cde01942be520}{get\+Weight} ()
+\begin{DoxyCompactList}\small\item\em getter for the weight of this edge \end{DoxyCompactList}\item 
+void \hyperlink{class_edge_acfaab81fcf6ebc68aaa268bf1f14cdea}{set\+Weight} (int i)
+\begin{DoxyCompactList}\small\item\em setter for the weight of this edge \end{DoxyCompactList}\item 
+int \hyperlink{class_edge_a98faa9ff26104cffc051c241263b61c9}{compare\+To} (\hyperlink{class_edge}{Edge} other)
+\begin{DoxyCompactList}\small\item\em compare the weights of two edges, returns the difference in weights of this edge and another edge \end{DoxyCompactList}\item 
+String \hyperlink{class_edge_aff5a34ad7c7b523fb46af257e6a16a4b}{to\+String} ()
+\begin{DoxyCompactList}\small\item\em return a string representing the edge \end{DoxyCompactList}\item 
+int \hyperlink{class_edge_a3d641ff5fdd19b6ce360f591bd5bed54}{hash\+Code} ()
+\begin{DoxyCompactList}\small\item\em return the edge as a hashcode int \end{DoxyCompactList}\item 
+boolean \hyperlink{class_edge_a0c7e6548b7a43da81c0c0d6781d5ea07}{equals} (Object other)
+\begin{DoxyCompactList}\small\item\em compare with another edge and return true if they have same vertices \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_edge}{Edge} class is used in the \hyperlink{class_graph}{Graph} and \hyperlink{class_vertex}{Vertex} classes. 
+
+It also uses the \hyperlink{class_vertex}{Vertex} class. An edge consists of the two vertices that the edge is between, and a weight of the edge.
+
+\begin{DoxyAuthor}{Author}
+830169 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_edge_ad763d55acaac9dea971255819e8fde06}\label{class_edge_ad763d55acaac9dea971255819e8fde06}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{Edge()}{Edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Edge.\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}}]{one,  }\item[{\hyperlink{class_vertex}{Vertex}}]{two }\end{DoxyParamCaption})}
+
+
+
+constructor for edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em one} & the first vertex involved in this edge \\
+\hline
+{\em two} & the second vertex involved in this edge \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_a5b282bda21b36ca17d9c3614943d5387}\label{class_edge_a5b282bda21b36ca17d9c3614943d5387}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{Edge()}{Edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Edge.\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}}]{one,  }\item[{\hyperlink{class_vertex}{Vertex}}]{two,  }\item[{int}]{weight }\end{DoxyParamCaption})}
+
+
+
+alternative constructor for edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em one} & the first vertex involved in this edge \\
+\hline
+{\em two} & the second vertex involved in this edge \\
+\hline
+{\em weight} & the weight of this edge \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_a98faa9ff26104cffc051c241263b61c9}\label{class_edge_a98faa9ff26104cffc051c241263b61c9}} 
+\index{Edge@{Edge}!compare\+To@{compare\+To}}
+\index{compare\+To@{compare\+To}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{compare\+To()}{compareTo()}}
+{\footnotesize\ttfamily int Edge.\+compare\+To (\begin{DoxyParamCaption}\item[{\hyperlink{class_edge}{Edge}}]{other }\end{DoxyParamCaption})}
+
+
+
+compare the weights of two edges, returns the difference in weights of this edge and another edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the difference in weights of this edge and another edge \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_a0c7e6548b7a43da81c0c0d6781d5ea07}\label{class_edge_a0c7e6548b7a43da81c0c0d6781d5ea07}} 
+\index{Edge@{Edge}!equals@{equals}}
+\index{equals@{equals}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily boolean Edge.\+equals (\begin{DoxyParamCaption}\item[{Object}]{other }\end{DoxyParamCaption})}
+
+
+
+compare with another edge and return true if they have same vertices 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the other edge to compare to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true if the vertices of both edges are the same 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_ab980e6d28be975d55e1ccffaffd173fd}\label{class_edge_ab980e6d28be975d55e1ccffaffd173fd}} 
+\index{Edge@{Edge}!get\+One@{get\+One}}
+\index{get\+One@{get\+One}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+One()}{getOne()}}
+{\footnotesize\ttfamily \hyperlink{class_vertex}{Vertex} Edge.\+get\+One (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for the first vertex of this edge 
+
+\begin{DoxyReturn}{Returns}
+the first vertex involved in this edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a676c0a445a28d7da2b1efd4e612f11eb}\label{class_edge_a676c0a445a28d7da2b1efd4e612f11eb}} 
+\index{Edge@{Edge}!get\+Two@{get\+Two}}
+\index{get\+Two@{get\+Two}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Two()}{getTwo()}}
+{\footnotesize\ttfamily \hyperlink{class_vertex}{Vertex} Edge.\+get\+Two (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for the second vertex of this edge 
+
+\begin{DoxyReturn}{Returns}
+the second vertex involved in this edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_abf42bcb6e0c33e5a66e73170d4591522}\label{class_edge_abf42bcb6e0c33e5a66e73170d4591522}} 
+\index{Edge@{Edge}!get\+Vertices@{get\+Vertices}}
+\index{get\+Vertices@{get\+Vertices}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Vertices()}{getVertices()}}
+{\footnotesize\ttfamily \hyperlink{class_vertex}{Vertex} Edge.\+get\+Vertices (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}}]{current }\end{DoxyParamCaption})}
+
+
+
+return the neighbour vertex along this edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current} & the current vertex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the current vertex whether it is the first or second vertex of an edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a963d963b098f2329738cde01942be520}\label{class_edge_a963d963b098f2329738cde01942be520}} 
+\index{Edge@{Edge}!get\+Weight@{get\+Weight}}
+\index{get\+Weight@{get\+Weight}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Weight()}{getWeight()}}
+{\footnotesize\ttfamily int Edge.\+get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for the weight of this edge 
+
+\begin{DoxyReturn}{Returns}
+the integer value of the weight of this edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a3d641ff5fdd19b6ce360f591bd5bed54}\label{class_edge_a3d641ff5fdd19b6ce360f591bd5bed54}} 
+\index{Edge@{Edge}!hash\+Code@{hash\+Code}}
+\index{hash\+Code@{hash\+Code}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{hash\+Code()}{hashCode()}}
+{\footnotesize\ttfamily int Edge.\+hash\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+return the edge as a hashcode int 
+
+\begin{DoxyReturn}{Returns}
+the hashcode representation of this edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_acfaab81fcf6ebc68aaa268bf1f14cdea}\label{class_edge_acfaab81fcf6ebc68aaa268bf1f14cdea}} 
+\index{Edge@{Edge}!set\+Weight@{set\+Weight}}
+\index{set\+Weight@{set\+Weight}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{set\+Weight()}{setWeight()}}
+{\footnotesize\ttfamily void Edge.\+set\+Weight (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+setter for the weight of this edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the int value to set the weight of this edge to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_aff5a34ad7c7b523fb46af257e6a16a4b}\label{class_edge_aff5a34ad7c7b523fb46af257e6a16a4b}} 
+\index{Edge@{Edge}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String Edge.\+to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+return a string representing the edge 
+
+\begin{DoxyReturn}{Returns}
+a string representation of the edge 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/Edge.\+java\end{DoxyCompactItemize}

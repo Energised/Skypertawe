@@ -1,0 +1,147 @@
+\hypertarget{class_read_write_friends}{}\section{Read\+Write\+Friends Class Reference}
+\label{class_read_write_friends}\index{Read\+Write\+Friends@{Read\+Write\+Friends}}
+
+
+Inherits Read\+Write$<$ E $>$.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_read_write_friends_afccd5d07c3f694a74617a749ee4d5d09}{Read\+Write\+Friends} (String filename)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Sets up a connection to the db. \end{DoxyCompactList}\item 
+Statement \hyperlink{class_read_write_friends_abd8ff6b1154e07ae729ce151d7160fa9}{create\+\_\+friends\+\_\+table} (Connection conn, Statement stmt)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Runs an S\+QL statement to create the Friends table. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_friends_a1a30e3f1adc90e7e69c3c4855dc00738}\label{class_read_write_friends_a1a30e3f1adc90e7e69c3c4855dc00738}} 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_read_write_friends_a1a30e3f1adc90e7e69c3c4855dc00738}{read} (String query)  throws Exception     
+\begin{DoxyCompactList}\small\item\em unused method \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_read_write_friends_a1ca7ef459d275d7de8274ce119e4895d}{get\+\_\+all\+\_\+friends} ()  throws Exception     
+\item 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_read_write_friends_ab55c8c1b2fc693bad5da1da3774dfab2}{get\+\_\+all\+\_\+requests} (\hyperlink{class_account}{Account} acc)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Given some account, computes all friend requests they\textquotesingle{}ll have recieved. \end{DoxyCompactList}\item 
+\hyperlink{class_account}{Account} \hyperlink{class_read_write_friends_a56f74832f8bc0bee6c7d48aad84878eb}{get\+\_\+account\+\_\+from\+\_\+id} (int acc\+\_\+id)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Given an Account\+ID, pull information from the database and generate an account object. \end{DoxyCompactList}\item 
+void \hyperlink{class_read_write_friends_ae754f5aa3e65cde59ad619a56f7b318e}{write} (Array\+List$<$ \hyperlink{class_account}{Account} $>$ to\+\_\+add)  throws Exception     
+\begin{DoxyCompactList}\small\item\em to\+\_\+add will contain\+: \mbox{[}Account1, Account2\mbox{]} where both are \hyperlink{class_account}{Account} objects \end{DoxyCompactList}\item 
+int \hyperlink{class_read_write_friends_abbe5f06f2119c20d3015b91b4b1c728f}{check\+\_\+friends\+\_\+status} (\hyperlink{class_account}{Account} a1, \hyperlink{class_account}{Account} a2)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Determines if 2 accounts have a pending or accepted friendship relation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_read_write_friends_aee917f985979bdf89bb55b84cb52017c}\label{class_read_write_friends_aee917f985979bdf89bb55b84cb52017c}} 
+int \hyperlink{class_read_write_friends_aee917f985979bdf89bb55b84cb52017c}{get\+\_\+acc\+\_\+id} (\hyperlink{class_account}{Account} acc)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Get information about an account given the desired column and the relevent \hyperlink{class_account}{Account} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_read_write_friends_ac2039776a76fdbdc416cfa3cd16495e6}\label{class_read_write_friends_ac2039776a76fdbdc416cfa3cd16495e6}} 
+static void \hyperlink{class_read_write_friends_ac2039776a76fdbdc416cfa3cd16495e6}{main} (String\mbox{[}$\,$\mbox{]} args)  throws Exception     
+\begin{DoxyCompactList}\small\item\em Testing for \hyperlink{class_read_write_friends}{Read\+Write\+Friends} functionality. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_read_write_friends_afccd5d07c3f694a74617a749ee4d5d09}\label{class_read_write_friends_afccd5d07c3f694a74617a749ee4d5d09}} 
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\subsubsection{\texorpdfstring{Read\+Write\+Friends()}{ReadWriteFriends()}}
+{\footnotesize\ttfamily Read\+Write\+Friends.\+Read\+Write\+Friends (\begin{DoxyParamCaption}\item[{String}]{filename }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Sets up a connection to the db. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The db we want to use \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_read_write_friends_abbe5f06f2119c20d3015b91b4b1c728f}\label{class_read_write_friends_abbe5f06f2119c20d3015b91b4b1c728f}} 
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!check\+\_\+friends\+\_\+status@{check\+\_\+friends\+\_\+status}}
+\index{check\+\_\+friends\+\_\+status@{check\+\_\+friends\+\_\+status}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\subsubsection{\texorpdfstring{check\+\_\+friends\+\_\+status()}{check\_friends\_status()}}
+{\footnotesize\ttfamily int Read\+Write\+Friends.\+check\+\_\+friends\+\_\+status (\begin{DoxyParamCaption}\item[{\hyperlink{class_account}{Account}}]{a1,  }\item[{\hyperlink{class_account}{Account}}]{a2 }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Determines if 2 accounts have a pending or accepted friendship relation. 
+
+if 1 is returned then friendship is P\+E\+N\+D\+I\+NG if 2 is returned then friendship is A\+C\+C\+E\+P\+T\+ED \mbox{\Hypertarget{class_read_write_friends_abd8ff6b1154e07ae729ce151d7160fa9}\label{class_read_write_friends_abd8ff6b1154e07ae729ce151d7160fa9}} 
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!create\+\_\+friends\+\_\+table@{create\+\_\+friends\+\_\+table}}
+\index{create\+\_\+friends\+\_\+table@{create\+\_\+friends\+\_\+table}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\subsubsection{\texorpdfstring{create\+\_\+friends\+\_\+table()}{create\_friends\_table()}}
+{\footnotesize\ttfamily Statement Read\+Write\+Friends.\+create\+\_\+friends\+\_\+table (\begin{DoxyParamCaption}\item[{Connection}]{conn,  }\item[{Statement}]{stmt }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Runs an S\+QL statement to create the Friends table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & The connection object to the db \\
+\hline
+{\em stmt} & Null pointing statement to be set up \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the setup statement object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_read_write_friends_a56f74832f8bc0bee6c7d48aad84878eb}\label{class_read_write_friends_a56f74832f8bc0bee6c7d48aad84878eb}} 
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!get\+\_\+account\+\_\+from\+\_\+id@{get\+\_\+account\+\_\+from\+\_\+id}}
+\index{get\+\_\+account\+\_\+from\+\_\+id@{get\+\_\+account\+\_\+from\+\_\+id}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\subsubsection{\texorpdfstring{get\+\_\+account\+\_\+from\+\_\+id()}{get\_account\_from\_id()}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account} Read\+Write\+Friends.\+get\+\_\+account\+\_\+from\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{acc\+\_\+id }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Given an Account\+ID, pull information from the database and generate an account object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em acc\+\_\+id} & The Account\+ID we\textquotesingle{}re using \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The account we want 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_read_write_friends_a1ca7ef459d275d7de8274ce119e4895d}\label{class_read_write_friends_a1ca7ef459d275d7de8274ce119e4895d}} 
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!get\+\_\+all\+\_\+friends@{get\+\_\+all\+\_\+friends}}
+\index{get\+\_\+all\+\_\+friends@{get\+\_\+all\+\_\+friends}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\subsubsection{\texorpdfstring{get\+\_\+all\+\_\+friends()}{get\_all\_friends()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_account}{Account}$>$ Read\+Write\+Friends.\+get\+\_\+all\+\_\+friends (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+
+\begin{DoxyItemize}
+\item get a table of all friendships stored in the database
+\item return list of account objects where\+: \mbox{[}acc1, acc2, acc1, acc5, acc3, acc6\mbox{]} means \+: acc1 and acc2 are F\+R\+I\+E\+N\+DS \+: acc1 and acc5 are F\+R\+I\+E\+N\+DS \+: acc3 and acc6 are F\+R\+I\+E\+N\+DS 
+\end{DoxyItemize}\mbox{\Hypertarget{class_read_write_friends_ab55c8c1b2fc693bad5da1da3774dfab2}\label{class_read_write_friends_ab55c8c1b2fc693bad5da1da3774dfab2}} 
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!get\+\_\+all\+\_\+requests@{get\+\_\+all\+\_\+requests}}
+\index{get\+\_\+all\+\_\+requests@{get\+\_\+all\+\_\+requests}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\subsubsection{\texorpdfstring{get\+\_\+all\+\_\+requests()}{get\_all\_requests()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_account}{Account}$>$ Read\+Write\+Friends.\+get\+\_\+all\+\_\+requests (\begin{DoxyParamCaption}\item[{\hyperlink{class_account}{Account}}]{acc }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Given some account, computes all friend requests they\textquotesingle{}ll have recieved. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em acc} & The account we\textquotesingle{}re checking \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List of all pending friend requests for some \hyperlink{class_account}{Account} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_read_write_friends_ae754f5aa3e65cde59ad619a56f7b318e}\label{class_read_write_friends_ae754f5aa3e65cde59ad619a56f7b318e}} 
+\index{Read\+Write\+Friends@{Read\+Write\+Friends}!write@{write}}
+\index{write@{write}!Read\+Write\+Friends@{Read\+Write\+Friends}}
+\subsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Read\+Write\+Friends.\+write (\begin{DoxyParamCaption}\item[{Array\+List$<$ \hyperlink{class_account}{Account} $>$}]{to\+\_\+add }\end{DoxyParamCaption}) throws Exception}
+
+
+
+to\+\_\+add will contain\+: \mbox{[}Account1, Account2\mbox{]} where both are \hyperlink{class_account}{Account} objects 
+
+inserts a record for two accounts into the database checks if it\textquotesingle{}s a request or an acceptance notifys/updates accordingally 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/Read\+Write\+Friends.\+java\end{DoxyCompactItemize}

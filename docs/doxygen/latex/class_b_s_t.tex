@@ -1,0 +1,206 @@
+\hypertarget{class_b_s_t}{}\section{B\+ST Class Reference}
+\label{class_b_s_t}\index{B\+ST@{B\+ST}}
+
+
+The \hyperlink{class_b_s_t}{B\+ST} class creates a binary search tree that allows \hyperlink{class_account}{Account} objects to be added as the elementsof \hyperlink{class_b_s_t_node}{B\+S\+T\+Node} objects.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_b_s_t_a618399aa893cac01fd09ee30329002da}{add\+Account} (\hyperlink{class_account}{Account} account)
+\begin{DoxyCompactList}\small\item\em attempt to add an account to the tree \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_b_s_t_a6e9512f119e63d6179adeb1cbe53e668}{search\+Beginning\+With} (String search\+String)
+\begin{DoxyCompactList}\small\item\em begin searching for users who\textquotesingle{}s username begins with the string being searched for \end{DoxyCompactList}\item 
+void \hyperlink{class_b_s_t_a25a44d8679e06abada215f152dab7546}{print\+Alphabetical} (\hyperlink{class_b_s_t_node}{B\+S\+T\+Node} temp)
+\begin{DoxyCompactList}\small\item\em print \hyperlink{class_account}{Account} usernames alphabetically \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_b_s_t_a8c2f9ab541fcf9566854b84ee5e9c97c}{get\+All\+Users} ()
+\begin{DoxyCompactList}\small\item\em resets the search\+Result arraylist, calls a method to add all \hyperlink{class_account}{Account} objects to the arraylist, then returns the arraylist \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_b_s_t_a1474f85085f916fcc3c31ed639467ba6}{search\+Exact} (String search\+String)
+\begin{DoxyCompactList}\small\item\em returns an array containing the one \hyperlink{class_account}{Account} that matches the search string exactly, empty if no match \end{DoxyCompactList}\item 
+void \hyperlink{class_b_s_t_a2241cab2084ec74baea6feef5cf2df34}{perform\+Exact\+Search} (String search\+String, \hyperlink{class_b_s_t_node}{B\+S\+T\+Node} temp)
+\begin{DoxyCompactList}\small\item\em performs the search for an exact match \end{DoxyCompactList}\item 
+Array\+List$<$ \hyperlink{class_account}{Account} $>$ \hyperlink{class_b_s_t_a540417596be03377db2b2e86bfa29187}{search\+Contains} (String search\+String)
+\begin{DoxyCompactList}\small\item\em resets the search\+Result arraylist, calls method to perform search, returns arraylist of \hyperlink{class_account}{Account} objects that contain the string \end{DoxyCompactList}\item 
+void \hyperlink{class_b_s_t_a9bc75db08a0e8fe2bd80f3c5c7c59205}{add\+Accounts\+From\+Array\+List} (Array\+List$<$ \hyperlink{class_account}{Account} $>$ accounts)
+\begin{DoxyCompactList}\small\item\em add accounts from an Array\+List$<$\+Account$>$ to the \hyperlink{class_b_s_t}{B\+ST} \end{DoxyCompactList}\item 
+int \hyperlink{class_b_s_t_a7efc306d687afb24a2c79bdd15c2e1fd}{get\+Number\+Nodes} ()
+\begin{DoxyCompactList}\small\item\em getter for number of nodes \end{DoxyCompactList}\item 
+\hyperlink{class_b_s_t_node}{B\+S\+T\+Node} \hyperlink{class_b_s_t_a5d06adaf42f8e1d7f032a1b3be4cd813}{get\+Root} ()
+\begin{DoxyCompactList}\small\item\em getter for the root of the tree \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_b_s_t}{B\+ST} class creates a binary search tree that allows \hyperlink{class_account}{Account} objects to be added as the elementsof \hyperlink{class_b_s_t_node}{B\+S\+T\+Node} objects. 
+
+\hyperlink{class_b_s_t}{B\+ST} has 4 different ways to retrieve \hyperlink{class_account}{Account} objects from the tree.
+
+\begin{DoxyAuthor}{Author}
+830169 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_s_t_a618399aa893cac01fd09ee30329002da}\label{class_b_s_t_a618399aa893cac01fd09ee30329002da}} 
+\index{B\+ST@{B\+ST}!add\+Account@{add\+Account}}
+\index{add\+Account@{add\+Account}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{add\+Account()}{addAccount()}}
+{\footnotesize\ttfamily void B\+S\+T.\+add\+Account (\begin{DoxyParamCaption}\item[{\hyperlink{class_account}{Account}}]{account }\end{DoxyParamCaption})}
+
+
+
+attempt to add an account to the tree 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & the account to add to the tree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_b_s_t_a9bc75db08a0e8fe2bd80f3c5c7c59205}\label{class_b_s_t_a9bc75db08a0e8fe2bd80f3c5c7c59205}} 
+\index{B\+ST@{B\+ST}!add\+Accounts\+From\+Array\+List@{add\+Accounts\+From\+Array\+List}}
+\index{add\+Accounts\+From\+Array\+List@{add\+Accounts\+From\+Array\+List}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{add\+Accounts\+From\+Array\+List()}{addAccountsFromArrayList()}}
+{\footnotesize\ttfamily void B\+S\+T.\+add\+Accounts\+From\+Array\+List (\begin{DoxyParamCaption}\item[{Array\+List$<$ \hyperlink{class_account}{Account} $>$}]{accounts }\end{DoxyParamCaption})}
+
+
+
+add accounts from an Array\+List$<$\+Account$>$ to the \hyperlink{class_b_s_t}{B\+ST} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em accounts} & arraylist of \hyperlink{class_account}{Account} objects to be added to the tree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_b_s_t_a8c2f9ab541fcf9566854b84ee5e9c97c}\label{class_b_s_t_a8c2f9ab541fcf9566854b84ee5e9c97c}} 
+\index{B\+ST@{B\+ST}!get\+All\+Users@{get\+All\+Users}}
+\index{get\+All\+Users@{get\+All\+Users}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{get\+All\+Users()}{getAllUsers()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_account}{Account}$>$ B\+S\+T.\+get\+All\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+resets the search\+Result arraylist, calls a method to add all \hyperlink{class_account}{Account} objects to the arraylist, then returns the arraylist 
+
+\begin{DoxyReturn}{Returns}
+arraylist of all \hyperlink{class_account}{Account} objects in the tree, ordered alphabetically by username 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a7efc306d687afb24a2c79bdd15c2e1fd}\label{class_b_s_t_a7efc306d687afb24a2c79bdd15c2e1fd}} 
+\index{B\+ST@{B\+ST}!get\+Number\+Nodes@{get\+Number\+Nodes}}
+\index{get\+Number\+Nodes@{get\+Number\+Nodes}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{get\+Number\+Nodes()}{getNumberNodes()}}
+{\footnotesize\ttfamily int B\+S\+T.\+get\+Number\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for number of nodes 
+
+\begin{DoxyReturn}{Returns}
+the number of nodes in the tree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a5d06adaf42f8e1d7f032a1b3be4cd813}\label{class_b_s_t_a5d06adaf42f8e1d7f032a1b3be4cd813}} 
+\index{B\+ST@{B\+ST}!get\+Root@{get\+Root}}
+\index{get\+Root@{get\+Root}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{get\+Root()}{getRoot()}}
+{\footnotesize\ttfamily \hyperlink{class_b_s_t_node}{B\+S\+T\+Node} B\+S\+T.\+get\+Root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for the root of the tree 
+
+\begin{DoxyReturn}{Returns}
+a reference to the root of the tree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a2241cab2084ec74baea6feef5cf2df34}\label{class_b_s_t_a2241cab2084ec74baea6feef5cf2df34}} 
+\index{B\+ST@{B\+ST}!perform\+Exact\+Search@{perform\+Exact\+Search}}
+\index{perform\+Exact\+Search@{perform\+Exact\+Search}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{perform\+Exact\+Search()}{performExactSearch()}}
+{\footnotesize\ttfamily void B\+S\+T.\+perform\+Exact\+Search (\begin{DoxyParamCaption}\item[{String}]{search\+String,  }\item[{\hyperlink{class_b_s_t_node}{B\+S\+T\+Node}}]{temp }\end{DoxyParamCaption})}
+
+
+
+performs the search for an exact match 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+String} & string being searched for \\
+\hline
+{\em temp} & the node reference that allows the tree to recursively call the method to traverse the tree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_b_s_t_a25a44d8679e06abada215f152dab7546}\label{class_b_s_t_a25a44d8679e06abada215f152dab7546}} 
+\index{B\+ST@{B\+ST}!print\+Alphabetical@{print\+Alphabetical}}
+\index{print\+Alphabetical@{print\+Alphabetical}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{print\+Alphabetical()}{printAlphabetical()}}
+{\footnotesize\ttfamily void B\+S\+T.\+print\+Alphabetical (\begin{DoxyParamCaption}\item[{\hyperlink{class_b_s_t_node}{B\+S\+T\+Node}}]{temp }\end{DoxyParamCaption})}
+
+
+
+print \hyperlink{class_account}{Account} usernames alphabetically 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & the node reference that allows the tree to recursively call the method to traverse the tree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_b_s_t_a6e9512f119e63d6179adeb1cbe53e668}\label{class_b_s_t_a6e9512f119e63d6179adeb1cbe53e668}} 
+\index{B\+ST@{B\+ST}!search\+Beginning\+With@{search\+Beginning\+With}}
+\index{search\+Beginning\+With@{search\+Beginning\+With}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{search\+Beginning\+With()}{searchBeginningWith()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_account}{Account}$>$ B\+S\+T.\+search\+Beginning\+With (\begin{DoxyParamCaption}\item[{String}]{search\+String }\end{DoxyParamCaption})}
+
+
+
+begin searching for users who\textquotesingle{}s username begins with the string being searched for 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+String} & the string to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the arraylist of accounts that were found by the search 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a540417596be03377db2b2e86bfa29187}\label{class_b_s_t_a540417596be03377db2b2e86bfa29187}} 
+\index{B\+ST@{B\+ST}!search\+Contains@{search\+Contains}}
+\index{search\+Contains@{search\+Contains}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{search\+Contains()}{searchContains()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_account}{Account}$>$ B\+S\+T.\+search\+Contains (\begin{DoxyParamCaption}\item[{String}]{search\+String }\end{DoxyParamCaption})}
+
+
+
+resets the search\+Result arraylist, calls method to perform search, returns arraylist of \hyperlink{class_account}{Account} objects that contain the string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+String} & string being searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+arraylist of \hyperlink{class_account}{Account} objects who\textquotesingle{}s usernames contain the search string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a1474f85085f916fcc3c31ed639467ba6}\label{class_b_s_t_a1474f85085f916fcc3c31ed639467ba6}} 
+\index{B\+ST@{B\+ST}!search\+Exact@{search\+Exact}}
+\index{search\+Exact@{search\+Exact}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{search\+Exact()}{searchExact()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{class_account}{Account}$>$ B\+S\+T.\+search\+Exact (\begin{DoxyParamCaption}\item[{String}]{search\+String }\end{DoxyParamCaption})}
+
+
+
+returns an array containing the one \hyperlink{class_account}{Account} that matches the search string exactly, empty if no match 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+String} & string being searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+arraylist with one \hyperlink{class_account}{Account} that matched the search string exactly, or empty if no match 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+readwrite/B\+S\+T.\+java\end{DoxyCompactItemize}
