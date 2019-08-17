@@ -43,7 +43,8 @@ public class Account
 		this.imgPath = img;
 	}
 
-	//setters and getters
+	// GETTERS AND SETTERS
+
 	public void setUsername(String newUsername)
     {
 		this.username = newUsername;
