@@ -17,6 +17,18 @@ public class TextMessage extends Message
 		this.messageContent = messageContent;
 	}
 
+	/**
+	* Overload constructor to handle rebuilding message objects when queried
+	* from the database to preserve dateTime
+	*/
+
+	public TextMessage(String recipient, String sender, String dateTime, String messageContent)
+	{
+		super(recipient,sender);
+		this.messageContent = messageContent;
+		this.setDateTime(dateTime);
+	}
+
 	public void setMessageContent(String messageContent)
     {
 		this.messageContent = messageContent;

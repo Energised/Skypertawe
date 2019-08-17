@@ -13,16 +13,16 @@ public class Message
 
 	private String recipient;
 	private String sender;
-	private Date dateTime;
+	private String dateTime;
 
     private static final String DATE_FORMAT = "dd-MM-yyyy, HH:mm:ss";
     private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-	public Message(String recipient,String sender)
+	public Message(String recipient, String sender)
     {
 		this.recipient = recipient;
 		this.sender = sender;
-		this.dateTime = new Date();
+		this.dateTime = dateFormat.format(new Date());
 	}
 
 	public void setRecipient(String recipient)
@@ -33,6 +33,15 @@ public class Message
 	public void setSender(String sender)
     {
 		this.sender = sender;
+	}
+
+	/**
+	* Used in rebuilding messages to preserve sent time
+	*/
+
+	public void setDateTime(String dateTime)
+	{
+		this.dateTime = dateTime;
 	}
 
 	public String getRecipient()
@@ -47,7 +56,7 @@ public class Message
 
     public String getDateTime()
     {
-        return dateFormat.format(this.dateTime);
+        return this.dateTime;
     }
 
 	/**

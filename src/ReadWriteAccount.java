@@ -13,7 +13,7 @@
  *
  *      READING FUNCTIONS
  *      (y) ReadUserAccount(String username)
- *      ReadAllAccounts()
+ *      (y) ReadAllAccounts()
  *      (y) ReadNewMessages(String username)
  *
  * NB: RUN: java -cp ".:sqlite-jdbc-3.15.1.jar" ReadWriteAccount
@@ -60,7 +60,7 @@ public class ReadWriteAccount extends ReadWrite<Account>
                          "dob VARCHAR(10)," +
                          "city VARCHAR(30)," +
                          "new_messages INTEGER," +
-                         "prev_session VARCHAR(15)," +
+                         "prev_session VARCHAR(20)," +
                          "profile_img VARCHAR(40)," +
                          "UNIQUE (AccountID, username));";
         stmt.executeUpdate(acc_sql);
