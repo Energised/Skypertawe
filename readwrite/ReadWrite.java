@@ -98,7 +98,7 @@ abstract class ReadWrite<E>
         return out;
     }
 
-    public abstract E read(String query) throws Exception;
-    public abstract void write(E data) throws Exception;
+    //public abstract E read(String query) throws Exception;
+    //public abstract void write(E data) throws Exception;
 
 }
