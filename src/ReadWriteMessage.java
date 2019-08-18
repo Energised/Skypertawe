@@ -12,6 +12,7 @@
  *      WRITE FUNCTIONS
  *          (y) WriteTextMessage(TextMessage msg)
  *          (y) WriteURLMessage(URLMessage msg)
+ *          WriteFileMessage()
  *
  * NB: Column 'type' will contain either:
  *          't' -> text
@@ -52,6 +53,11 @@ public class ReadWriteMessage extends ReadWrite<Message>
     }
 
     // READ FUNCTIONS
+
+    /**
+    * Return all messages sent/recieved by a given user
+    * @param username User being searched
+    */
 
     public ArrayList<Message> ReadMessages(String username) throws Exception
     {
