@@ -28,7 +28,7 @@ abstract class ReadWrite<E>
 
     public ReadWrite(String dbname) throws Exception
     {
-        this.dbname = "data/" + dbname;
+        this.dbname = "src/data/" + dbname;
         this.conn = connect_to_db(this.conn);
     }
 

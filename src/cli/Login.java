@@ -13,6 +13,8 @@
 
 package src.cli;
 
+import src.*;
+
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.graphics.SimpleTheme;
@@ -45,10 +47,10 @@ public class Login
     final String banner5 = "/____/_/|_|\\__, / .___/\\___/_/   \\__/\\__,_/ |__/|__/\\___/ ";
     final String banner6 = "          /____/_/                                        ";
 
-    public Login()
+    public Login(ArrayList<Account> accs)
     {
         DefaultTerminalFactory dtf = new DefaultTerminalFactory();
-        // this line below seems to fix the broken terminal on exit
+        // doesnt fix but helped so gonna keep for now
         dtf.setTerminalEmulatorFrameAutoCloseTrigger(TerminalEmulatorAutoCloseTrigger.CloseOnExitPrivateMode);
         screen = null;
 
@@ -58,7 +60,7 @@ public class Login
             screen = new TerminalScreen(terminal);
 
             screen.startScreen();
-            screen.setCursorPosition(null);
+            //screen.setCursorPosition(null);
 
             // get our size here, use getColumns() / getRows()
             TerminalSize terminalSize = screen.getTerminalSize();
@@ -117,8 +119,14 @@ public class Login
                                    String username = nameBox.getText();
                                    try
                                    {
-                                       window.close();
-                                       Home h = new Home();
+                                       for(Account a : accs)
+                                       {
+                                           if(a.getUsername().equals(username))
+                                           {
+                                               window.close();
+                                               Home h = new Home(a);
+                                           }
+                                       }
                                    }
                                    catch(Exception e)
                                    {
@@ -166,17 +174,16 @@ public class Login
                 try
                 {
                     screen.stopScreen();
+                    // fixes no echo on exit
+                    Runtime r = Runtime.getRuntime();
+                    Process p = r.exec("reset");
+                    p.waitFor();
                 }
-                catch(IOException e)
+                catch(Exception e)
                 {
                     e.printStackTrace();
                 }
             }
         }
-    }
-
-    public static void main(String[] args)
-    {
-        Login l = new Login();
     }
 }

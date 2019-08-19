@@ -10,10 +10,15 @@
 
 package src;
 
+import src.cli.*;
+
 import java.util.ArrayList;
 
 public class Main
 {
+
+    public static Login l;
+
     public static void main(String[] args)
     {
         try
@@ -21,6 +26,8 @@ public class Main
             BST tree = new BST();
             tree.populateTree();
             ArrayList<Account> accs = tree.inorderAccountWalk(tree.getRoot());
+
+            l = new Login(accs);
         }
         catch(Exception e)
         {

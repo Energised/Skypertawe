@@ -7,6 +7,8 @@
 
 package src.cli;
 
+import src.*;
+
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.graphics.SimpleTheme;
@@ -37,10 +39,10 @@ public class Home
  final String banner5 = "/____/_/|_|\\__, / .___/\\___/_/   \\__/\\__,_/ |__/|__/\\___/ ";
  final String banner6 = "          /____/_/                                        ";
 
- public Home()
+ public Home(Account a)
  {
      DefaultTerminalFactory dtf = new DefaultTerminalFactory();
-     // this line below seems to fix the broken terminal on exit
+     // doesnt help but gonna keep for now
      dtf.setTerminalEmulatorFrameAutoCloseTrigger(TerminalEmulatorAutoCloseTrigger.CloseOnExitPrivateMode);
      Screen screen = null;
 
@@ -50,7 +52,7 @@ public class Home
          screen = new TerminalScreen(terminal);
 
          screen.startScreen();
-         screen.setCursorPosition(null);
+         //screen.setCursorPosition(null);
 
          // get our size here, use getColumns() / getRows()
          TerminalSize terminalSize = screen.getTerminalSize();
@@ -95,6 +97,9 @@ public class Home
                                                        true));
          contentPanel.addComponent(sep);
 
+         Label user = new Label(a.getUsername());
+         contentPanel.addComponent(user);
+
          Button close = new Button("Close", new Runnable()
                         {
                             @Override
@@ -119,8 +124,12 @@ public class Home
              try
              {
                  screen.stopScreen();
+                 // fixes no echo on exit
+                 Runtime r = Runtime.getRuntime();
+                 Process p = r.exec("reset");
+                 p.waitFor();
              }
-             catch(IOException e)
+             catch(Exception e)
              {
                  e.printStackTrace();
              }
