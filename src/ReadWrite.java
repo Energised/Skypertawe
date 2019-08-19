@@ -10,6 +10,8 @@
 *     When dealing with SQLite; all functions must be able to throw exceptions
 */
 
+package src;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;

@@ -23,7 +23,7 @@ public class GUI extends JFrame {
     JMenuItem profileAction;
     JMenuItem messageAction;
     JMenuItem drawAction;
-    JMenuItem exitAction;
+    JMenuItem logoutAction;
 
     /**
     * Generates a screen and a toolbar to be used by its subclasses
@@ -52,14 +52,14 @@ public class GUI extends JFrame {
         this.profileAction = new JMenuItem("Profile");
         this.messageAction = new JMenuItem("Messages");
         this.drawAction = new JMenuItem("Draw");
-        this.exitAction = new JMenuItem("Log Out");
+        this.logoutAction = new JMenuItem("Log Out");
 
         fileMenu.add(this.homeAction);
         fileMenu.add(this.profileAction);
         fileMenu.add(this.messageAction);
         fileMenu.add(this.drawAction);
         fileMenu.addSeparator();
-        fileMenu.add(this.exitAction);
+        fileMenu.add(this.logoutAction);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //setVisible(true);
@@ -67,7 +67,7 @@ public class GUI extends JFrame {
         // Add a listener to the New menu item. actionPerformed() method will
         // invoked, if user triggered this menu item
 
-        this.exitAction.addActionListener(new ActionListener(){
+        this.logoutAction.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
                 try

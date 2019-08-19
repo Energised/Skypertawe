@@ -5,6 +5,7 @@
 * Class to construct a TextMessage object
 */
 
+package src;
 
 public class TextMessage extends Message
 {

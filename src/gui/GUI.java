@@ -5,6 +5,8 @@
  * Base class for all GUI classes to preserve menu bar
  */
 
+package src.gui;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;

@@ -11,6 +11,8 @@
  *
  */
 
+package src.cli;
+
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.graphics.SimpleTheme;
@@ -20,6 +22,7 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.TerminalEmulatorAutoCloseTrigger;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TerminalPosition;
@@ -30,8 +33,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LoginMultiTest
+public class Login
 {
+
+    private Screen screen;
 
     final String banner1 = "   _____ __                         __                    ";
     final String banner2 = "  / ___// /____  ______  ___  _____/ /_____ __      _____ ";
@@ -40,10 +45,12 @@ public class LoginMultiTest
     final String banner5 = "/____/_/|_|\\__, / .___/\\___/_/   \\__/\\__,_/ |__/|__/\\___/ ";
     final String banner6 = "          /____/_/                                        ";
 
-    public LoginMultiTest()
+    public Login()
     {
         DefaultTerminalFactory dtf = new DefaultTerminalFactory();
-        Screen screen = null;
+        // this line below seems to fix the broken terminal on exit
+        dtf.setTerminalEmulatorFrameAutoCloseTrigger(TerminalEmulatorAutoCloseTrigger.CloseOnExitPrivateMode);
+        screen = null;
 
         try
         {
@@ -77,7 +84,7 @@ public class LoginMultiTest
             // panel placed inside window
             Panel contentPanel = new Panel(new GridLayout(1));
             GridLayout gridLayout = (GridLayout)contentPanel.getLayoutManager();
-            gridLayout.setVerticalSpacing(3);
+            gridLayout.setVerticalSpacing(1);
 
             // create default layout data
             LayoutData layout = GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
@@ -108,7 +115,15 @@ public class LoginMultiTest
                                public void run()
                                {
                                    String username = nameBox.getText();
-                                   // will then switch to Home screen
+                                   try
+                                   {
+                                       window.close();
+                                       Home h = new Home();
+                                   }
+                                   catch(Exception e)
+                                   {
+                                       e.printStackTrace();
+                                   }
                                }
                            });
             login.setLayoutData(layout);
@@ -150,7 +165,7 @@ public class LoginMultiTest
             {
                 try
                 {
-                    screen.close();
+                    screen.stopScreen();
                 }
                 catch(IOException e)
                 {
@@ -162,6 +177,6 @@ public class LoginMultiTest
 
     public static void main(String[] args)
     {
-        LoginMultiTest l = new LoginMultiTest();
+        Login l = new Login();
     }
 }

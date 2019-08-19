@@ -5,6 +5,8 @@
  * Nodes for the BST implementation for Skypertawe
  */
 
+package src;
+
 public class Node
 {
     private Account value;

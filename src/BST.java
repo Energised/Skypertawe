@@ -5,15 +5,31 @@
  * Binary Search Tree implementation for Skypertawe
  */
 
+package src;
+
+import java.util.ArrayList;
+
 public class BST
 {
     private Node root;
     private Node placeholder;
     private int numOfNodes;
 
+    private ArrayList<Account> orderedAccounts = new ArrayList<Account>();
+
+    private ReadWriteAccount rwa;
+
     public BST()
     {
         this.root = null;
+    }
+
+    // getters and setters
+    // NB: only need getRoot() for now
+
+    public Node getRoot()
+    {
+        return this.root;
     }
 
     public void insertAccount(Account a)
@@ -62,6 +78,9 @@ public class BST
         }
     }
 
+    /**
+     * TESTING PURPOSES ONLY
+     */
     public void inorderTreeWalk(Node x)
     {
         if(x != null)
@@ -69,6 +88,27 @@ public class BST
             inorderTreeWalk(x.getLeftChild());
             System.out.println(x.getValue().getUsername());
             inorderTreeWalk(x.getRightChild());
+        }
+    }
+
+    public ArrayList<Account> inorderAccountWalk(Node x)
+    {
+        if(x != null)
+        {
+            inorderAccountWalk(x.getLeftChild());
+            this.orderedAccounts.add(x.getValue());
+            inorderAccountWalk(x.getRightChild());
+        }
+        return this.orderedAccounts;
+    }
+
+    public void populateTree() throws Exception
+    {
+        rwa = new ReadWriteAccount("data.db");
+        ArrayList<Account> users = rwa.ReadAllAccounts();
+        for(Account a : users)
+        {
+            this.insertAccount(a);
         }
     }
 
@@ -83,6 +123,6 @@ public class BST
         tree.insertAccount(ac2);
         tree.insertAccount(ac3);
 
-        tree.inorderTreeWalk(tree.root);
+        //tree.inorderTreeWalk(tree.root);
     }
 }
