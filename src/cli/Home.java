@@ -48,70 +48,93 @@ public class Home
 
      try
      {
-         Terminal terminal = dtf.createTerminal();
-         screen = new TerminalScreen(terminal);
+        Terminal terminal = dtf.createTerminal();
+        screen = new TerminalScreen(terminal);
 
-         screen.startScreen();
-         //screen.setCursorPosition(null);
+        screen.startScreen();
+        //screen.setCursorPosition(null);
 
-         // get our size here, use getColumns() / getRows()
-         TerminalSize terminalSize = screen.getTerminalSize();
+        // get our size here, use getColumns() / getRows()
+        TerminalSize terminalSize = screen.getTerminalSize();
 
+        // terminal resize condition
+        TerminalSize newSize = screen.doResizeIfNecessary();
+        if(newSize != null)
+        {
+            terminalSize = newSize;
+        }
 
-         // terminal resize condition
-         TerminalSize newSize = screen.doResizeIfNecessary();
-         if(newSize != null)
-         {
-             terminalSize = newSize;
-         }
+        // window manager and window setup
+        WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen, TextColor.ANSI.BLACK);
+        Window window = new BasicWindow();
 
-         // window manager and window setup
-         WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen, TextColor.ANSI.BLACK);
-         Window window = new BasicWindow();
+        // theme
+        window.setTheme(new SimpleTheme(TextColor.ANSI.GREEN, TextColor.ANSI.BLACK));
 
-         // theme
-         window.setTheme(new SimpleTheme(TextColor.ANSI.GREEN, TextColor.ANSI.BLACK));
+        // cheeky window hints are lovely
+        window.setHints(Arrays.asList(Window.Hint.CENTERED, Window.Hint.FULL_SCREEN));
 
-         // cheeky window hints are lovely
-         window.setHints(Arrays.asList(Window.Hint.CENTERED, Window.Hint.FULL_SCREEN));
+        // panel placed inside window
+        Panel contentPanel = new Panel(new GridLayout(3));
+        GridLayout gridLayout = (GridLayout)contentPanel.getLayoutManager();
+        gridLayout.setVerticalSpacing(2);
+        gridLayout.setHorizontalSpacing(2);
 
-         // panel placed inside window
-         Panel contentPanel = new Panel(new GridLayout(3));
-         GridLayout gridLayout = (GridLayout)contentPanel.getLayoutManager();
-         gridLayout.setVerticalSpacing(2);
-         gridLayout.setHorizontalSpacing(2);
+        Label title = new Label(banner1 + "\n" + banner2 + "\n" +
+                                banner3 + "\n" + banner4 + "\n" +
+                                banner5 + "\n" + banner6);
+        title.setForegroundColor(TextColor.ANSI.GREEN);
+        title.setBackgroundColor(TextColor.ANSI.BLACK);
 
-         Label title = new Label(banner1 + "\n" + banner2 + "\n" +
-                                 banner3 + "\n" + banner4 + "\n" +
-                                 banner5 + "\n" + banner6);
-         title.setForegroundColor(TextColor.ANSI.GREEN);
-         title.setBackgroundColor(TextColor.ANSI.BLACK);
+        title.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.BEGINNING,
+                                                        GridLayout.Alignment.BEGINNING,
+                                                        false,
+                                                        false,
+                                                        1,
+                                                        6));
 
-         contentPanel.addComponent(title);
+        contentPanel.addComponent(title);
 
-         // seperator for rhs
-         Separator sep = new Separator(Direction.VERTICAL);
-         sep.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
+        // seperator for rhs
+        Separator sep = new Separator(Direction.VERTICAL);
+        sep.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
+                                                      GridLayout.Alignment.FILL,
+                                                      false,
+                                                      true));
+        contentPanel.addComponent(sep);
+
+        String userInfo = a.getUsername() + "\n" + a.getFirstName() + " " +
+                          a.getSurname() + "\n\n" + a.getMobnumber() + "\n" +
+                          a.getBirthDate() + "\n" + a.getCity() + "\n" +
+                          a.getImgPath();
+        Label user = new Label(userInfo);
+        user.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
                                                        GridLayout.Alignment.FILL,
                                                        false,
                                                        true));
-         contentPanel.addComponent(sep);
+        contentPanel.addComponent(user);
 
-         Label user = new Label(a.getUsername());
-         contentPanel.addComponent(user);
+        Label friendsTitle = new Label("~ Friends List ~");
+        friendsTitle.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.BEGINNING,
+                                                               GridLayout.Alignment.BEGINNING,
+                                                               false,
+                                                               false,
+                                                               1,
+                                                               1));
+        contentPanel.addComponent(friendsTitle);
 
-         Button close = new Button("Close", new Runnable()
-                        {
-                            @Override
-                            public void run()
-                            {
-                                window.close();
-                            }
+        Button close = new Button("Close", new Runnable()
+                       {
+                           @Override
+                           public void run()
+                           {
+                               window.close();
+                           }
                         });
-         contentPanel.addComponent(close);
+        contentPanel.addComponent(close);
 
-         window.setComponent(contentPanel);
-         textGUI.addWindowAndWait(window);
+        window.setComponent(contentPanel);
+        textGUI.addWindowAndWait(window);
      }
      catch(IOException e)
      {
@@ -125,6 +148,7 @@ public class Home
              {
                  screen.stopScreen();
                  // fixes no echo on exit
+                 // NB: find fix that's better than this
                  Runtime r = Runtime.getRuntime();
                  Process p = r.exec("reset");
                  p.waitFor();
