@@ -5,7 +5,7 @@
 * Class to create Message objects
 */
 
-package src;
+package src.obj;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;

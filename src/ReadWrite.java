@@ -12,6 +12,8 @@
 
 package src;
 
+import src.obj.*;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -43,5 +45,11 @@ abstract class ReadWrite<E>
         String conn_info = "jdbc:sqlite:" + this.dbname;
         conn = DriverManager.getConnection(conn_info);
         return conn;
+    }
+
+    public void close() throws Exception
+    {
+        this.stmt.close();
+        this.conn.close();
     }
 }

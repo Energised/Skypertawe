@@ -23,6 +23,8 @@
 
 package src;
 
+import src.obj.*;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;

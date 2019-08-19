@@ -5,7 +5,7 @@
  * Nodes for the BST implementation for Skypertawe
  */
 
-package src;
+package src.obj;
 
 public class Node
 {

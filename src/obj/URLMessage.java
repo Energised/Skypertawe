@@ -5,7 +5,7 @@
  * Class to encapsulate a URL in a message
  */
 
-package src;
+package src.obj;
 
  import java.awt.Desktop;
  import java.net.URI;

@@ -13,7 +13,7 @@
 
 package src.cli;
 
-import src.*;
+import src.obj.*;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;

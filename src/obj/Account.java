@@ -13,7 +13,7 @@
 // the profile picture is stored as a string of the filename:
 //  1) "pic_name.png"
 
-package src;
+package src.obj;
 
 public class Account
 {

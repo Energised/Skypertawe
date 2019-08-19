@@ -5,7 +5,9 @@
  * Binary Search Tree implementation for Skypertawe
  */
 
-package src;
+package src.obj;
+
+import src.*;
 
 import java.util.ArrayList;
 
