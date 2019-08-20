@@ -49,7 +49,13 @@ abstract class ReadWrite<E>
 
     public void close() throws Exception
     {
-        this.stmt.close();
-        this.conn.close();
+        if(this.stmt != null)
+        {
+            this.stmt.close();
+        }
+        if(this.conn != null)
+        {
+            this.conn.close();
+        }
     }
 }

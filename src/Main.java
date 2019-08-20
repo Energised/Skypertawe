@@ -14,6 +14,7 @@ import src.cli.*;
 //import src.obj.*;
 import src.obj.Account;
 import src.obj.BST;
+import src.obj.Graph;
 
 import java.util.ArrayList;
 
@@ -22,13 +23,21 @@ public class Main
 
     public static Login l;
 
+    public static BST tree;
+    public static Graph graph;
+
     public static void main(String[] args)
     {
         try
         {
-            BST tree = new BST();
+            tree = new BST();
             tree.populateTree();
             ArrayList<Account> accs = tree.inorderAccountWalk(tree.getRoot());
+
+            graph = new Graph();
+            graph.populateVertices();
+            graph.populateFriendshipEdges();
+            graph.populateRequestEdges();
 
             l = new Login(accs);
         }

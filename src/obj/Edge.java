@@ -20,6 +20,16 @@ class Edge
         this.weight = weight;
     }
 
+    public Vertex getVertex1()
+    {
+        return this.v1;
+    }
+
+    public Vertex getVertex2()
+    {
+        return this.v2;
+    }
+
     public void setWeight(int weight)
     {
         this.weight = weight;

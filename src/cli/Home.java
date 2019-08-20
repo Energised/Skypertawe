@@ -8,6 +8,7 @@
 package src.cli;
 
 import src.obj.*;
+import src.Main;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -26,6 +27,7 @@ import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.TextColor;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 
 import java.io.IOException;
 
@@ -122,6 +124,15 @@ public class Home
                                                                1,
                                                                1));
         contentPanel.addComponent(friendsTitle);
+
+        ArrayList<Account> friendsList = Main.graph.getFriends(a);
+        String listFriends = "";
+        for(Account acc : friendsList)
+        {
+            listFriends = listFriends + acc.getUsername() + "\n";
+        }
+        Label l = new Label(listFriends);
+        contentPanel.addComponent(l);
 
         Button close = new Button("Close", new Runnable()
                        {

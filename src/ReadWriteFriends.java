@@ -10,6 +10,7 @@
  *      (y) getIDFromAccount()
  *      (y) getAccountFromID()
  *      (y) getAllFriendships()
+ *      (y) getAllRequests()
  *      (y) getUserRequests()
  *      WRITE FUNCTION
  *      (y) setFriendshipRecord()
@@ -133,6 +134,28 @@ public class ReadWriteFriends extends ReadWrite
         }
         return friends;
     }
+
+    public ArrayList<Account> getAllRequests() throws Exception
+    {
+        ArrayList<Account> requests = new ArrayList<Account>();
+        String sql = "SELECT User1ID, User2ID from Friends " +
+                     "EXCEPT " +
+                     "SELECT a.User1ID, a.User2ID " +
+                     "FROM Friends as 'a', Friends as 'b' " +
+                     "WHERE a.User1ID = b.User2ID " +
+                     "AND a.User2ID = b.User1ID;";
+        PreparedStatement p_stmt = this.conn.prepareStatement(sql);
+        ResultSet rs = p_stmt.executeQuery();
+        while(rs.next())
+        {
+            requests.add(getAccountFromID(rs.getInt("User1ID")));
+            requests.add(getAccountFromID(rs.getInt("User2ID")));
+        }
+        return requests;
+    }
+
+    // NB: this may be a redundant function since it will be handled within Graph.java
+    //     plus the sql is ugly ew
 
     public ArrayList<Account> getUserRequests(Account acc) throws Exception
     {
