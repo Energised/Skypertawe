@@ -8,9 +8,11 @@
 package src.cli;
 
 import src.obj.*;
-import src.Main;
 
 import com.googlecode.lanterna.*;
+
+import com.googlecode.lanterna.gui2.*;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.graphics.SimpleTheme;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -19,156 +21,159 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.TerminalEmulatorAutoCloseTrigger;
-
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.gui2.*;
-import com.googlecode.lanterna.TextColor;
 
 import java.util.Arrays;
 import java.util.ArrayList;
 
-import java.io.IOException;
-
 public class Home
 {
 
- final String banner1 = "   _____ __                         __                    ";
- final String banner2 = "  / ___// /____  ______  ___  _____/ /_____ __      _____ ";
- final String banner3 = "  \\__ \\/ //_/ / / / __ \\/ _ \\/ ___/ __/ __ `/ | /| / / _ \\";
- final String banner4 = " ___/ / ,< / /_/ / /_/ /  __/ /  / /_/ /_/ /| |/ |/ /  __/";
- final String banner5 = "/____/_/|_|\\__, / .___/\\___/_/   \\__/\\__,_/ |__/|__/\\___/ ";
- final String banner6 = "          /____/_/                                        ";
+    final String banner1 = "   _____ __                         __                    \n";
+    final String banner2 = "  / ___// /____  ______  ___  _____/ /_____ __      _____ \n";
+    final String banner3 = "  \\__ \\/ //_/ / / / __ \\/ _ \\/ ___/ __/ __ `/ | /| / / _ \\\n";
+    final String banner4 = " ___/ / ,< / /_/ / /_/ /  __/ /  / /_/ /_/ /| |/ |/ /  __/\n";
+    final String banner5 = "/____/_/|_|\\__, / .___/\\___/_/   \\__/\\__,_/ |__/|__/\\___/ \n";
+    final String banner6 = "          /____/_/                                        \n";
 
- public Home(Account a)
- {
-     DefaultTerminalFactory dtf = new DefaultTerminalFactory();
-     // doesnt help but gonna keep for now
-     dtf.setTerminalEmulatorFrameAutoCloseTrigger(TerminalEmulatorAutoCloseTrigger.CloseOnExitPrivateMode);
-     Screen screen = null;
+    final String banner = banner1 + banner2 + banner3 + banner4 + banner5 + banner6;
 
-     try
-     {
-        Terminal terminal = dtf.createTerminal();
-        screen = new TerminalScreen(terminal);
+    ArrayList<String> names = new ArrayList<String>();
 
-        screen.startScreen();
-        //screen.setCursorPosition(null);
+    private Terminal terminal;
+    private Screen screen;
 
-        // get our size here, use getColumns() / getRows()
-        TerminalSize terminalSize = screen.getTerminalSize();
+    public LayoutData centeredLayout = GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
+                                                                   GridLayout.Alignment.CENTER,
+                                                                   false, false, 1, 1);
 
-        // terminal resize condition
-        TerminalSize newSize = screen.doResizeIfNecessary();
-        if(newSize != null)
-        {
-            terminalSize = newSize;
-        }
+    public LayoutData filledLayout = GridLayout.createLayoutData(GridLayout.Alignment.FILL,
+                                                                 GridLayout.Alignment.FILL,
+                                                                 true, true, 1, 1);
 
-        // window manager and window setup
-        WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen, TextColor.ANSI.BLACK);
-        Window window = new BasicWindow();
 
-        // theme
-        window.setTheme(new SimpleTheme(TextColor.ANSI.GREEN, TextColor.ANSI.BLACK));
+    public Home(Account acc)
+    {
+        DefaultTerminalFactory dtf = new DefaultTerminalFactory();
+        this.screen = null;
 
-        // cheeky window hints are lovely
-        window.setHints(Arrays.asList(Window.Hint.CENTERED, Window.Hint.FULL_SCREEN));
+        this.names.add("gman");
+        this.names.add("shutup");
+        this.names.add("poopface");
 
-        // panel placed inside window
-        Panel contentPanel = new Panel(new GridLayout(3));
-        GridLayout gridLayout = (GridLayout)contentPanel.getLayoutManager();
-        gridLayout.setVerticalSpacing(2);
-        gridLayout.setHorizontalSpacing(2);
-
-        Label title = new Label(banner1 + "\n" + banner2 + "\n" +
-                                banner3 + "\n" + banner4 + "\n" +
-                                banner5 + "\n" + banner6);
-        title.setForegroundColor(TextColor.ANSI.GREEN);
-        title.setBackgroundColor(TextColor.ANSI.BLACK);
-
-        title.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.BEGINNING,
-                                                        GridLayout.Alignment.BEGINNING,
-                                                        false,
-                                                        false,
-                                                        1,
-                                                        6));
-
-        contentPanel.addComponent(title);
-
-        // seperator for rhs
         Separator sep = new Separator(Direction.VERTICAL);
         sep.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
                                                       GridLayout.Alignment.FILL,
                                                       false,
                                                       true));
-        contentPanel.addComponent(sep);
 
-        String userInfo = a.getUsername() + "\n" + a.getFirstName() + " " +
-                          a.getSurname() + "\n\n" + a.getMobnumber() + "\n" +
-                          a.getBirthDate() + "\n" + a.getCity() + "\n" +
-                          a.getImgPath();
-        Label user = new Label(userInfo);
-        user.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
-                                                       GridLayout.Alignment.FILL,
-                                                       false,
-                                                       true));
-        contentPanel.addComponent(user);
-
-        Label friendsTitle = new Label("~ Friends List ~");
-        friendsTitle.setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.BEGINNING,
-                                                               GridLayout.Alignment.BEGINNING,
-                                                               false,
-                                                               false,
-                                                               1,
-                                                               1));
-        contentPanel.addComponent(friendsTitle);
-
-        ArrayList<Account> friendsList = Main.graph.getFriends(a);
-        String listFriends = "";
-        for(Account acc : friendsList)
+        try
         {
-            listFriends = listFriends + acc.getUsername() + "\n";
+            this.terminal = dtf.createTerminal();
+            this.screen = new TerminalScreen(this.terminal);
+
+            this.screen.startScreen();
+
+            WindowBasedTextGUI textGUI = new MultiWindowTextGUI(this.screen);
+
+            final BasicWindow window = new BasicWindow();
+
+            window.setTheme(new SimpleTheme(TextColor.ANSI.GREEN, TextColor.ANSI.BLACK));
+            window.setHints(Arrays.asList(Window.Hint.CENTERED, Window.Hint.FULL_SCREEN));
+
+            Panel contentPanel = new Panel(new LinearLayout(Direction.VERTICAL));
+            Panel topPanel = new Panel(new GridLayout(3));
+            Panel bottomPanel = new Panel(new GridLayout(3));
+            Panel topLeftPanel = this.buildTopLeftPanel();
+            Panel topRightPanel = new Panel(new LinearLayout(Direction.VERTICAL));
+
+            topRightPanel.addComponent(new EmptySpace(TextColor.ANSI.GREEN));
+
+            topPanel.addComponent(topLeftPanel, centeredLayout);
+            topPanel.addComponent(sep);
+            topPanel.addComponent(topRightPanel, centeredLayout);
+
+            bottomPanel.addComponent(new Button("Close", new Runnable() {
+                @Override
+                public void run() {
+                    window.close();
+                }
+            }));
+
+            contentPanel.addComponent(topPanel);
+            contentPanel.addComponent(bottomPanel);
+
+            window.setComponent(contentPanel);
+            textGUI.addWindowAndWait(window);
         }
-        Label l = new Label(listFriends);
-        contentPanel.addComponent(l);
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            if(screen != null)
+            {
+                try
+                {
+                    screen.stopScreen();
+                    // fixes no echo on exit
+                    // NB: find fix that's better than this
+                    Runtime r = Runtime.getRuntime();
+                    Process p = r.exec("reset");
+                    p.waitFor();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
-        Button close = new Button("Close", new Runnable()
-                       {
-                           @Override
-                           public void run()
-                           {
-                               window.close();
-                           }
-                        });
-        contentPanel.addComponent(close);
+    public Panel buildTopLeftPanel()
+    {
+        Panel tlp = new Panel(new GridLayout(1).setVerticalSpacing(1));
 
-        window.setComponent(contentPanel);
-        textGUI.addWindowAndWait(window);
-     }
-     catch(IOException e)
-     {
-         e.printStackTrace();
-     }
-     finally
-     {
-         if(screen != null)
-         {
-             try
-             {
-                 screen.stopScreen();
-                 // fixes no echo on exit
-                 // NB: find fix that's better than this
-                 Runtime r = Runtime.getRuntime();
-                 Process p = r.exec("reset");
-                 p.waitFor();
-             }
-             catch(Exception e)
-             {
-                 e.printStackTrace();
-             }
-         }
-     }
- }
+        Label b = new Label(banner);
+        Label fl = new Label("~ Friends List ~");
+        Label fr = new Label("~ Friend Requests ~");
+
+        // names is placeholder for info taken from Graph
+        ComboBox<String> flb = new ComboBox<String>(names);
+        flb.setReadOnly(true);
+        flb.setPreferredSize(new TerminalSize(10, 3)); // only using for the vertical fill (4)
+
+        ComboBox<String> frb = new ComboBox<String>(names);
+        frb.setReadOnly(true);
+        frb.setPreferredSize(new TerminalSize(10, 3)); // as above
+
+        Button acceptRequest = new Button("Accept Selected Request", new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                frb.removeItem(frb.getSelectedItem());
+            }
+        });
+
+        fl.setLayoutData(centeredLayout);
+        fr.setLayoutData(centeredLayout);
+        flb.setLayoutData(filledLayout);
+        frb.setLayoutData(filledLayout);
+        acceptRequest.setLayoutData(centeredLayout);
+
+        tlp.addComponent(b);
+        tlp.addComponent(fl);
+        tlp.addComponent(flb);
+        tlp.addComponent(fr);
+        tlp.addComponent(frb);
+        tlp.addComponent(acceptRequest);
+
+        return tlp;
+    }
+
+    public static void main(String[] args)
+    {
+        Home h = new Home(new Account());
+    }
 }
