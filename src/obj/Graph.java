@@ -19,7 +19,7 @@
  *          populateRequestEdges()
  *          addRecord(ArrayList<Account> toAdd)
  *          emptyGraph()
- *          update()
+ *          update() -> only function for outside calling to update Graph
  *      QUERYING GRAPH
  *          getFriends(Account acc)
  *          getRequests(Account acc)
