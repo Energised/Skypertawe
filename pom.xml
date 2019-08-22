@@ -1,0 +1,16 @@
+<project>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>src</groupId>
+  <artifactId>skypertawe</artifactId>
+  <version>1</version>
+
+  <dependencies>
+      <dependency>
+          <groupId>com.googlecode.lanterna</groupId>
+          <artifactId>lanterna</artifactId>
+          <version>3.0.1</version>
+      </dependency>
+  </dependencies>
+
+</project>
