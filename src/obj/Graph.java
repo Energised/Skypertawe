@@ -22,6 +22,7 @@
  *          update() -> only function for outside calling to update Graph
  *      QUERYING GRAPH
  *          getFriends(Account acc)
+ *          getFriendNames(Account acc) // NB: used in UserSearchBox
  *          getRequests(Account acc)
  */
 
@@ -166,6 +167,28 @@ public class Graph
             }
         }
         return friends;
+    }
+
+    public ArrayList<String> getFriendNames(Account acc)
+    {
+        ArrayList<Edge> friendships = this.getVertex(acc).getEdges();
+        ArrayList<String> friendNames = new ArrayList<String>();
+        for(Edge e : friendships)
+        {
+            if(e.getWeight() == 2)
+            {
+                //System.out.println(e);
+                if(e.getVertex1() == this.getVertex(acc))
+                {
+                    friendNames.add(e.getVertex2().getAccount().getUsername());
+                }
+                else
+                {
+                    friendNames.add(e.getVertex1().getAccount().getUsername());
+                }
+            }
+        }
+        return friendNames;
     }
 
     public ArrayList<Account> getRequests(Account acc)

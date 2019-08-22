@@ -60,7 +60,7 @@ public class Login
             screen = new TerminalScreen(terminal);
 
             screen.startScreen();
-            //screen.setCursorPosition(null);
+            screen.setCursorPosition(null);
 
             // get our size here, use getColumns() / getRows()
             TerminalSize terminalSize = screen.getTerminalSize();

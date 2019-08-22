@@ -57,6 +57,7 @@ public class Home
         {
             this.terminal = dtf.createTerminal();
             this.screen = new TerminalScreen(this.terminal);
+            this.screen.setCursorPosition(null);
 
             this.screen.startScreen();
 
@@ -187,9 +188,8 @@ public class Home
         Label city = new Label(acc.getCity());
 
         Label searchLabel = new Label("~ Search all users ~");
-        CheckBoxList<String> searchedUsers = new CheckBoxList<String>();
 
-
+        UserSearchBox searchBox = new UserSearchBox(acc);
 
         uname.addStyle(SGR.BOLD);
         uname.addStyle(SGR.UNDERLINE);
@@ -205,6 +205,11 @@ public class Home
         trp.addComponent(mobNo);
         trp.addComponent(bday);
         trp.addComponent(city);
+        trp.addComponent(new EmptySpace());
+        trp.addComponent(searchLabel);
+        trp.addComponent(searchBox);
+        // has to be a reference to the CheckBoxList in searchBox
+        trp.addComponent(searchBox.searchedUsers);
 
         return trp;
     }

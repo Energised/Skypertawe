@@ -114,16 +114,52 @@ public class BST
         }
     }
 
+    public ArrayList<Account> searchBeginningWith(String searchString)
+    {
+        ArrayList<Account> results = new ArrayList<Account>();
+        searchBeginningWith(searchString, results, this.root);
+        return results;
+    }
+
+    public void searchBeginningWith(String searchString, ArrayList<Account> results, Node x)
+    {
+        String nodeSubstring = x.getValue().getUsername().substring(0, searchString.length());
+        if(nodeSubstring.equals(searchString.toLowerCase()))
+        {
+            results.add(x.getValue());
+        }
+        if(x.getLeftChild() != null)
+        {
+            searchBeginningWith(searchString, results, x.getLeftChild());
+        }
+        if(x.getRightChild() != null)
+        {
+            searchBeginningWith(searchString, results, x.getRightChild());
+        }
+    }
+
     public static void main(String[] args)
     {
         Account ac1 = new Account("energised", "Dan", "Woolsey", "07523050753", "17/01", "Swansea", 0, null, "profile-img.jpg");
         Account ac2 = new Account("gman", "Gary", "Waho", "07649752134", "7/12", "Bradford", 0, null, "profile-img.jpg");
         Account ac3 = new Account("bobby", "Bob", "Cobb", "07432257152", "9/11", "Ramsgate", 0, null, "profile-img.jpg");
+        Account ac4 = new Account("barry", "Bob", "Cobb", "07432257152", "9/11", "Ramsgate", 0, null, "profile-img.jpg");
+        Account ac5 = new Account("borat", "Bob", "Cobb", "07432257152", "9/11", "Ramsgate", 0, null, "profile-img.jpg");
+        Account ac6 = new Account("energized", "Bob", "Cobb", "07432257152", "9/11", "Ramsgate", 0, null, "profile-img.jpg");
 
         BST tree = new BST();
         tree.insertAccount(ac1);
         tree.insertAccount(ac2);
         tree.insertAccount(ac3);
+        tree.insertAccount(ac4);
+        tree.insertAccount(ac5);
+        tree.insertAccount(ac6);
+
+        ArrayList<Account> search = tree.searchBeginningWith("b");
+        for(Account a : search)
+        {
+            System.out.println(a.getUsername());
+        }
 
         //tree.inorderTreeWalk(tree.root);
     }
