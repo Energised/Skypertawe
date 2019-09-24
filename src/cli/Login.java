@@ -106,7 +106,7 @@ public class Login
 
             // place TextBox for username entry
             // NB: Can't get border to work, will try later on
-            TextBox nameBox = new TextBox(new TerminalSize(20,1));
+            TextBox nameBox = new TextBox();
             nameBox.withBorder(Borders.doubleLine());
             nameBox.setLayoutData(layout);
             contentPanel.addComponent(nameBox);
@@ -174,10 +174,9 @@ public class Login
                 try
                 {
                     screen.stopScreen();
-                    // fixes no echo on exit
-                    Runtime r = Runtime.getRuntime();
-                    Process p = r.exec("reset");
-                    p.waitFor();
+                    //Runtime r = Runtime.getRuntime();
+                    //Process p = r.exec("reset");
+                    //p.waitFor();
                 }
                 catch(Exception e)
                 {

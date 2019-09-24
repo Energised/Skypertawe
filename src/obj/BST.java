@@ -3,6 +3,25 @@
  * @author Dan Woolsey
  *
  * Binary Search Tree implementation for Skypertawe
+ *
+ *  BST
+ *      BST() -> Define root node
+ *   TREE SETUP
+ *      insertAccount(Account a)
+ *      findInsertLocation(Account a)
+ *   TREE TESTING
+ *      inorderTreeWalk(Node x)
+ *      inorderAccountWalk(Node x)
+ *   BUILDING TREE
+ *      populateTree() -> via ReadWriteAccount
+ *      TODO: addNewAccount(Account a) -> will add to ReadWriteAccount;
+ *                                     -> insert new account into Main.tree then Main.graph
+ *                                  (easier to do than reupdate entire tree and graph, which will happen on reboot)
+ *
+ *   QUERYING
+ *      searchBeginningWith(String searchString)
+ *      searchBeginningWith(String searchString, ArrayList<Account> results, Node x)
+ *       ^^ both are used inside of UserSearchBox to search through userbase
  */
 
 package src.obj;
@@ -112,6 +131,16 @@ public class BST
         {
             this.insertAccount(a);
         }
+    }
+
+    public void addNewAccount(Account a) throws Exception
+    {
+        rwa = new ReadWriteAccount("data.db");
+        rwa.WriteNewAccount(a); // store in db
+        rwa.close();
+        Main.tree.insertAccount(a); // update main tree obj
+        Main.graph.addNewVertex(a); // update main graph obj
+        // then pass new user account to Home
     }
 
     public ArrayList<Account> searchBeginningWith(String searchString)

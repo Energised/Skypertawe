@@ -3,6 +3,14 @@
  * @author Dan Woolsey
  *
  * CLI homepage after login for Skypertawe
+ *
+ * 120x24 = ideal terminal size, need to sort out general resizing on components
+ *
+ * NOTE: For reasons, the first component added to a panel is the parent
+ *       so all others are viewed as its children when Layout is concerned
+ *       THEREFORE: ~ line at start of TopRightPanel means everything centers nicely
+ *          HMMMMMMMMMMMMMMMMMMMMMMMMMMmmmmmmmmmmmmmmmm
+ *
  */
 
 package src.cli;
@@ -50,9 +58,6 @@ public class Home
         DefaultTerminalFactory dtf = new DefaultTerminalFactory();
         this.screen = null;
 
-        Separator sep = new Separator(Direction.VERTICAL);
-        sep.setLayoutData(Layouts.SEPARATOR_VERT_LAYOUT.data);
-
         try
         {
             this.terminal = dtf.createTerminal();
@@ -60,6 +65,16 @@ public class Home
             this.screen.setCursorPosition(null);
 
             this.screen.startScreen();
+
+            // get our size here, use getColumns() / getRows()
+            TerminalSize terminalSize = this.screen.getTerminalSize();
+
+            // terminal resize condition
+            TerminalSize newSize = this.screen.doResizeIfNecessary();
+            if(newSize != null)
+            {
+                terminalSize = newSize;
+            }
 
             WindowBasedTextGUI textGUI = new MultiWindowTextGUI(this.screen);
 
@@ -75,6 +90,9 @@ public class Home
             Panel bottomPanel = this.buildBottomPanel();
             Panel topLeftPanel = this.buildTopLeftPanel();
             Panel topRightPanel = this.buildTopRightPanel();
+
+            Separator sep = new Separator(Direction.VERTICAL);
+            sep.setLayoutData(Layouts.SEPARATOR_VERT_LAYOUT.data);
 
             topPanel.addComponent(topLeftPanel);
             topPanel.addComponent(sep);
@@ -105,9 +123,9 @@ public class Home
                     screen.stopScreen();
                     // fixes no echo on exit
                     // NB: find fix that's better than this
-                    Runtime r = Runtime.getRuntime();
-                    Process p = r.exec("reset");
-                    p.waitFor();
+                    //Runtime r = Runtime.getRuntime();
+                    //Process p = r.exec("reset");
+                    //p.waitFor();
                 }
                 catch(Exception e)
                 {
@@ -179,13 +197,13 @@ public class Home
 
     public Panel buildTopRightPanel()
     {
-        Panel trp = new Panel(new LinearLayout());
+        Panel trp = new Panel(new GridLayout(1));
 
         Label uname = new Label(acc.getUsername());
-        Label fname = new Label(acc.getFirstName() + " " + acc.getSurname());
-        Label mobNo = new Label(acc.getMobnumber());
-        Label bday = new Label(acc.getBirthDate());
-        Label city = new Label(acc.getCity());
+        Label fname = new Label("|" + acc.getFirstName() + " " + acc.getSurname());
+        Label mobNo = new Label("|" + acc.getMobnumber());
+        Label bday = new Label("|" + acc.getBirthDate());
+        Label city = new Label("|" + acc.getCity());
 
         Label searchLabel = new Label("~ Search all users ~");
 
@@ -194,22 +212,25 @@ public class Home
         uname.addStyle(SGR.BOLD);
         uname.addStyle(SGR.UNDERLINE);
 
-        fname.setLayoutData(LinearLayout.createLayoutData(LinearLayout.Alignment.End));
+        //fname.setLayoutData(LinearLayout.createLayoutData(LinearLayout.Alignment.End));
         //mobNo.setLayoutData(Layouts.CENTERED_LAYOUT.data);
         //bday.setLayoutData(Layouts.CENTERED_LAYOUT.data);
         //city.setLayoutData(Layouts.CENTERED_LAYOUT.data);
 
+        // hardcoding these tildas until i can find a better way to deal with this
+        trp.addComponent(new Label("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
         trp.addComponent(uname);
         trp.addComponent(new EmptySpace());
         trp.addComponent(fname);
         trp.addComponent(mobNo);
         trp.addComponent(bday);
         trp.addComponent(city);
+        trp.addComponent(new Label("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
         trp.addComponent(new EmptySpace());
-        trp.addComponent(searchLabel);
-        trp.addComponent(searchBox);
-        // has to be a reference to the CheckBoxList in searchBox
-        trp.addComponent(searchBox.searchedUsers);
+        trp.addComponent(searchLabel, Layouts.CENTERED_LAYOUT.data);
+        trp.addComponent(searchBox, Layouts.RIGHT_PANEL_LAYOUT.data);
+        // has to be a reference to the UserCheckBoxList obj in searchBox
+        trp.addComponent(searchBox.searchedUsers, Layouts.CENTERED_LAYOUT.data);
 
         return trp;
     }

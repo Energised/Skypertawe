@@ -22,19 +22,19 @@ public class UserSearchBox extends TextBox
 
     Account acc;
     String searchValue = "";
-    CheckBoxList<String> searchedUsers;
+    UserCheckBoxList<String> searchedUsers;
 
     public UserSearchBox()
     {
         super();
-        searchedUsers = new CheckBoxList<String>();
+        searchedUsers = new UserCheckBoxList<String>();
     }
 
     public UserSearchBox(Account acc)
     {
         super();
         this.acc = acc;
-        searchedUsers = new CheckBoxList<String>();
+        searchedUsers = new UserCheckBoxList<String>();
     }
 
     @Override

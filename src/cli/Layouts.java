@@ -17,6 +17,10 @@ public enum Layouts implements LayoutData
                                                 GridLayout.Alignment.CENTER,
                                                 false, false, 1, 1)),
 
+    RIGHT_PANEL_LAYOUT(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
+                                                   GridLayout.Alignment.END,
+                                                   true, false)),
+
     FILLED_LAYOUT(GridLayout.createLayoutData(GridLayout.Alignment.FILL,
                                               GridLayout.Alignment.FILL,
                                               true, true, 1, 1)),
@@ -39,7 +43,12 @@ public enum Layouts implements LayoutData
 
     SEPARATOR_HORI_LAYOUT(GridLayout.createLayoutData(GridLayout.Alignment.FILL,
                                                       GridLayout.Alignment.CENTER,
-                                                      true, false));
+                                                      true, false)),
+
+    TITLE_LAYOUT(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
+                                             GridLayout.Alignment.CENTER,
+                                             true,
+                                             false));
 
     public final LayoutData data;
 
