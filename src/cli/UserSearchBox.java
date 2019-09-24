@@ -3,7 +3,22 @@
  * @author Dan Woolsey
  *
  * TextBox based class handling input to display search results
- // * NB: Backspace seems to exit if the UserSearchBox is empty???
+ *
+ * rough pseudocode for handleKeyStroke
+ *  -> if a character is pressed
+ *      -- get the character, add to search string
+ *      -- move caret forward and return HANDLED
+ *  -> if backspace/delete is pressed
+ *      -- test for search string length=0; return MOVE_FOCUS_PREVIOUS
+ *      -- remove end character, move caret, return HANDLED
+ *  -> if enter is pressed
+ *      -- test for search string length=0 return MOVE_FOCUS_NEXT
+ *      -- search tree for usernames beginning with search string
+ *      -- search for friends of the currently logged in user
+ *      -- insert into the UserCheckBoxList, checking them if they're already friends
+ *      -- return MOVE_FOCUS_NEXT
+ *  -> else
+ *      -- return MOVE_FOCUS_NEXT
  */
 
 package src.cli;
@@ -51,9 +66,9 @@ public class UserSearchBox extends TextBox
         }
         else if((keyStroke.getKeyType() == KeyType.Backspace) || (keyStroke.getKeyType() == KeyType.Delete))
         {
-            if(searchValue == "")
+            if(searchValue.length() == 0) // number comparison > string comparison
             {
-                return Interactable.Result.UNHANDLED;
+                return Interactable.Result.MOVE_FOCUS_PREVIOUS;
             }
             searchValue = searchValue.substring(0, searchValue.length()-1);
             this.setText(searchValue);
@@ -62,7 +77,7 @@ public class UserSearchBox extends TextBox
         }
         else if(keyStroke.getKeyType() == KeyType.Enter)
         {
-            if(searchValue == "")
+            if(searchValue.length() == 0)
             {
                 return Interactable.Result.MOVE_FOCUS_NEXT;
             }

@@ -5,7 +5,13 @@
  * Extension of CheckBoxList to handle sending friend requests via Home
  * Utilised and updated within UserSearchBox.java
  *
- * NB: generic in source code is V by default
+ * rough pseudocode for handleKeyStroke
+ *  ->
+ *
+ *
+ *
+ *
+ *
  */
 
 package src.cli;
@@ -27,22 +33,24 @@ public class UserCheckBoxList<Account> extends CheckBoxList<Account>
     @Override
     public Interactable.Result handleKeyStroke(KeyStroke keyStroke)
     {
-        //List<String> checkedNames = this.getCheckedItems();
-        if(keyStroke.getKeyType() == KeyType.Enter)
+        if(keyStroke.getKeyType() == KeyType.ArrowDown){ return Interactable.Result.MOVE_FOCUS_DOWN; }
+        else if(keyStroke.getKeyType() == KeyType.ArrowUp){ return Interactable.Result.MOVE_FOCUS_UP; }
+        else if(keyStroke.getKeyType() == KeyType.Backspace){ return Interactable.Result.MOVE_FOCUS_UP; }
+        else if(keyStroke.getKeyType() == KeyType.Enter)
         {
-            if(this.isChecked(this.getSelectedIndex())) // if current item is selected
+            if(this.isChecked(this.getSelectedItem())) // if current item is checked
             {
                 return Interactable.Result.HANDLED; // end subroutine
             }
             else
             {
+
+                this.setChecked(this.getSelectedItem(), true);
+
                 // setup sending a friend record
-                ArrayList<Account> request = new ArrayList<Account>();
+                // ArrayList<Account> request = new ArrayList<Account>();
                 // acc1 taken either from UserSearchBox OR from main (new static variable)
             }
-
-            // if unchecked
-            // send a friend request (as ArrayList<Account>), remove name from list (or something better)
         }
         return Interactable.Result.HANDLED;
     }
