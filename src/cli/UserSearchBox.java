@@ -4,6 +4,7 @@
  *
  * TextBox based class handling input to display search results
  *
+ *
  * rough pseudocode for handleKeyStroke
  *  -> if a character is pressed
  *      -- get the character, add to search string
@@ -55,7 +56,12 @@ public class UserSearchBox extends TextBox
     @Override
     public Interactable.Result handleKeyStroke(KeyStroke keyStroke)
     {
-        if(keyStroke.getKeyType() == KeyType.Character)
+        if(keyStroke.getKeyType() == KeyType.ArrowLeft){ return Interactable.Result.MOVE_FOCUS_PREVIOUS; }
+        else if((keyStroke.getKeyType() == KeyType.ArrowRight) | (keyStroke.getKeyType() == KeyType.Tab))
+        {
+            return Interactable.Result.MOVE_FOCUS_NEXT;
+        }
+        else if(keyStroke.getKeyType() == KeyType.Character)
         {
             Character t = keyStroke.getCharacter();
             searchValue += t;
@@ -105,7 +111,8 @@ public class UserSearchBox extends TextBox
         }
         else
         {
-            return Interactable.Result.MOVE_FOCUS_NEXT;
+            super.handleKeyStroke(keyStroke);
         }
+        return Interactable.Result.HANDLED;
     }
 }

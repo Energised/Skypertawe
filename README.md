@@ -15,11 +15,7 @@ the final program was heavily rushed into a working condition.
 
    * Message updating system using triggers via SQLite db
    * Complete listener override for UserCheckBoxList.java
-   * Build Register, Edit and Messaging windows
-   * Deal with no-echo on exit that happens occasionally for some reason (~)
-   * Find workaround for parent component length in Homes topRightPanel
-   * Refactoring windows for real this time, edits will be made and pre existing
-     classes Login and Home will be replaced w/ LoginWindow and HomeWindow
+   * Build Edit and Messaging windows
 
 # USAGE:
 

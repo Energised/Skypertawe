@@ -7,7 +7,7 @@
  *      (y) CreateMessageTable(Connection conn, Statement stmt)
  *
  *      READ FUNCTIONS
- *          (y) ReadMessages(String username)
+ *          (y) ArrayList<Message> ReadMessages(String username)
  *
  *      WRITE FUNCTIONS
  *          (y) WriteTextMessage(TextMessage msg)

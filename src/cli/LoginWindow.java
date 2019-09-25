@@ -22,16 +22,8 @@ public class LoginWindow extends AbstractWindow
 
     private Screen s;
     private TerminalSize size;
-    private ArrayList<Account> accs;
 
-    final String banner1 = "   _____ __                         __                    \n";
-    final String banner2 = "  / ___// /____  ______  ___  _____/ /_____ __      _____ \n";
-    final String banner3 = "  \\__ \\/ //_/ / / / __ \\/ _ \\/ ___/ __/ __ `/ | /| / / _ \\\n";
-    final String banner4 = " ___/ / ,< / /_/ / /_/ /  __/ /  / /_/ /_/ /| |/ |/ /  __/\n";
-    final String banner5 = "/____/_/|_|\\__, / .___/\\___/_/   \\__/\\__,_/ |__/|__/\\___/ \n";
-    final String banner6 = "          /____/_/                                        \n";
-
-    final String banner = banner1 + banner2 + banner3 + banner4 + banner5 + banner6;
+    ArrayList<Account> accs;
 
     public LoginWindow(Screen s, ArrayList<Account> accs)
     {
@@ -59,7 +51,7 @@ public class LoginWindow extends AbstractWindow
                                                         false);
 
         // place title in centered position
-        Label title = new Label(banner);
+        Label title = new Label(Art.banner);
         title.setForegroundColor(TextColor.ANSI.GREEN);
         title.setBackgroundColor(TextColor.ANSI.BLACK);
 
@@ -89,7 +81,7 @@ public class LoginWindow extends AbstractWindow
                                            HomeWindow h = new HomeWindow(s, a);
                                            //LoginWindow.this.close();
                                            LoginWindow.this.getTextGUI().addWindowAndWait(h);
-                                           LoginWindow.this.getTextGUI().removeWindow(LoginWindow.this);
+                                           //LoginWindow.this.getTextGUI().removeWindow(LoginWindow.this);
                                        }
                                    }
                                }
@@ -107,7 +99,8 @@ public class LoginWindow extends AbstractWindow
                               @Override
                               public void run()
                               {
-                                  // will then switch to CreateAccount screen
+                                  RegisterWindow r = new RegisterWindow(s);
+                                  LoginWindow.this.getTextGUI().addWindowAndWait(r);
                               }
                           });
         register.setLayoutData(layout);

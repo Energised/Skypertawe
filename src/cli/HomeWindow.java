@@ -25,15 +25,6 @@ public class HomeWindow extends AbstractWindow
     private TerminalSize size;
     private Account ac;
 
-    final String banner1 = "   _____ __                         __                    \n";
-    final String banner2 = "  / ___// /____  ______  ___  _____/ /_____ __      _____ \n";
-    final String banner3 = "  \\__ \\/ //_/ / / / __ \\/ _ \\/ ___/ __/ __ `/ | /| / / _ \\\n";
-    final String banner4 = " ___/ / ,< / /_/ / /_/ /  __/ /  / /_/ /_/ /| |/ |/ /  __/\n";
-    final String banner5 = "/____/_/|_|\\__, / .___/\\___/_/   \\__/\\__,_/ |__/|__/\\___/ \n";
-    final String banner6 = "          /____/_/                                        \n";
-
-    final String banner = banner1 + banner2 + banner3 + banner4 + banner5 + banner6;
-
     public HomeWindow(Screen s, Account ac)
     {
         this.s = s;
@@ -56,7 +47,10 @@ public class HomeWindow extends AbstractWindow
         Panel topPanel = new Panel(new GridLayout(3));
         Panel bottomPanel = this.buildBottomPanel();
         Panel topLeftPanel = this.buildTopLeftPanel();
-        Panel topRightPanel = this.buildTopRightPanel();
+        // get preferred size of top left panel
+        // calculate space remaining, use to size up right panel
+        TerminalSize ps = topLeftPanel.getPreferredSize();
+        Panel topRightPanel = this.buildTopRightPanel(ps);
 
         Separator sep = new Separator(Direction.VERTICAL);
         sep.setLayoutData(Layouts.SEPARATOR_VERT_LAYOUT.data);
@@ -81,7 +75,7 @@ public class HomeWindow extends AbstractWindow
     {
         Panel tlp = new Panel(new GridLayout(1).setVerticalSpacing(1));
 
-        Label b = new Label(banner);
+        Label b = new Label(Art.banner);
         Label fl = new Label("~ Friends List ~");
         Label fr = new Label("~ Friend Requests ~");
 
@@ -137,8 +131,13 @@ public class HomeWindow extends AbstractWindow
         return tlp;
     }
 
-    public Panel buildTopRightPanel()
+    public Panel buildTopRightPanel(TerminalSize ps)
     {
+        // strip away border and separator size = 12
+        int rough_cols = this.size.getColumns() - ps.getColumns();
+        //String si = "R: " + this.s.getTerminalSize().getRows() + "\nC: " + this.size.getColumns();
+        String rep = "~".repeat(rough_cols-12); // 12 is the right size
+
         Panel trp = new Panel(new GridLayout(1));
 
         Label uname = new Label(ac.getUsername());
@@ -160,14 +159,14 @@ public class HomeWindow extends AbstractWindow
         //city.setLayoutData(Layouts.CENTERED_LAYOUT.data);
 
         // hardcoding these tildas until i can find a better way to deal with this
-        trp.addComponent(new Label("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+        trp.addComponent(new Label(rep));
         trp.addComponent(uname);
         trp.addComponent(new EmptySpace());
         trp.addComponent(fname);
         trp.addComponent(mobNo);
         trp.addComponent(bday);
         trp.addComponent(city);
-        trp.addComponent(new Label("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+        trp.addComponent(new Label(rep));
         trp.addComponent(new EmptySpace());
         trp.addComponent(searchLabel, Layouts.CENTERED_LAYOUT.data);
         trp.addComponent(searchBox, Layouts.RIGHT_PANEL_LAYOUT.data);
@@ -179,8 +178,9 @@ public class HomeWindow extends AbstractWindow
 
     public Panel buildBottomPanel()
     {
-        Panel bp = new Panel(new GridLayout(3).setHorizontalSpacing(40));
+        Panel bp = new Panel(new GridLayout(3).setHorizontalSpacing(this.size.getColumns()/3));
         // should change the spacing to terminal length
+        //bp.setSize(new TerminalSize(this.screen.getColumns(), 1)); // to keep the height as 1 unit
 
         Button msg = new Button("Messages", new Runnable()
         {

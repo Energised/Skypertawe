@@ -35,6 +35,26 @@ public class Main
     public static BST tree;
     public static Graph graph;
 
+    // required to update data when new Account is registered / friend request sent
+    // updates windows still on the TextGUI stack
+    public static void refresh()
+    {
+        try
+        {
+            tree = new BST();
+            tree.populateTree();
+
+            graph = new Graph();
+            graph.populateVertices();
+            graph.populateFriendshipEdges();
+            graph.populateRequestEdges();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args)
     {
         try
@@ -48,19 +68,12 @@ public class Main
             WindowBasedTextGUI w = new MultiWindowTextGUI(s);
 
             // setup information from ReadWrite sections
-            tree = new BST();
-            tree.populateTree();
-            ArrayList<Account> accs = tree.inorderAccountWalk(tree.getRoot());
+            refresh();
 
-            graph = new Graph();
-            graph.populateVertices();
-            graph.populateFriendshipEdges();
-            graph.populateRequestEdges();
+            ArrayList<Account> accs = tree.inorderAccountWalk(tree.getRoot());
 
             LoginWindow l = new LoginWindow(s, accs);
             w.addWindowAndWait(l);
-
-
         }
         catch(Exception e)
         {

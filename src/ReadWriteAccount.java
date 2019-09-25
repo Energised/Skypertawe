@@ -179,10 +179,10 @@ public class ReadWriteAccount extends ReadWrite<Account>
         //Account ac1 = new Account("energised", "Dan", "Woolsey", "07523050753", "17/01", "Swansea", 0, null, "profile-img.jpg");
         //Account ac2 = new Account("gman", "Gary", "Waho", "07649752134", "7/12", "Bradford", 0, null, "profile-img.jpg");
         //Account ac3 = new Account("bobby", "Bob", "Cobb", "07432257152", "9/11", "Ramsgate", 0, null, "profile-img.jpg");
-        Account ac4 = new Account("zapdos", "Ash", "Smash", "07477957152", "12/05", "Basildon", 0, null, "profile-img.jpg");
+        Account ac4 = new Account("colonoscopy", "Brad", "Poot", "07477758142", "11/01", "Memphis", 0, null, "profile-img.jpg");
         Account ac5 = new Account("coleslaw", "Jack", "Cross", "07432217152", "22/11", "Hackney", 0, null, "profile-img.jpg");
         Account ac6 = new Account("smokeweed4lyf", "Adam", "Fladam", "07342257192", "01/01", "York", 0, null, "profile-img.jpg");
-        //rwa.WriteNewAccount(ac4);
+        rwa.WriteNewAccount(ac4);
         //rwa.WriteNewAccount(ac5);
         //rwa.WriteNewAccount(ac6);
         //rwa.WriteUpdateAccount("energised", "city", "Southend");

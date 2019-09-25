@@ -152,7 +152,16 @@ public class BST
 
     public void searchBeginningWith(String searchString, ArrayList<Account> results, Node x)
     {
-        String nodeSubstring = x.getValue().getUsername().substring(0, searchString.length());
+        String nodeSubstring;
+        String treeName = x.getValue().getUsername();
+        if(treeName.length() < searchString.length())
+        {
+            nodeSubstring = treeName.substring(0, treeName.length());
+        }
+        else
+        {
+            nodeSubstring = treeName.substring(0, searchString.length());
+        }
         if(nodeSubstring.equals(searchString.toLowerCase()))
         {
             results.add(x.getValue());
@@ -184,7 +193,7 @@ public class BST
         tree.insertAccount(ac5);
         tree.insertAccount(ac6);
 
-        ArrayList<Account> search = tree.searchBeginningWith("b");
+        ArrayList<Account> search = tree.searchBeginningWith("bob");
         for(Account a : search)
         {
             System.out.println(a.getUsername());
