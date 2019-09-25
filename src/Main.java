@@ -31,6 +31,7 @@ public class Main
     public static DefaultTerminalFactory dtf = null;
     public static Terminal t = null;
     public static Screen s = null;
+    public static WindowBasedTextGUI w = null;
 
     public static BST tree;
     public static Graph graph;
@@ -65,7 +66,7 @@ public class Main
             s = new TerminalScreen(t);
             s.startScreen();
 
-            WindowBasedTextGUI w = new MultiWindowTextGUI(s);
+            w = new MultiWindowTextGUI(s);
 
             // setup information from ReadWrite sections
             refresh();

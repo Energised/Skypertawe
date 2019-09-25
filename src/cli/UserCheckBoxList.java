@@ -25,18 +25,24 @@
 
 package src.cli;
 
+import src.*;
 import src.obj.*;
 
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.input.*;
+import com.googlecode.lanterna.gui2.dialogs.*;
 
 import java.util.ArrayList;
 
-public class UserCheckBoxList<Account> extends CheckBoxList<Account>
+public class UserCheckBoxList<V> extends CheckBoxList<V>
 {
-    public UserCheckBoxList()
+
+    String a;
+
+    public UserCheckBoxList(String a)
     {
         super();
+        this.a = a;
     }
 
     @Override
@@ -55,12 +61,38 @@ public class UserCheckBoxList<Account> extends CheckBoxList<Account>
             }
             else
             {
+                // setup sending a friend request
+                String b = (String) this.getSelectedItem();
 
-                this.setChecked(this.getSelectedItem(), true);
+                Account sender = Main.tree.searchBeginningWith(a).get(0);
+                Account recipient = Main.tree.searchBeginningWith(b).get(0);
 
-                // setup sending a friend record
-                // ArrayList<Account> request = new ArrayList<Account>();
-                // acc1 taken either from UserSearchBox OR from main (new static variable)
+                ArrayList<Account> request = new ArrayList<Account>();
+                request.add(sender);
+                request.add(recipient);
+
+                int check;
+                try
+                {
+                    check = Main.graph.addRecord(request);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                    check = 0;
+                }
+                if(check == 1)
+                {
+                    MessageDialogButton mdb = MessageDialog.showMessageDialog(Main.w,
+                                                        "Sent","Request to " + b + " sent!",
+                                                        MessageDialogButton.Close);
+
+                    this.setChecked(this.getSelectedItem(), true);
+                }
+                else
+                {
+                    // message saying failure?
+                }
             }
         }
         else

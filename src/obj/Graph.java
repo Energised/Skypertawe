@@ -29,6 +29,7 @@
 package src.obj;
 
 import src.*;
+import src.obj.Account;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -122,11 +123,20 @@ public class Graph
         rwf.close();
     }
 
-    public void addRecord(ArrayList<Account> toAdd) throws Exception
+    // returns 1 if success, 0 if failure
+    public int addRecord(ArrayList<Account> toAdd) throws Exception
     {
-        ReadWriteFriends rwf = new ReadWriteFriends("data.db");
-        rwf.setFriendshipRecord(toAdd);
-        rwf.close();
+        try
+        {
+            ReadWriteFriends rwf = new ReadWriteFriends("data.db");
+            rwf.setFriendshipRecord(toAdd);
+            rwf.close();
+            return 1;
+        }
+        catch(Exception e)
+        {
+            return 0;
+        }
     }
 
     public void emptyGraph()

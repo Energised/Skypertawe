@@ -53,7 +53,8 @@ public class ReadWriteFriends extends ReadWrite
                              "User1ID INTEGER NOT NULL," +
                              "User2ID INTEGER NOT NULL," +
                              "FOREIGN KEY (User1ID) " +
-                             "REFERENCES Account(AccountID));";
+                             "REFERENCES Account(AccountID)" +
+                             "UNIQUE(User1ID,User2ID));";
         stmt.executeUpdate(friends_sql);
         return stmt;
     }

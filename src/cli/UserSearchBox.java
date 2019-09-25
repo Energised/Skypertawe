@@ -43,14 +43,14 @@ public class UserSearchBox extends TextBox
     public UserSearchBox()
     {
         super();
-        searchedUsers = new UserCheckBoxList<String>();
+        searchedUsers = new UserCheckBoxList<String>(null);
     }
 
     public UserSearchBox(Account acc)
     {
         super();
         this.acc = acc;
-        searchedUsers = new UserCheckBoxList<String>();
+        searchedUsers = new UserCheckBoxList<String>(this.acc.getUsername());
     }
 
     @Override

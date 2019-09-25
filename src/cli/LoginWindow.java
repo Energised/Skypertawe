@@ -7,6 +7,7 @@
 
 package src.cli;
 
+import src.*;
 import src.obj.*;
 
 import com.googlecode.lanterna.*;
@@ -76,6 +77,7 @@ public class LoginWindow extends AbstractWindow
                                    {
                                        if(a.getUsername().equals(username))
                                        {
+                                           Main.refresh(); // update w/ any info from previous logins
                                            // order here is awkward, decide on how best to cycle to new window
                                            // could prebuild all windows in SubclassTest and switch there?
                                            HomeWindow h = new HomeWindow(s, a);

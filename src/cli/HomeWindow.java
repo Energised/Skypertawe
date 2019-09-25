@@ -3,6 +3,11 @@
  * @author Dan Woolsey
  *
  * Subclassed version of Home
+ *
+ * CURRENT STATE OF FRIENDING:
+ *  (-) when you friend someone, you also get a request, but you wont be able to accept it
+ *  (-) once you accept a request, the search box wont update until next login
+ *  (-) the system will stop you from resending friend requests
  */
 
 package src.cli;
@@ -12,6 +17,7 @@ import src.obj.*;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.gui2.dialogs.*;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.graphics.*;
 
@@ -111,7 +117,35 @@ public class HomeWindow extends AbstractWindow
             @Override
             public void run()
             {
-                frb.removeItem(frb.getSelectedItem());
+                String rec = frb.getSelectedItem();
+                Account recipient = Main.tree.searchBeginningWith(rec).get(0);
+
+                ArrayList<Account> request = new ArrayList<Account>();
+                request.add(HomeWindow.this.ac);
+                request.add(recipient);
+
+                int count;
+                try
+                {
+                    count = Main.graph.addRecord(request);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                    count = 0;
+                }
+                if(count == 1)
+                {
+                    MessageDialogButton mdb = MessageDialog.showMessageDialog(Main.w,
+                                            "Sent","Request from " + rec + " accepted!",
+                                            MessageDialogButton.Close);
+                    flb.addItem(rec); // update local friends list
+                    frb.removeItem(rec); // update local requests list
+                }
+                else
+                {
+                    // message of failure
+                }
             }
         });
 
