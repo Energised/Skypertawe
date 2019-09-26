@@ -221,7 +221,8 @@ public class HomeWindow extends AbstractWindow
             @Override
             public void run()
             {
-                // switch to Messages window
+                MessageWindow m = new MessageWindow(HomeWindow.this.s, HomeWindow.this.ac);
+                HomeWindow.this.getTextGUI().addWindowAndWait(m);
             }
         });
 

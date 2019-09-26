@@ -17,4 +17,10 @@ public class Art
     final static String banner6 = "          /____/_/                                        \n";
 
     final static String banner = banner1 + banner2 + banner3 + banner4 + banner5 + banner6;
+
+    final static String sbanner1 = " __            __   ___  __  ___            ___ \n";
+    final static String sbanner2 = "/__` |__/ \\ / |__) |__  |__)  |   /\\  |  | |__  \n";
+    final static String sbanner3 = ".__/ |  \\  |  |    |___ |  \\  |  /~~\\ |/\\| |___ \n";
+
+    final static String sbanner = sbanner1 + sbanner2 + sbanner3;
 }

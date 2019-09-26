@@ -15,7 +15,8 @@ the final program was heavily rushed into a working condition.
 
    * Message updating system using triggers via SQLite db
    * Complete listener override for UserCheckBoxList.java
-   * Build Edit and Messaging windows
+   * Build Edit window
+   * Finish MessageWindow w/ Postman message organiser to handle the gruntwork
 
 # USAGE:
 

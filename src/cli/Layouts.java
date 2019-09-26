@@ -48,7 +48,11 @@ public enum Layouts implements LayoutData
     TITLE_LAYOUT(GridLayout.createLayoutData(GridLayout.Alignment.CENTER,
                                              GridLayout.Alignment.CENTER,
                                              true,
-                                             false));
+                                             false)),
+
+    VERT_FILL(GridLayout.createLayoutData(GridLayout.Alignment.FILL,
+                                          GridLayout.Alignment.FILL,
+                                          false, true));
 
     public final LayoutData data;
 

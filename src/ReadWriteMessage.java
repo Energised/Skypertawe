@@ -129,7 +129,14 @@ public class ReadWriteMessage extends ReadWrite<Message>
         // downcasting will be required due to use of Message base class
         for(Message x : msgs)
         {
-            System.out.print("MSG RECIEVED AT: " + x.getDateTime() + " ~ ");
+            if(x.getRecipient().equals("energised"))
+            {
+                System.out.print("MSG RECIEVED AT: " + x.getDateTime() + " ~ ");
+            }
+            else
+            {
+                System.out.print("MSG SENT AT: " + x.getDateTime() + " ~ ");
+            }
             if(x.getClass() == TextMessage.class)
             {
                 System.out.println(((TextMessage) x).getMessageContent());
