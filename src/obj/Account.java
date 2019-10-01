@@ -140,11 +140,7 @@ public class Account
 
     public String toString()
     {
-        return this.getUsername() + "\n" + this.getFirstName() + "\n" +
-               this.getSurname() + "\n" + this.getMobnumber() + "\n" +
-               this.getBirthDate() + "\n" + this.getCity() + "\n" +
-               this.getNumNewMessages() + "\n" + this.getLastSession() + "\n" +
-               this.getImgPath();
+        return this.getUsername();
     }
 
     public static void main(String[] args)

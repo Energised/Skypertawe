@@ -31,7 +31,7 @@ public class HomeWindow extends AbstractWindow
     private TerminalSize size;
     private Account ac;
 
-    public HomeWindow(Screen s, Account ac)
+    public HomeWindow(Screen s, Account ac) throws Exception
     {
         this.s = s;
         this.ac = ac;
@@ -47,7 +47,7 @@ public class HomeWindow extends AbstractWindow
         this.setHints(Arrays.asList(Window.Hint.CENTERED, Window.Hint.FULL_SCREEN));
     }
 
-    public Panel buildMainPanel()
+    public Panel buildMainPanel() throws Exception
     {
         Panel contentPanel = new Panel(new GridLayout(1));
         Panel topPanel = new Panel(new GridLayout(3));
@@ -210,7 +210,7 @@ public class HomeWindow extends AbstractWindow
         return trp;
     }
 
-    public Panel buildBottomPanel()
+    public Panel buildBottomPanel() throws Exception
     {
         Panel bp = new Panel(new GridLayout(3).setHorizontalSpacing(this.size.getColumns()/3));
         // should change the spacing to terminal length
@@ -221,7 +221,15 @@ public class HomeWindow extends AbstractWindow
             @Override
             public void run()
             {
-                MessageWindow m = new MessageWindow(HomeWindow.this.s, HomeWindow.this.ac);
+                MessageWindow m = null;
+                try
+                {
+                    m = new MessageWindow(HomeWindow.this.s, HomeWindow.this.ac);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
                 HomeWindow.this.getTextGUI().addWindowAndWait(m);
             }
         });

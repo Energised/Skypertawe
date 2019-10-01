@@ -61,6 +61,12 @@ public class Message
         return this.dateTime;
     }
 
+	public String toString()
+	{
+		return this.getDateTime() + ": Recipient - " + this.getRecipient() +
+		 	   ", Sender - " + this.getSender();
+	}
+
 	/**
 	* Implemented for testing purposes
 	*/

@@ -17,6 +17,7 @@ import src.cli.*;
 import src.obj.Account;
 import src.obj.BST;
 import src.obj.Graph;
+import src.obj.Postman;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.screen.*;
@@ -35,6 +36,7 @@ public class Main
 
     public static BST tree;
     public static Graph graph;
+    public static Postman postie;
 
     // required to update data when new Account is registered / friend request sent
     // updates windows still on the TextGUI stack
@@ -72,6 +74,9 @@ public class Main
             refresh();
 
             ArrayList<Account> accs = tree.inorderAccountWalk(tree.getRoot());
+
+            // message sending + recieving + display class
+            postie = new Postman(accs);
 
             LoginWindow l = new LoginWindow(s, accs);
             w.addWindowAndWait(l);
