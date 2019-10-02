@@ -36,6 +36,14 @@ public class LogListener implements RadioBoxList.Listener
 
     public void onSelectionChanged(int selectedIndex, int previousSelection)
     {
+        // try
+        // {
+        //     this.org_msgs = this.setupMessages();
+        // }
+        // catch(Exception e)
+        // {
+        //     e.printStackTrace();
+        // }
         Account a = (Account) this.rbl.getItemAt(selectedIndex); // get chosen account
         ArrayList<Message> a_msgs = this.org_msgs.get(a.getUsername());
         String msgs_string = "";

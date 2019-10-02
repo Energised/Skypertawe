@@ -13,10 +13,10 @@ the final program was heavily rushed into a working condition.
 
 ## Unfinished Features for src/:
 
-   * Message updating system using triggers via SQLite db
    * Complete listener override for UserCheckBoxList.java
    * Build Edit window
-   * Finish MessageWindow w/ Postman message organiser to handle the gruntwork
+   * Message system works, but only updates on program exit, work out a fix
+   * Also gman and energised are duplicated in message menu for some reason
 
 # USAGE:
 

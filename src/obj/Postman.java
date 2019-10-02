@@ -22,7 +22,7 @@
  *
  * SEND POST
  *
- *      // todo
+ *      public int sendMessage(TextMessage msg)
  *
  *
  */
@@ -132,6 +132,14 @@ public class Postman
                 //System.out.println(x.getClass());
             }
         }
+    }
+
+    public int sendMessage(TextMessage msg) throws Exception
+    {
+        ReadWriteMessage rwm = new ReadWriteMessage("data.db");
+        rwm.WriteTextMessage(msg);
+        rwm.close();
+        return 0;
     }
 
     public static void main(String[] args) throws Exception

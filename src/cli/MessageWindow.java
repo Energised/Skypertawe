@@ -16,6 +16,7 @@ import src.cli.*;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.gui2.dialogs.*;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.graphics.*;
 
@@ -26,7 +27,11 @@ import java.util.HashMap;
 public class MessageWindow extends AbstractWindow
 {
 
+    Screen s;
+    TerminalSize size;
+
     TextBox log;
+    TextBox msg;
 
     Account ac;
     //ActionListBox flist;
@@ -36,11 +41,15 @@ public class MessageWindow extends AbstractWindow
 
     public MessageWindow(Screen s, Account ac) throws Exception
     {
+        this.s = s;
+        this.size = s.getTerminalSize();
         this.ac = ac;
-        this.log = new TextBox(new TerminalSize(40,15), TextBox.Style.MULTI_LINE); // hardcoded for now
+        this.log = new TextBox(new TerminalSize(40,20), TextBox.Style.MULTI_LINE); // hardcoded for now
         this.setTheme();
         Panel main = new Panel(new GridLayout(3));
-        main.addComponent(this.buildLeftPanel());
+        Panel left = this.buildLeftPanel();
+        //TerminalSize ps = left.getPreferredSize();
+        main.addComponent(left);
         main.addComponent(new Separator(Direction.VERTICAL).setLayoutData(Layouts.VERT_FILL.data));
         main.addComponent(this.buildRightPanel());
         this.setComponent(main);
@@ -104,12 +113,42 @@ public class MessageWindow extends AbstractWindow
         //this.log = new TextBox("Select a user to message");
         this.log.setReadOnly(true);
 
-        TextBox msg = new TextBox();
+        this.msg = new TextBox();
+        this.msg.setLayoutData(Layouts.FILLED_LAYOUT.data);
         Button send = new Button("Send", new Runnable(){
             @Override
             public void run()
             {
-                String msgtext = msg.getText();
+                String msgtext = MessageWindow.this.msg.getText();
+                Account recipient_a = (Account) MessageWindow.this.flistr.getCheckedItem();
+                String recipient = recipient_a.getUsername();
+                String sender = MessageWindow.this.ac.getUsername();
+
+                TextMessage t = new TextMessage(recipient, sender, msgtext);
+
+                int post_check = -1;
+                try
+                {
+                    post_check = Main.postie.sendMessage(t);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+                if(post_check == 0)
+                {
+                    MessageDialogButton mdb = MessageDialog.showMessageDialog(Main.w,
+                                            "Sent!","Content = " + msgtext,
+                                            MessageDialogButton.Close);
+                    MessageWindow.this.msg.setText("");
+                    // update log wo/ exit
+                }
+
+                //String current_log = MessageWindow.this.log.getText();
+                //MessageWindow.this.log.setText(current_log + )
+
+                // TextMessage t = (recipient, sender, content)
             }
         });
 
