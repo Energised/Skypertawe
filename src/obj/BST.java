@@ -131,6 +131,7 @@ public class BST
         {
             this.insertAccount(a);
         }
+        rwa.close();
     }
 
     public void addNewAccount(Account a) throws Exception

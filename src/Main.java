@@ -38,6 +38,8 @@ public class Main
     public static Graph graph;
     public static Postman postie;
 
+    public static ArrayList<Account> accs = null;
+
     // required to update data when new Account is registered / friend request sent
     // updates windows still on the TextGUI stack
     public static void refresh()
@@ -51,6 +53,10 @@ public class Main
             graph.populateVertices();
             graph.populateFriendshipEdges();
             graph.populateRequestEdges();
+
+            accs = tree.inorderAccountWalk(tree.getRoot());
+            // message sending + recieving + display class
+            postie = new Postman(accs);
         }
         catch(Exception e)
         {
@@ -72,11 +78,6 @@ public class Main
 
             // setup information from ReadWrite sections
             refresh();
-
-            ArrayList<Account> accs = tree.inorderAccountWalk(tree.getRoot());
-
-            // message sending + recieving + display class
-            postie = new Postman(accs);
 
             LoginWindow l = new LoginWindow(s, accs);
             w.addWindowAndWait(l);

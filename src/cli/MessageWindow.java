@@ -143,6 +143,7 @@ public class MessageWindow extends AbstractWindow
                                             MessageDialogButton.Close);
                     MessageWindow.this.msg.setText("");
                     // update log wo/ exit
+                    Main.refresh();
                 }
 
                 //String current_log = MessageWindow.this.log.getText();
