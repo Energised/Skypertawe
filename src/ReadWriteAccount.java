@@ -18,6 +18,10 @@
  *
  * NB: RUN: java -cp ".:sqlite-jdbc-3.15.1.jar" ReadWriteAccount
  *     When dealing with SQLite; all function must be able to throw exceptions
+ *
+ *  INSERT INTO Account VALUES (1, "energised", "Dan", "Woolsey", "07523050753", "17/07/1997", "Southend", 0, null, "profile.jpg");
+ *
+ *
  */
 
 package src;

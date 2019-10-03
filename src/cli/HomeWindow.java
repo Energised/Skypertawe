@@ -239,7 +239,8 @@ public class HomeWindow extends AbstractWindow
             @Override
             public void run()
             {
-                // switch to edit account window
+                EditWindow e = new EditWindow(HomeWindow.this.s, HomeWindow.this.ac);
+                HomeWindow.this.getTextGUI().addWindowAndWait(e);
             }
         });
 

@@ -21,8 +21,11 @@ future I might rebuilt the whole GUI system but I can't be bothered right now
 ## Unfinished Features for src/:
 
    * Complete listener override for UserCheckBoxList.java
-   * Build Edit window
-   * Empty database wont allow for account registration (?) must hardcode an account in the db first
+   * Edit window built, need edit functionality within BST
+   * Empty database wont allow for account registration (?) must hardcode an
+     account in the db first
+   * Once a request is accepted, a user must log out and back in before
+     UserCheckBoxList and MessageWindow update
 
 # USAGE:
 
