@@ -42,8 +42,8 @@ future I might rebuilt the whole GUI system but I can't be bothered right now
 
      $ java -cp ".:sqlite-jdbc-3.15.1.jar" Main;
 
-## For files in src/
+## For files in src/ (for src, src/cli, src/obj, )
 
-    $ javac -cp .:src/lib/* src/*;
+    $ javac -cp .:src/lib/* src/*.java;
 
     $ java -cp .:src/lib/* src.Main;
