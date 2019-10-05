@@ -21,11 +21,12 @@ future I might rebuilt the whole GUI system but I can't be bothered right now
 ## Unfinished Features for src/:
 
    * Complete listener override for UserCheckBoxList.java
-   * Edit window built, need edit functionality within BST
+   * Edits work on reset
    * Empty database wont allow for account registration (?) must hardcode an
      account in the db first
    * Once a request is accepted, a user must log out and back in before
      UserCheckBoxList and MessageWindow update
+   * Replace stack trace prints with a logging system (should have done this ages ago)
 
 # USAGE:
 

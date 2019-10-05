@@ -14,9 +14,10 @@
  *      inorderAccountWalk(Node x)
  *   BUILDING TREE
  *      populateTree() -> via ReadWriteAccount
- *      TODO: addNewAccount(Account a) -> will add to ReadWriteAccount;
- *                                     -> insert new account into Main.tree then Main.graph
- *                                  (easier to do than reupdate entire tree and graph, which will happen on reboot)
+ *      addNewAccount(Account a) -> will add to ReadWriteAccount;
+ *                               -> insert new account into Main.tree then Main.graph
+ *                   (easier to do than reupdate entire tree and graph, which will happen on reboot)
+ *      updateAccount(Account a) -> will update the record via RWA
  *
  *   QUERYING
  *      searchBeginningWith(String searchString)
@@ -142,6 +143,14 @@ public class BST
         Main.tree.insertAccount(a); // update main tree obj
         Main.graph.addNewVertex(a); // update main graph obj
         // then pass new user account to Home
+    }
+
+    public void updateAccount(Account a) throws Exception
+    {
+        rwa = new ReadWriteAccount("data.db");
+        rwa.WriteUpdateAccount(a);
+        rwa.close();
+        Main.refresh();
     }
 
     public ArrayList<Account> searchBeginningWith(String searchString)

@@ -114,6 +114,23 @@ public class ReadWriteAccount extends ReadWrite<Account>
     }
 
     /**
+     * Given an account, will update all its columns in the DB
+     * even if they havent been changed - makes life easier
+     *
+     */
+
+    public void WriteUpdateAccount(Account a) throws Exception
+    {
+        String sql;
+        sql = "UPDATE Account SET first_name = '" + a.getFirstName() +
+              "', surname = '" + a.getSurname() + "', mob_num = '" + a.getMobnumber() +
+              "', dob = '" + a.getBirthDate() + "', city = '" + a.getCity() +
+              "', profile_img = '" + a.getImgPath() + "' " +
+              " WHERE username = '" + a.getUsername() + "';";
+        this.stmt.executeUpdate(sql);
+    }
+
+    /**
     * Increment the users new_messages column by 1
     * @param username Given user to update
     */
